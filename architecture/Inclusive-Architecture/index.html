@@ -773,20 +773,19 @@ Each agent processes data and can be chained in different order enabling concurr
 </tr>
 </tbody>
 </table>
-<div class="highlight"><pre><span></span><code>sequenceDiagram
+<pre class="mermaid"><code>sequenceDiagram
     autonumber
     participant Agent
     participant ToolRegistry
     participant WhatsAppAdapter
     participant ExternalAPI
 
-    Agent-&gt;&gt;ToolRegistry: Lookup(&quot;whatsapp_adapter:v2&quot;)
+    Agent-&gt;&gt;ToolRegistry: Lookup("whatsapp_adapter:v2")
     ToolRegistry--&gt;&gt;Agent: Return schema + endpoint
-    Agent-&gt;&gt;WhatsAppAdapter: Send(recipient=&quot;+91XXXX&quot;, template=&quot;notify_schedule&quot;)
+    Agent-&gt;&gt;WhatsAppAdapter: Send(recipient="+91XXXX", template="notify_schedule")
     WhatsAppAdapter-&gt;&gt;ExternalAPI: POST /messages
-    ExternalAPI--&gt;&gt;WhatsAppAdapter: {status: &quot;success&quot;, id: &quot;wa_001&quot;}
-    WhatsAppAdapter--&gt;&gt;Agent: status=success, timestamp
-</code></pre></div>
+    ExternalAPI--&gt;&gt;WhatsAppAdapter: {status: "success", id: "wa_001"}
+    WhatsAppAdapter--&gt;&gt;Agent: status=success, timestamp</code></pre>
 <h4 id="example-tool-invocation">Example Tool Invocation<a class="headerlink" href="#example-tool-invocation" title="Permanent link">&para;</a></h4>
 <div class="highlight"><pre><span></span><code><span class="p">{</span>
 <span class="w">  </span><span class="nt">&quot;tool&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;whatsapp_adapter&quot;</span><span class="p">,</span>
