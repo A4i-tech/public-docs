@@ -1,0 +1,1011 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+        <link rel="canonical" href="https://a4i-tech.github.io/public-docs/architecture/Inclusive-Architecture/">
+      
+      
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.22">
+    
+    
+      
+        <title>Inclusive Architecture - A4i Tech Public Docs</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.84d31ad4.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    <body dir="ltr">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#inclusive-agentic-architecture-template" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="A4i Tech Public Docs" class="md-header__button md-logo" aria-label="A4i Tech Public Docs" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            A4i Tech Public Docs
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Inclusive Architecture
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+  
+
+<nav class="md-nav md-nav--primary md-nav--integrated" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="A4i Tech Public Docs" class="md-nav__button md-logo" aria-label="A4i Tech Public Docs" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    A4i Tech Public Docs
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_1" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_1" id="__nav_1_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    Architecture
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_1_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_1">
+            <span class="md-nav__icon md-icon"></span>
+            Architecture
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    Inclusive Architecture
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    Inclusive Architecture
+    
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1-abstract" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. Abstract
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-motivation" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. Motivation
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-high-level-layered-architecture" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. High-Level Layered Architecture
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-components-of-the-architecture" class="md-nav__link">
+    <span class="md-ellipsis">
+      4. Components of the Architecture
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4. Components of the Architecture">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#41-integration-layer" class="md-nav__link">
+    <span class="md-ellipsis">
+      4.1 Integration Layer
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4.1 Integration Layer">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#channels-for-access" class="md-nav__link">
+    <span class="md-ellipsis">
+      Channels for Access
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#data-flow-example" class="md-nav__link">
+    <span class="md-ellipsis">
+      Data Flow Example
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#experience-layer-with-user-conversation-and-memory" class="md-nav__link">
+    <span class="md-ellipsis">
+      Experience Layer (with User, Conversation and Memory)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Experience Layer (with User, Conversation and Memory)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#example-data-flow" class="md-nav__link">
+    <span class="md-ellipsis">
+      Example Data Flow
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#data-flow" class="md-nav__link">
+    <span class="md-ellipsis">
+      Data Flow
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#example-memory-query" class="md-nav__link">
+    <span class="md-ellipsis">
+      Example Memory Query
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#42-business-agentic-orchestration-layer" class="md-nav__link">
+    <span class="md-ellipsis">
+      4.2 Business &amp; Agentic Orchestration Layer
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#agent-library" class="md-nav__link">
+    <span class="md-ellipsis">
+      Agent Library
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tool-library" class="md-nav__link">
+    <span class="md-ellipsis">
+      Tool Library
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Tool Library">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#example-tool-invocation" class="md-nav__link">
+    <span class="md-ellipsis">
+      Example Tool Invocation
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#43-ingestion-layer" class="md-nav__link">
+    <span class="md-ellipsis">
+      4.3 Ingestion Layer
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4.3 Ingestion Layer">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#data-flow_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Data Flow
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-real-world-applications" class="md-nav__link">
+    <span class="md-ellipsis">
+      5. Real-World Applications
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="5. Real-World Applications">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#education" class="md-nav__link">
+    <span class="md-ellipsis">
+      Education
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#healthcare" class="md-nav__link">
+    <span class="md-ellipsis">
+      Healthcare
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#accessibility" class="md-nav__link">
+    <span class="md-ellipsis">
+      Accessibility
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-design-principles" class="md-nav__link">
+    <span class="md-ellipsis">
+      6. 🎯 Design Principles
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#7-limitations-future-considerations" class="md-nav__link">
+    <span class="md-ellipsis">
+      7. Limitations &amp; Future Considerations
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#8-references" class="md-nav__link">
+    <span class="md-ellipsis">
+      8. References
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="inclusive-agentic-architecture-template">Inclusive Agentic Architecture Template<a class="headerlink" href="#inclusive-agentic-architecture-template" title="Permanent link">&para;</a></h1>
+<p><em>Building Inclusive, Modular, and Agentic Platforms for Education, Healthcare, and Accessibility</em></p>
+<hr />
+<h2 id="1-abstract">1. Abstract<a class="headerlink" href="#1-abstract" title="Permanent link">&para;</a></h2>
+<p>This whitepaper presents an <strong>inclusive, agentic architecture</strong> designed to enable <strong>scalable</strong>, <strong>modular</strong>, and <strong>human-centred AI systems</strong> across domains such as <strong>education</strong>, <strong>healthcare</strong>, and <strong>accessibility</strong>.</p>
+<p>Current digital ecosystems are <strong>fragmented</strong>, leading to duplication, limited reuse, and difficulty in scaling innovations.<br />
+The proposed framework unifies these efforts through a <strong>layered reference architecture</strong> — comprising <strong>integration channels</strong>, <strong>experience orchestration</strong>, <strong>business logic</strong>, <strong>agent libraries</strong>, and <strong>tool adapters</strong> under an <strong>open and extensible model</strong>.</p>
+<p>The architecture emphasizes <strong>inclusivity</strong>, ensuring accessibility via <strong>multimodal channels</strong> such as mobile, feature phones, and assistive devices.  It also embeds <strong>security, auditability, and compliance guardrails</strong> upfront.</p>
+<hr />
+<h2 id="2-motivation">2. Motivation<a class="headerlink" href="#2-motivation" title="Permanent link">&para;</a></h2>
+<ul>
+<li>Current solutions are point-specific and lack a unified reference model.  </li>
+<li>Fragmentation challenge: Similar patterns solved differently → difficult to reuse, scale, or maintain.  </li>
+<li>Need for a <strong>common architectural template</strong> that:</li>
+<li>Reduces duplication of effort across projects.  </li>
+<li>Ensures scalability &amp; reliability during usage surges.  </li>
+<li>Simplifies integration of new datastores and connectors.  </li>
+<li>Embeds security, auditability, and compliance guardrails upfront.  </li>
+</ul>
+<p><strong>Long-term Vision:</strong><br />
+A <strong>community-driven reference architecture</strong> that improves developer onboarding, speeds up experimentation, and ensures enterprise-grade resilience.</p>
+<hr />
+<h2 id="3-high-level-layered-architecture">3. High-Level Layered Architecture<a class="headerlink" href="#3-high-level-layered-architecture" title="Permanent link">&para;</a></h2>
+<p><img alt="HLA Diagram" src="../images/arch-high-level.png" />
+<em>Figure 1: High-Level Agentic Architecture Template</em></p>
+<hr />
+<h2 id="4-components-of-the-architecture">4. Components of the Architecture<a class="headerlink" href="#4-components-of-the-architecture" title="Permanent link">&para;</a></h2>
+<h3 id="41-integration-layer">4.1 Integration Layer<a class="headerlink" href="#41-integration-layer" title="Permanent link">&para;</a></h3>
+<p>Serves as the <strong>system’s backbone for connectivity and interoperability</strong>.<br />
+It manages authentication, auditing, and compliance across integrations.<br />
+Main goal: make external data feel internal while maintaining <strong>isolation and control</strong>.</p>
+<h4 id="channels-for-access">Channels for Access<a class="headerlink" href="#channels-for-access" title="Permanent link">&para;</a></h4>
+<p>Supports:
+- Mobile applications<br />
+- Feature phone–based telecommunications<br />
+- Web interfaces<br />
+- Assistive devices (e.g., Hexis, Iris)<br />
+- Messaging interfaces (WhatsApp, Telegram, SMS)</p>
+<h4 id="data-flow-example">Data Flow Example<a class="headerlink" href="#data-flow-example" title="Permanent link">&para;</a></h4>
+<pre class="mermaid"><code>sequenceDiagram
+    participant User
+    participant ChannelAdapter
+    participant IntegrationLayer
+    participant ExperienceLayer
+
+    User-&gt;&gt;ChannelAdapter: Message / Event
+    ChannelAdapter-&gt;&gt;IntegrationLayer: Normalized request
+    IntegrationLayer-&gt;&gt;ExperienceLayer: Authenticated, enriched payload</code></pre>
+<hr />
+<h3 id="experience-layer-with-user-conversation-and-memory">Experience Layer (with User, Conversation and Memory)<a class="headerlink" href="#experience-layer-with-user-conversation-and-memory" title="Permanent link">&para;</a></h3>
+<p>Acts as the <strong>central user interaction entry point</strong>, normalizing inputs from diverse channels for unified downstream handling.<br />
+It enriches the data with <strong>context</strong>, <strong>authentication</strong>, and <strong>personalization cues</strong>, and formats output for the appropriate channel.</p>
+<h4 id="example-data-flow">Example Data Flow<a class="headerlink" href="#example-data-flow" title="Permanent link">&para;</a></h4>
+<h4 id="data-flow">Data Flow<a class="headerlink" href="#data-flow" title="Permanent link">&para;</a></h4>
+<pre class="mermaid"><code>sequenceDiagram
+    autonumber
+    participant User
+    participant IntegrationLayer
+    participant ExperienceLayer
+    participant BusinessOrchestration
+
+    User-&gt;&gt;IntegrationLayer: Sends message via channel adapter &lt;br/&gt;(text, audio, button click)
+    IntegrationLayer-&gt;&gt;ExperienceLayer: Enriched, authenticated input
+    Note right of ExperienceLayer: Create &lt;br/&gt;`standard_request` JSON &lt;br/&gt;with metadata:&lt;br/&gt;• channel_type&lt;br/&gt;• user_id&lt;br/&gt;• locale&lt;br/&gt;• timestamp&lt;br/&gt;• raw_content
+    ExperienceLayer-&gt;&gt;BusinessOrchestration: Forward structured request&lt;br/&gt;via REST or Message Bus</code></pre>
+<p>Sample json
+<div class="highlight"><pre><span></span><code>{
+  &quot;standard_request&quot;: {
+    &quot;channel_type&quot;: &quot;whatsapp&quot;,
+    &quot;user_id&quot;: &quot;ASHA_908&quot;,
+    &quot;locale&quot;: &quot;bn&quot;,
+    &quot;timestamp&quot;: &quot;2025-10-08T08:20:30Z&quot;,
+    &quot;content&quot;: &quot;What are the symptoms of dengue?&quot;
+  }
+}
+</code></pre></div></p>
+<h4 id="example-memory-query">Example Memory Query<a class="headerlink" href="#example-memory-query" title="Permanent link">&para;</a></h4>
+<div class="highlight"><pre><span></span><code><span class="p">{</span>
+<span class="w">  </span><span class="nt">&quot;user_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;ASHA_908&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;context_type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;conversation_summary&quot;</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>Response:
+<div class="highlight"><pre><span></span><code><span class="p">{</span>
+<span class="w">  </span><span class="nt">&quot;last_session_date&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;2025-10-01&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;topics_discussed&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;child vaccination&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;vaccine application&quot;</span><span class="p">],</span>
+<span class="w">  </span><span class="nt">&quot;pending_action&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;confirm new date&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;raw_messages&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[{</span>
+<span class="w">       </span><span class="err">...</span>
+<span class="w">       </span><span class="nt">&quot;source&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;whatsapp&quot;</span><span class="p">,</span>
+<span class="w">       </span><span class="err">...</span>
+<span class="w">   </span><span class="p">}]</span>
+<span class="p">}</span>
+</code></pre></div></p>
+<p>The Experience Layer forwards this normalized structure to the Business Orchestration Layer.</p>
+<hr />
+<h3 id="42-business-agentic-orchestration-layer">4.2 Business &amp; Agentic Orchestration Layer<a class="headerlink" href="#42-business-agentic-orchestration-layer" title="Permanent link">&para;</a></h3>
+<p>Implements <strong>domain-level logic</strong> through a hybrid of <strong>deterministic services</strong> and <strong>agentic orchestration</strong>.</p>
+<ul>
+<li><strong>Business Services:</strong> Integrate user information, manage persistent data, and handle workflows.  </li>
+<li><strong>Agent-Oriented Orchestration:</strong> Delegates reasoning and transformation tasks to agents.</li>
+</ul>
+<p>In effect, it acts as the “brain” for domain behaviour, handling branching logic, fallback, error handling, and domain-specific rules or constraints.</p>
+<h3 id="agent-library">Agent Library<a class="headerlink" href="#agent-library" title="Permanent link">&para;</a></h3>
+<p>Agents operate as autonomous reasoning nodes that receive and emit structured events. 
+Each agent processes data and can be chained in different order enabling concurrent reasoning and flexible delegation without direct coupling.</p>
+<p>Encapsulates <strong>AI reasoning and cognitive tasks</strong> into reusable "agents", allowing complex system logic to be broken into small, composable and reusable "units of work".</p>
+<table>
+<thead>
+<tr>
+<th>Agent Type</th>
+<th>Function</th>
+<th>Example Use Case</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>RAG</td>
+<td>Retrieval-Augmented Generation</td>
+<td>Query knowledge base</td>
+</tr>
+<tr>
+<td>Translation</td>
+<td>Multilingual Interaction</td>
+<td>Local language conversion</td>
+</tr>
+<tr>
+<td>ASR/TTS</td>
+<td>Speech Processing</td>
+<td>IVR / audio channels</td>
+</tr>
+<tr>
+<td>Consensus Evaluator</td>
+<td>Group agreement logic</td>
+<td>Feedback loops</td>
+</tr>
+<tr>
+<td>Data Sanity</td>
+<td>Validation and safety</td>
+<td>Input consistency</td>
+</tr>
+</tbody>
+</table>
+<p>Each agent defines <strong>input/output contracts</strong> and <strong>performance expectations</strong> for interoperability.</p>
+<p><strong>Lifecycle and Agent Invocation</strong></p>
+<p>Step 1: Registered in the central Agent Registry under a versioned identifier.</p>
+<p>Step 2: Invoked by an Orchestrator or another agent based on workflow logic.</p>
+<p>Step 3: Executed with full context (user/session/memory data).</p>
+<p>Step 4: Returns standardized output for downstream agents or final rendering.</p>
+<pre class="mermaid"><code>sequenceDiagram
+    autonumber
+    participant Orchestrator
+    participant AgentRegistry
+    participant RAGAgent
+    participant TTSAgent
+
+    Orchestrator-&gt;&gt;AgentRegistry: Lookup("rag_agent:v1")
+    AgentRegistry--&gt;&gt;Orchestrator: Return config &amp; schema
+    Orchestrator-&gt;&gt;RAGAgent: Execute(query="symptoms of dengue")
+    RAGAgent--&gt;&gt;Orchestrator: Return summary + confidence
+    Orchestrator-&gt;&gt;TTSAgent: Convert text → speech
+    TTSAgent--&gt;&gt;Orchestrator: Return audio file reference
+</code></pre>
+<h3 id="tool-library">Tool Library<a class="headerlink" href="#tool-library" title="Permanent link">&para;</a></h3>
+<p>Tools are <strong>deterministic connectors</strong> or <strong>adapters</strong> that perform actions or I/O without reasoning.</p>
+<table>
+<thead>
+<tr>
+<th>Tool</th>
+<th>Purpose</th>
+<th>Example</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>WhatsApp Adapter</td>
+<td>Messaging</td>
+<td>Send notifications</td>
+</tr>
+<tr>
+<td>IVR Gateway</td>
+<td>Telephony</td>
+<td>Play prompts</td>
+</tr>
+<tr>
+<td>Email Tool</td>
+<td>Communication</td>
+<td>Send updates</td>
+</tr>
+<tr>
+<td>CRM Adapter</td>
+<td>External Systems</td>
+<td>Update lead data</td>
+</tr>
+<tr>
+<td>MongoDB Adapter</td>
+<td>Storage</td>
+<td>Persist structured data</td>
+</tr>
+</tbody>
+</table>
+<div class="highlight"><pre><span></span><code>sequenceDiagram
+    autonumber
+    participant Agent
+    participant ToolRegistry
+    participant WhatsAppAdapter
+    participant ExternalAPI
+
+    Agent-&gt;&gt;ToolRegistry: Lookup(&quot;whatsapp_adapter:v2&quot;)
+    ToolRegistry--&gt;&gt;Agent: Return schema + endpoint
+    Agent-&gt;&gt;WhatsAppAdapter: Send(recipient=&quot;+91XXXX&quot;, template=&quot;notify_schedule&quot;)
+    WhatsAppAdapter-&gt;&gt;ExternalAPI: POST /messages
+    ExternalAPI--&gt;&gt;WhatsAppAdapter: {status: &quot;success&quot;, id: &quot;wa_001&quot;}
+    WhatsAppAdapter--&gt;&gt;Agent: status=success, timestamp
+</code></pre></div>
+<h4 id="example-tool-invocation">Example Tool Invocation<a class="headerlink" href="#example-tool-invocation" title="Permanent link">&para;</a></h4>
+<div class="highlight"><pre><span></span><code><span class="p">{</span>
+<span class="w">  </span><span class="nt">&quot;tool&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;whatsapp_adapter&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;action&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;send_message&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;recipient&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;+91XXXXXXXXXX&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;message&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Your vaccination is scheduled for 12 Oct at 10 AM.&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;template_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;notify_schedule&quot;</span>
+<span class="p">}</span>
+</code></pre></div>
+<p><strong>Real World Example: Sahayak Orchestrator</strong></p>
+<p>The Sahayak Orchestrator exemplifies how these architectural layers operate in unison.
+ - It receives user inputs—along with historical context and session memory—and determines which agents or tools should act next.
+ - Using its centralized Tool Registry, populated with system-level MCP (Multi-Channel Plugin) abstractions, the orchestrator dynamically routes requests to the appropriate agents for reasoning and to the corresponding tools for deterministic execution.
+ - This event-driven workflow enables Sahayak to coordinate human-like reasoning with system-level precision, ensuring adaptive, multimodal interactions across channels and services.</p>
+<pre class="mermaid"><code>sequenceDiagram
+    autonumber
+    participant ExperienceLayer
+    participant Orchestrator
+    participant Agent
+    participant Tool
+    participant ExternalService
+
+    ExperienceLayer-&gt;&gt;Orchestrator: User prompt, context or event data
+    Orchestrator-&gt;&gt;Agent: SahayakTextRequestEvent
+    Agent-&gt;&gt;Tool: ToolCallRequestEvent (resolved via known_tool_owners)
+    Tool-&gt;&gt;ExternalService: Executes operation (e.g., send message)
+    ExternalService--&gt;&gt;Tool: Returns API result
+    Tool--&gt;&gt;Agent: ToolCallExecutionEvent (structured response)
+    Agent--&gt;&gt;Orchestrator: Final message event
+    Orchestrator--&gt;&gt;ExperienceLayer: Rendered response</code></pre>
+<hr />
+<h3 id="43-ingestion-layer">4.3 Ingestion Layer<a class="headerlink" href="#43-ingestion-layer" title="Permanent link">&para;</a></h3>
+<p>converts raw or semi-structured content (textbooks, media, logs) into enriched, searchable knowledge representations for downstream agents. Supports <strong>high-throughput ingestion</strong>, <strong>context caching</strong>, and <strong>long-term knowledge storage</strong>.</p>
+<h4 id="data-flow_1">Data Flow<a class="headerlink" href="#data-flow_1" title="Permanent link">&para;</a></h4>
+<pre class="mermaid"><code>flowchart LR
+    A[1️⃣ Ingestion Trigger] --&gt; B[2️⃣ Data Retrieval]
+    B --&gt; C[3️⃣ Parsing &amp; Preprocessing]
+    C --&gt; D[4️⃣ Chunking &amp; Metadata Enrichment]
+    D --&gt; E[5️⃣ Embedding &amp; Indexing]
+    E --&gt; F[6️⃣ Storage &amp; Caching]
+    F --&gt; G[7️⃣ Event Logging &amp; Completion]</code></pre>
+<p>Ingestion layer relies heavily on the agent and tool libraries preprovisioned. Sample examples</p>
+<table>
+<thead>
+<tr>
+<th>Type</th>
+<th>Responsibility</th>
+<th>Example Components</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Parser Agent</strong></td>
+<td>Handles parsing, cleaning, extraction logic.</td>
+<td><code>TextExtractionAgent</code>, <code>SpeechToTextAgent</code></td>
+</tr>
+<tr>
+<td><strong>Chunking Agent</strong></td>
+<td>Segments and structures data.</td>
+<td><code>ChunkingAgent</code>, <code>ContentSplitterTool</code></td>
+</tr>
+<tr>
+<td><strong>Embedding Agent</strong></td>
+<td>Generates semantic embeddings from processed text.</td>
+<td><code>EmbeddingAgent</code>, <code>OpenAIEmbeddingTool</code></td>
+</tr>
+<tr>
+<td><strong>Storage / Memory Tools</strong></td>
+<td>Persist processed data into memory or vector DBs.</td>
+<td><code>VectorDBTool</code>, <code>KnowledgeBaseAdapter</code>, <code>CacheTool</code></td>
+</tr>
+<tr>
+<td><strong>Logging &amp; Audit Agents</strong></td>
+<td>Maintain ingestion logs, telemetry, and versioned lineage.</td>
+<td><code>IngestionLoggerAgent</code>, <code>TelemetryCollectorTool</code></td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="5-real-world-applications">5. Real-World Applications<a class="headerlink" href="#5-real-world-applications" title="Permanent link">&para;</a></h2>
+<h3 id="education">Education<a class="headerlink" href="#education" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Teachers can aggregate lesson plans, generate evaluations, and access learning content through multilingual and multimodal channels.</li>
+</ul>
+<h3 id="healthcare">Healthcare<a class="headerlink" href="#healthcare" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Field health workers (ASHAs/ANMs) can report via WhatsApp or IVR, enabling data capture and alerts in remote areas.</li>
+</ul>
+<h3 id="accessibility">Accessibility<a class="headerlink" href="#accessibility" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Voice and assistive-device-based interfaces ensure participation for users with disabilities or low-tech environments.</li>
+</ul>
+<hr />
+<h2 id="6-design-principles">6. 🎯 Design Principles<a class="headerlink" href="#6-design-principles" title="Permanent link">&para;</a></h2>
+<hr />
+<table>
+<thead>
+<tr>
+<th>🧩 Principle</th>
+<th>💡 Description</th>
+<th>🔗 Implication</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>🌐 <strong>Open Source First</strong></td>
+<td>Built to evolve collaboratively and transparently.</td>
+<td>Encourages community contributions and shared innovation.</td>
+</tr>
+<tr>
+<td>🧱 <strong>Highly Modular</strong></td>
+<td>Each capability functions as a reusable component or library.</td>
+<td>Simplifies updates, enables team-specific extensions.</td>
+</tr>
+<tr>
+<td>⚖️ <strong>Horizontally Scalable</strong></td>
+<td>Designed for distributed, cloud-native scaling.</td>
+<td>Supports large concurrent workloads and adaptive scaling.</td>
+</tr>
+<tr>
+<td>♿ <strong>Inclusive &amp; Multimodal</strong></td>
+<td>Accessible via text, voice, and assistive devices.</td>
+<td>Ensures equitable access across digital divides.</td>
+</tr>
+<tr>
+<td>🤖 <strong>AI-First</strong></td>
+<td>Agentic reasoning and cognitive workflows by design.</td>
+<td>Enables contextual automation and hybrid human-AI work.</td>
+</tr>
+<tr>
+<td>🔒 <strong>Secure by Design</strong></td>
+<td>Data flow and access control built into architecture.</td>
+<td>Simplifies compliance, auditability, and data governance.</td>
+</tr>
+<tr>
+<td>🔌 <strong>Plug &amp; Play</strong></td>
+<td>Extensible via standardized connectors and APIs.</td>
+<td>Allows rapid onboarding of new channels or services.</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>💬 <em>These principles form the DNA of the Agentic Template — ensuring it stays modular, scalable, and inclusive across domains.</em></p>
+</blockquote>
+<h2 id="7-limitations-future-considerations">7. Limitations &amp; Future Considerations<a class="headerlink" href="#7-limitations-future-considerations" title="Permanent link">&para;</a></h2>
+<ul>
+<li><strong>Complex Orchestration</strong>: Debugging multi-agent workflows may be non-trivial.  </li>
+<li><strong>Connectivity Dependency</strong>: Cloud-dependent features (RAG, ASR/TTS) may face offline limitations.  </li>
+<li><strong>Tool Explosion</strong>: Too many tools risk hallucinated abilities. Guardrails and observability layers are essential.  </li>
+<li><strong>Maintenance Overhead</strong>: Hybrid agentic-service systems require continuous synchronization and version management.</li>
+<li><strong>Evolving Standards</strong>: Interoperability may drift with external APIs and / or AI model changes</li>
+</ul>
+<hr />
+<h2 id="8-references">8. References<a class="headerlink" href="#8-references" title="Permanent link">&para;</a></h2>
+<ul>
+<li><em>Inclusive Architecture Whitepaper (2025)</em>  </li>
+<li><em>Architecture Template (Draft, A4I, Aug 2025)</em>  </li>
+<li>Microsoft Azure AI &amp; Cognitive Services Documentation  </li>
+<li>OpenAI Function Calling &amp; Orchestration Patterns (2024)  </li>
+<li>WHO Digital Health Guidelines (2023)</li>
+</ul>
+<hr />
+<p>© 2025 A4I. All Rights Reserved.</p>
+
+
+
+
+
+
+
+  
+  
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.expand", "navigation.sections", "toc.integrate"], "search": "../../assets/javascripts/workers/search.973d3a69.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.f55a23d4.min.js"></script>
+      
+    
+  </body>
+</html>
