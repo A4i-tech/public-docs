@@ -660,24 +660,26 @@
   <h1>Universal Knowledge Ingestion Framework</h1>
 
 <h2 id="purpose-and-scope">Purpose and Scope<a class="headerlink" href="#purpose-and-scope" title="Permanent link">&para;</a></h2>
-<p>This document proposes a common, inclusive knowledge ingestion framework that can be used for digital public AI good:
-- BYOEB (ASHA WhatsApp RAG for healthcare)
-- Shiksha Copilot (lesson outcome–driven education copilot)
-- SEEDS (audio-first IVR and conferencing for visually impaired learners)</p>
+<p>This document proposes a common, inclusive knowledge ingestion framework that can be used for digital public AI good:</p>
+<ul>
+<li>BYOEB (ASHA WhatsApp RAG for healthcare)</li>
+<li>Shiksha Copilot (lesson outcome–driven education copilot)</li>
+<li>SEEDS (audio-first IVR and conferencing for visually impaired learners)</li>
+</ul>
 <p>…and is extensible to new products and modalities.</p>
 <p>It aligns with the Inclusive Architecture’s Ingestion Layer and its agent/tool model — “ingestion trigger → retrieval → parsing → chunking → embedding → storage → logging” — and implements those as reusable agents and tools across domains.</p>
 <h2 id="layered-architecture">Layered Architecture<a class="headerlink" href="#layered-architecture" title="Permanent link">&para;</a></h2>
 <h3 id="design-drivers">Design drivers<a class="headerlink" href="#design-drivers" title="Permanent link">&para;</a></h3>
 <ol>
 <li>
-<p>Aligned with Inclusive Architecture</p>
+<p><strong>Aligned with Inclusive Architecture</strong></p>
 <ul>
 <li>Ingestion is a layer serving multiple domains (education, health, accessibility) via a common set of agents &amp; tools.</li>
 <li>All products talk to ingestion through consistent APIs/events; ingestion itself is multi-tenant and domain-aware.</li>
 </ul>
 </li>
 <li>
-<p>Multi‑Modal</p>
+<p><strong>Multi‑Modal</strong></p>
 <ul>
 <li>Documents &amp; text: PDFs, DOCX, plain text, HTML, FAQs.</li>
 <li>Audio: IVR recordings, TTS outputs, podcasts/YouTube, etc.</li>
@@ -685,7 +687,7 @@
 </ul>
 </li>
 <li>
-<p>Multi‑Model &amp; Multi‑Store</p>
+<p><strong>Multi‑Model &amp; Multi‑Store</strong></p>
 <ul>
 <li>Plug-and-play LLM providers (Azure OpenAI, OpenAI, OpenRouter, local models via Ollama).</li>
 <li>OpenRouter as a default unified gateway: Access 100+ models (Claude, Gemini, Llama, Mistral) through a single API, enabling cost optimization and model experimentation without provider lock-in.</li>
@@ -694,15 +696,15 @@
 </ul>
 </li>
 <li>
-<p>Domain-Aware but Reusable</p>
+<p><strong>Domain-Aware but Reusable</strong></p>
 <ul>
-<li>Shiksha’s LO extraction and curriculum KG should be profiles on top of generic steps, not one-off pipelines.</li>
-<li>BYOEB’s KB ingestion should be the default text ingestion profile.</li>
-<li>SEEDS’ audio/transcription/knowledge items flow should be the default audio profile.</li>
+<li>Shiksha's LO extraction and curriculum KG should be profiles on top of generic steps, not one-off pipelines.</li>
+<li>BYOEB's KB ingestion should be the default text ingestion profile.</li>
+<li>SEEDS' audio/transcription/knowledge items flow should be the default audio profile.</li>
 </ul>
 </li>
 <li>
-<p>Inclusive &amp; Operational</p>
+<p><strong>Inclusive &amp; Operational</strong></p>
 <ul>
 <li>Support low-resource environments (local vector stores, offline-first when possible).</li>
 <li>Strong observability, versioning, audit, and safety/quality checks.</li>
@@ -801,10 +803,10 @@ A standard source connector would implement the interface
 <p><strong>Common Agents and Tool types</strong>
 1. Parser Agents: 
    - <code>DocumentParserAgent</code>: (PDF, DOCX → markdown/structured JSON)
-      - Implements Shiksha’s TOC discovery, splitting, and LLM/vision-based extraction as sub-steps.
+      - Implements Shiksha's TOC discovery, splitting, and LLM/vision-based extraction as sub-steps.
       - Supports alternative engines (MinerU, OCR).
-   - <code>TextParserAgent</code>: (plain text, HTML, FAQs → normalized text). Generalizes BYOEB’s LlamaIndex text parsing.
-   - <code>AudioParserAgent</code> (audio → transcription + timestamps). Wraps SEEDS’ TranscriptionService (Azure STT).</p>
+   - <code>TextParserAgent</code>: (plain text, HTML, FAQs → normalized text). Generalizes BYOEB's LlamaIndex text parsing.
+   - <code>AudioParserAgent</code> (audio → transcription + timestamps). Wraps SEEDS' TranscriptionService (Azure STT).</p>
 <ol>
 <li>Cleaning &amp; Normalization Agents:</li>
 <li><code>MarkdownCleaningAgent</code> — Shiksha’s TextCleaningStep (LLM-powered cleaning) generalized to all markdown sources.</li>
@@ -839,15 +841,15 @@ A standard source connector would implement the interface
 <li>
 <p>Embedding &amp; Indexing Agents</p>
 </li>
-<li>
-<p><code>EmbeddingAgent</code> — wraps any embedding model; configuration chooses:</p>
-<ul>
+<li><code>EmbeddingAgent</code> — wraps any embedding model; configuration chooses:<ul>
 <li>Provider: Azure OpenAI (current), OpenAI API, local model, etc.</li>
 <li>Model: <code>text-embedding-3-large</code>, others; embedding dimension recorded in metadata.</li>
+</ul>
+</li>
 <li><code>VectorIndexingAgent</code> — writes to pluggable vector stores.</li>
 <li><code>GraphIndexingAgent</code> — writes to Neo4j (for curriculum KG).</li>
-<li><code>KeywordIndexingAgent</code> — writes full-text indexes (e.g., Mongo text indexes used in SEEDS).</li>
-</ul>
+<li>
+<p><code>KeywordIndexingAgent</code> — writes full-text indexes (e.g., Mongo text indexes used in SEEDS).</p>
 </li>
 <li>
 <p>Governance &amp; Logging Agents</p>
@@ -952,7 +954,7 @@ steps:
 </ul>
 </li>
 <li>
-<p>Reuse BYOEB’s BaseVectorStore design and vector upsert/similarity logic (including 0.95 similarity de-duplication).</p>
+<p>Reuse BYOEB's BaseVectorStore design and vector upsert/similarity logic (including 0.95 similarity de-duplication).</p>
 </li>
 <li>
 <p>Graph Store
@@ -1021,16 +1023,24 @@ steps:
 - Retrieval queries can filter by <code>domain_profile</code> or span across all knowledge for that tenant.</p>
 <p>Pipeline YAML configs are versioned in git (e.g., <code>profiles/shiksha_textbook_v1.yaml</code>). The <code>pipeline_versions</code> table's <code>yaml_profile_name</code> field references this file. When a pipeline evolves, we create a new version (v1.1, v2.0) rather than modifying the existing YAML, ensuring reproducibility and auditability.</p>
 <h3 id="how-this-hooks-back-into-the-orchestration-layer">How This Hooks Back into the Orchestration Layer<a class="headerlink" href="#how-this-hooks-back-into-the-orchestration-layer" title="Permanent link">&para;</a></h3>
-<p>From the Orchestrator’s point of view, Ingestion is just another <strong>tool</strong>:
-- Tool: <code>ingest_content</code>
-    - Inputs: { <code>tenant_slug</code>, <code>pipeline_name</code>, <code>pipeline_version?</code> , <code>source_uri</code>, <code>extra_params</code> }
-    - Output: { <code>pipeline_run_id</code>, <code>knowledge_item_ids[]</code> }
-- Tool: <code>search_knowledge</code>
-    - Inputs: { <code>tenant_slug</code>, <code>domain_profile</code>, <code>query</code>, <code>filters</code> } 
-    - Uses Postgres + configured vector store to:
-       - pick the right indexes (<code>vector_store_space</code>)
-       - call vector search
-       - hydrate results from <code>chunks</code> and <code>knowledge_items</code>.</p>
+<p>From the Orchestrator's point of view, Ingestion is just another <strong>tool</strong>:</p>
+<ul>
+<li>Tool: <code>ingest_content</code><ul>
+<li>Inputs: { <code>tenant_slug</code>, <code>pipeline_name</code>, <code>pipeline_version?</code> , <code>source_uri</code>, <code>extra_params</code> }</li>
+<li>Output: { <code>pipeline_run_id</code>, <code>knowledge_item_ids[]</code> }</li>
+</ul>
+</li>
+<li>Tool: <code>search_knowledge</code><ul>
+<li>Inputs: { <code>tenant_slug</code>, <code>domain_profile</code>, <code>query</code>, <code>filters</code> } </li>
+<li>Uses Postgres + configured vector store to:<ul>
+<li>pick the right indexes (<code>vector_store_space</code>)</li>
+<li>call vector search</li>
+<li>hydrate results from <code>chunks</code> and <code>knowledge_items</code>.</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
 <p>This gives one <strong>Knowledge Base interface</strong> for all three systems &amp; any new ones.</p>
 <h2 id="backward-compatibility-versioning-strategy">Backward Compatibility &amp; Versioning Strategy<a class="headerlink" href="#backward-compatibility-versioning-strategy" title="Permanent link">&para;</a></h2>
 <h3 id="register-current-workflows-as-v0x-pipelines">Register Current Workflows as v0.x Pipelines<a class="headerlink" href="#register-current-workflows-as-v0x-pipelines" title="Permanent link">&para;</a></h3>
