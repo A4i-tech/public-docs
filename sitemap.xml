@@ -2,14 +2,18 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     <url>
          <loc>https://a4i-tech.github.io/public-docs/onboarding/</loc>
-         <lastmod>2025-10-19</lastmod>
+         <lastmod>2025-12-07</lastmod>
     </url>
     <url>
          <loc>https://a4i-tech.github.io/public-docs/workflows/</loc>
-         <lastmod>2025-10-19</lastmod>
+         <lastmod>2025-12-07</lastmod>
     </url>
     <url>
          <loc>https://a4i-tech.github.io/public-docs/architecture/Inclusive-Architecture/</loc>
-         <lastmod>2025-10-19</lastmod>
+         <lastmod>2025-12-07</lastmod>
+    </url>
+    <url>
+         <loc>https://a4i-tech.github.io/public-docs/architecture/universal-knowledge-ingestion/</loc>
+         <lastmod>2025-12-07</lastmod>
     </url>
 </urlset>
