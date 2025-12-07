@@ -1119,6 +1119,7 @@ No live code yet, so first implementation can start directly as seeds_audio vers
 }
 </code></pre></div></p>
 <p>And chunk rows correspond to transcript segments, with timestamps in <code>metadata</code>.</p>
+<hr />
 <p><strong>generic_document v1.0</strong>: A starter profile for new applications onboarding onto the ingestion framework.</p>
 <p>This profile provides sensible defaults that work for most text/document use cases without requiring domain-specific customization:</p>
 <div class="highlight"><pre><span></span><code><span class="nt">pipeline_id</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">generic_document_v1</span>
@@ -1146,10 +1147,12 @@ No live code yet, so first implementation can start directly as seeds_audio vers
 <span class="w">    </span><span class="nt">config</span><span class="p">:</span><span class="w"> </span>
 <span class="w">      </span><span class="nt">store</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;qdrant&quot;</span><span class="w">  </span><span class="c1"># or &quot;${tenant.default_vector_store}&quot;</span>
 </code></pre></div>
-<p>New applications can:
-1. <strong>Start with generic_document_v1</strong> to get basic ingestion working immediately.
-2. <strong>Fork and customize</strong> — copy the YAML, add domain-specific agents (e.g., <code>FAQGenerationAgent</code>), adjust chunking parameters.
-3. <strong>Graduate to a named profile</strong> — once stable, register as <code>myapp_kb_v1</code> with domain_profile <code>myapp</code>.</p>
+<p>New applications can:</p>
+<ol>
+<li><strong>Start with generic_document_v1</strong> to get basic ingestion working immediately.</li>
+<li><strong>Fork and customize</strong> — copy the YAML, add domain-specific agents (e.g., <code>FAQGenerationAgent</code>), adjust chunking parameters.</li>
+<li><strong>Graduate to a named profile</strong> — once stable, register as <code>myapp_kb_v1</code> with domain_profile <code>myapp</code>.</li>
+</ol>
 <p>This lowers the barrier to onboarding while maintaining the full power of the framework for teams ready to customize.</p>
 <h2 id="low-level-design">Low Level Design<a class="headerlink" href="#low-level-design" title="Permanent link">&para;</a></h2>
 <h3 id="postgres-metadata-registry-design">Postgres Metadata &amp; Registry Design<a class="headerlink" href="#postgres-metadata-registry-design" title="Permanent link">&para;</a></h3>
