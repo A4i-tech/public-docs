@@ -800,47 +800,59 @@ A standard source connector would implement the interface
 - IVRRecordingConnector — SEEDS’ IVR recordings; uses IVR backend IDs.</p>
 <h3 id="processing-pipeline-layer-agents-tools">Processing Pipeline Layer (Agents &amp; Tools)<a class="headerlink" href="#processing-pipeline-layer-agents-tools" title="Permanent link">&para;</a></h3>
 <p>We define a Pipeline Orchestrator that runs a graph of steps, where each step is an <code>IngestionAgent</code> or/and <code>IngestionTool</code> with explicit input/output contracts. This reuses the agent &amp; tool library philosophy from the Inclusive Architecture.</p>
-<p><strong>Common Agents and Tool types</strong>
-1. Parser Agents: 
-   - <code>DocumentParserAgent</code>: (PDF, DOCX → markdown/structured JSON)
-      - Implements Shiksha's TOC discovery, splitting, and LLM/vision-based extraction as sub-steps.
-      - Supports alternative engines (MinerU, OCR).
-   - <code>TextParserAgent</code>: (plain text, HTML, FAQs → normalized text). Generalizes BYOEB's LlamaIndex text parsing.
-   - <code>AudioParserAgent</code> (audio → transcription + timestamps). Wraps SEEDS' TranscriptionService (Azure STT).</p>
+<p><strong>Common Agents and Tool types</strong></p>
 <ol>
-<li>Cleaning &amp; Normalization Agents:</li>
-<li><code>MarkdownCleaningAgent</code> — Shiksha’s TextCleaningStep (LLM-powered cleaning) generalized to all markdown sources.</li>
 <li>
-<p><code>TranscriptionPostProcessorAgent</code> — punctuation, diarization, noise trimming, language detection for audio transcripts.</p>
+<p><strong>Parser Agents</strong></p>
+<ul>
+<li><code>DocumentParserAgent</code>: (PDF, DOCX → markdown/structured JSON)<ul>
+<li>Implements Shiksha's TOC discovery, splitting, and LLM/vision-based extraction as sub-steps.</li>
+<li>Supports alternative engines (MinerU, OCR).</li>
+</ul>
+</li>
+<li><code>TextParserAgent</code>: (plain text, HTML, FAQs → normalized text). Generalizes BYOEB's LlamaIndex text parsing.</li>
+<li><code>AudioParserAgent</code>: (audio → transcription + timestamps). Wraps SEEDS' TranscriptionService (Azure STT).</li>
+</ul>
 </li>
 <li>
-<p>Enrichment &amp; Domain Agents</p>
+<p><strong>Cleaning &amp; Normalization Agents</strong></p>
+<ul>
+<li><code>MarkdownCleaningAgent</code> — Shiksha's TextCleaningStep (LLM-powered cleaning) generalized to all markdown sources.</li>
+<li><code>TranscriptionPostProcessorAgent</code> — punctuation, diarization, noise trimming, language detection for audio transcripts.</li>
+</ul>
 </li>
+<li>
+<p><strong>Enrichment &amp; Domain Agents</strong></p>
+<ul>
 <li><code>LearningOutcomeExtractionAgent</code> — Shiksha LO extraction steps (chapter-level, subtopic-level) exposed as a reusable agent that works on any curriculum-like content.</li>
 <li><code>KnowledgeGraphBuilderAgent</code> — uses Shiksha KG steps (entities, relationships, Neo4j export).</li>
 <li><code>FAQGenerationAgent</code> — optional; generate FAQs for BYOEB or SEEDS from long docs/audio summaries.</li>
-<li>
-<p><code>KeywordAndTaggingAgent</code> — used in SEEDS to derive keywords/tags; can be reused elsewhere.</p>
+<li><code>KeywordAndTaggingAgent</code> — used in SEEDS to derive keywords/tags; can be reused elsewhere.</li>
+</ul>
 </li>
 <li>
-<p>Chunking Agents</p>
-</li>
+<p><strong>Chunking Agents</strong></p>
+<ul>
 <li><code>SentenceChunkingAgent</code> — wraps BYOEB's LlamaIndex SentenceSplitter with configurable chunk_size / overlap.</li>
 <li><code>PageChunkingAgent</code> — Shiksha's page-based splitting for textbooks.</li>
-<li>
-<p><code>TimedChunkingAgent</code> — for audio segments (based on transcript timestamps) to create semantically and temporally aligned chunks for SEEDS.</p>
-<p><strong>How Time-Based Chunking Works:</strong>
- 1. The <code>AudioParserAgent</code> produces a transcript with word-level or segment-level timestamps (e.g., from Azure STT's <code>word_timings</code>).
- 2. <code>TimedChunkingAgent</code> receives this timestamped transcript and applies configurable rules:
-    - <strong>Fixed duration windows</strong>: Split every N seconds (e.g., 30s chunks) with optional overlap.
-    - <strong>Silence/pause detection</strong>: Use natural pauses (&gt;500ms) as chunk boundaries.
-    - <strong>Semantic + temporal hybrid</strong>: Combine sentence boundaries with time limits — prefer splitting at sentence ends, but force-split if duration exceeds max (e.g., 60s).
- 3. Each resulting chunk carries metadata: <code>{ "start_time": 45.2, "end_time": 72.8, "duration": 27.6 }</code>.
- 4. These timestamps enable audio seek during playback in SEEDS IVR/teacher experiences — users can jump to the relevant audio segment for any retrieved chunk.</p>
+<li><code>TimedChunkingAgent</code> — for audio segments (based on transcript timestamps) to create semantically and temporally aligned chunks for SEEDS.</li>
+</ul>
+<p><strong>How Time-Based Chunking Works:</strong></p>
+<ol>
+<li>The <code>AudioParserAgent</code> produces a transcript with word-level or segment-level timestamps (e.g., from Azure STT's <code>word_timings</code>).</li>
+<li><code>TimedChunkingAgent</code> receives this timestamped transcript and applies configurable rules:<ul>
+<li><strong>Fixed duration windows</strong>: Split every N seconds (e.g., 30s chunks) with optional overlap.</li>
+<li><strong>Silence/pause detection</strong>: Use natural pauses (&gt;500ms) as chunk boundaries.</li>
+<li><strong>Semantic + temporal hybrid</strong>: Combine sentence boundaries with time limits — prefer splitting at sentence ends, but force-split if duration exceeds max (e.g., 60s).</li>
+</ul>
+</li>
+<li>Each resulting chunk carries metadata: <code>{ "start_time": 45.2, "end_time": 72.8, "duration": 27.6 }</code>.</li>
+<li>These timestamps enable audio seek during playback in SEEDS IVR/teacher experiences — users can jump to the relevant audio segment for any retrieved chunk.</li>
+</ol>
 </li>
 <li>
-<p>Embedding &amp; Indexing Agents</p>
-</li>
+<p><strong>Embedding &amp; Indexing Agents</strong></p>
+<ul>
 <li><code>EmbeddingAgent</code> — wraps any embedding model; configuration chooses:<ul>
 <li>Provider: Azure OpenAI (current), OpenAI API, local model, etc.</li>
 <li>Model: <code>text-embedding-3-large</code>, others; embedding dimension recorded in metadata.</li>
@@ -848,14 +860,14 @@ A standard source connector would implement the interface
 </li>
 <li><code>VectorIndexingAgent</code> — writes to pluggable vector stores.</li>
 <li><code>GraphIndexingAgent</code> — writes to Neo4j (for curriculum KG).</li>
-<li>
-<p><code>KeywordIndexingAgent</code> — writes full-text indexes (e.g., Mongo text indexes used in SEEDS).</p>
+<li><code>KeywordIndexingAgent</code> — writes full-text indexes (e.g., Mongo text indexes used in SEEDS).</li>
+</ul>
 </li>
 <li>
-<p>Governance &amp; Logging Agents</p>
+<p><strong>Governance &amp; Logging Agents</strong></p>
 <ul>
 <li><code>IngestionLoggerAgent</code> — logs events, durations, outcomes (success/fail).</li>
-<li><code>DataLineageAgent</code> — persistent record with full traceability of the chain including sources, pipeline and versions, LLMs, vector store, etc. This enables reproducability, impact analysis, audit compliance and debugging.      </li>
+<li><code>DataLineageAgent</code> — persistent record with full traceability of the chain including sources, pipeline and versions, LLMs, vector store, etc. This enables reproducibility, impact analysis, audit compliance and debugging.</li>
 <li><code>QualityVerifierAgent</code> — sample-based QA (e.g., compare extracted text with original pages; check LO consistency).</li>
 </ul>
 </li>
@@ -949,7 +961,7 @@ steps:
 </code></pre></div></li>
 <li>Backends:<ul>
 <li>Azure Vector Search (BYOEB).</li>
-<li>Qdrant (Shiksha).</li>
+<li>Qdrant + Azure Vector Search (Shiksha).</li>
 <li>Chroma / pgvector for local/offline scenarios.</li>
 </ul>
 </li>
