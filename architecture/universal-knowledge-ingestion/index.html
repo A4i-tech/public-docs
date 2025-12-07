@@ -781,23 +781,27 @@
 <p>We implement each step as one or more <strong>agents</strong> (reasoning/LLM heavy) and <strong>tools</strong> (IO or deterministic work).</p>
 <h2 id="core-implementation">Core Implementation<a class="headerlink" href="#core-implementation" title="Permanent link">&para;</a></h2>
 <h3 id="source-and-trigger-layer">Source And Trigger Layer<a class="headerlink" href="#source-and-trigger-layer" title="Permanent link">&para;</a></h3>
-<p><strong>Triggers</strong>: 
-- <em>API calls</em> (e.g., <code>/vector/index</code> in BYOEB)
-- <em>Webhook/events</em>: “file uploaded to blob”, “new textbook version published”, “audio recording completed from IVR”
-- <em>Scheduled jobs</em>: “sync YouTube playlist weekly”, “re-ingest content when embedding model changes”, 
-- <em>Manual CLI/ops triggers</em></p>
-<p><strong>Source Connectors</strong>:
-A standard source connector would implement the interface
-<div class="highlight"><pre><span></span><code>interface SourceConnector {
-  listResources(filter): Promise&lt;SourceResource[]&gt;;
-  fetch(resourceId): Promise&lt;RawArtifact&gt;;  // bytes + metadata
-}
-</code></pre></div></p>
-<p>Examples:
-- AzureBlobConnector — already exists in BYOEB.
-- HttpUrlConnector — general web pages / PDFs.
-- ExternalMediaConnector — YouTube, podcasts, RSS, S3/GCS, etc., as in SEEDS’s ExternalSource model and audioDownloaderService.
-- IVRRecordingConnector — SEEDS’ IVR recordings; uses IVR backend IDs.</p>
+<p><strong>Triggers</strong>:</p>
+<ul>
+<li><em>API calls</em> (e.g., <code>/vector/index</code> in BYOEB)</li>
+<li><em>Webhook/events</em>: "file uploaded to blob", "new textbook version published", "audio recording completed from IVR"</li>
+<li><em>Scheduled jobs</em>: "sync YouTube playlist weekly", "re-ingest content when embedding model changes"</li>
+<li><em>Manual CLI/ops triggers</em></li>
+</ul>
+<p><strong>Source Connectors</strong>:</p>
+<p>A standard source connector would implement the interface:</p>
+<div class="highlight"><pre><span></span><code><span class="kd">interface</span><span class="w"> </span><span class="nx">SourceConnector</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nx">listResources</span><span class="p">(</span><span class="nx">filter</span><span class="p">)</span><span class="o">:</span><span class="w"> </span><span class="nb">Promise</span><span class="o">&lt;</span><span class="nx">SourceResource</span><span class="p">[]</span><span class="o">&gt;</span><span class="p">;</span>
+<span class="w">  </span><span class="nx">fetch</span><span class="p">(</span><span class="nx">resourceId</span><span class="p">)</span><span class="o">:</span><span class="w"> </span><span class="nb">Promise</span><span class="o">&lt;</span><span class="nx">RawArtifact</span><span class="o">&gt;</span><span class="p">;</span><span class="w">  </span><span class="c1">// bytes + metadata</span>
+<span class="p">}</span>
+</code></pre></div>
+<p><strong>Examples</strong>:</p>
+<ul>
+<li><code>AzureBlobConnector</code> — already exists in BYOEB.</li>
+<li><code>HttpUrlConnector</code> — general web pages / PDFs.</li>
+<li><code>ExternalMediaConnector</code> — YouTube, podcasts, RSS, S3/GCS, etc., as in SEEDS's ExternalSource model and audioDownloaderService.</li>
+<li><code>IVRRecordingConnector</code> — SEEDS' IVR recordings; uses IVR backend IDs.</li>
+</ul>
 <h3 id="processing-pipeline-layer-agents-tools">Processing Pipeline Layer (Agents &amp; Tools)<a class="headerlink" href="#processing-pipeline-layer-agents-tools" title="Permanent link">&para;</a></h3>
 <p>We define a Pipeline Orchestrator that runs a graph of steps, where each step is an <code>IngestionAgent</code> or/and <code>IngestionTool</code> with explicit input/output contracts. This reuses the agent &amp; tool library philosophy from the Inclusive Architecture.</p>
 <p><strong>Common Agents and Tool types</strong></p>
@@ -916,11 +920,13 @@ A standard source connector would implement the interface
 </tr>
 </tbody>
 </table>
-<p><strong>Why static orchestration?</strong>
-- Ingestion is a <strong>batch/background process</strong> where predictability and reproducibility matter more than flexibility.
-- Each step already uses LLMs where valuable (vision-based parsing, text cleaning, LO extraction).
-- Pipeline versioning ensures identical behavior across runs — critical for compliance and debugging.
-- Cost-efficient: No "reasoning overhead" for routing decisions.</p>
+<p><strong>Why static orchestration?</strong></p>
+<ul>
+<li>Ingestion is a <strong>batch/background process</strong> where predictability and reproducibility matter more than flexibility.</li>
+<li>Each step already uses LLMs where valuable (vision-based parsing, text cleaning, LO extraction).</li>
+<li>Pipeline versioning ensures identical behavior across runs — critical for compliance and debugging.</li>
+<li>Cost-efficient: No "reasoning overhead" for routing decisions.</li>
+</ul>
 <p>Example: YAML, JSON of a pipeline described as <strong>declarative configs</strong>
 <div class="highlight"><pre><span></span><code>pipeline_id: shiksha_textbook_v1
 domain_profile: education_shiksha
@@ -942,54 +948,50 @@ steps:
 <p>BYOEB’s current <code>KBService.upload()</code> orchestration (download → parse → similarity check → add to vector store) becomes one such pipeline (health_kb_v1), and its BaseVectorStore abstraction can be moved into the shared library.</p>
 <p>SEEDS’ “audio → transcription → keywords → embedding → KnowledgeItem” flow becomes <code>accessibility_audio_v1</code>.</p>
 <h3 id="storage-registration-layer">Storage &amp; Registration Layer<a class="headerlink" href="#storage-registration-layer" title="Permanent link">&para;</a></h3>
-<p><strong>Storage Layer</strong>
-1. Object Storage 
-<div class="highlight"><pre><span></span><code>interface ObjectStore {
-  put(bytes, key, metadata?): Promise&lt;string&gt;;  // returns URI
-  get(key): Promise&lt;RawArtifact&gt;;
-}
+<p><strong>Storage Layer</strong></p>
+<p><strong>1. Object Storage</strong></p>
+<div class="highlight"><pre><span></span><code><span class="kd">interface</span><span class="w"> </span><span class="nx">ObjectStore</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nx">put</span><span class="p">(</span><span class="nx">bytes</span><span class="p">,</span><span class="w"> </span><span class="nx">key</span><span class="p">,</span><span class="w"> </span><span class="nx">metadata</span><span class="o">?</span><span class="p">)</span><span class="o">:</span><span class="w"> </span><span class="nb">Promise</span><span class="o">&lt;</span><span class="kt">string</span><span class="o">&gt;</span><span class="p">;</span><span class="w">  </span><span class="c1">// returns URI</span>
+<span class="w">  </span><span class="nx">get</span><span class="p">(</span><span class="nx">key</span><span class="p">)</span><span class="o">:</span><span class="w"> </span><span class="nb">Promise</span><span class="o">&lt;</span><span class="nx">RawArtifact</span><span class="o">&gt;</span><span class="p">;</span>
+<span class="p">}</span>
 </code></pre></div>
-  - Implementation: Azure Blob (existing in BYOEB &amp; SEEDS).
-  - Used for PDF chapters, processed markdown, audio files, etc.</p>
-<ol>
-<li>Vector Store
-<div class="highlight"><pre><span></span><code>interface VectorStore {
-  upsert(vectors: VectorRecord[]): Promise&lt;void&gt;;
-  search(query_vector, k, filters?): Promise&lt;VectorRecord[]&gt;;
-  count(): Promise&lt;number&gt;;
-}
-</code></pre></div></li>
+<ul>
+<li>Implementation: Azure Blob (existing in BYOEB &amp; SEEDS).</li>
+<li>Used for PDF chapters, processed markdown, audio files, etc.</li>
+</ul>
+<p><strong>2. Vector Store</strong></p>
+<div class="highlight"><pre><span></span><code><span class="kd">interface</span><span class="w"> </span><span class="nx">VectorStore</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nx">upsert</span><span class="p">(</span><span class="nx">vectors</span><span class="o">:</span><span class="w"> </span><span class="kt">VectorRecord</span><span class="p">[])</span><span class="o">:</span><span class="w"> </span><span class="nb">Promise</span><span class="o">&lt;</span><span class="ow">void</span><span class="o">&gt;</span><span class="p">;</span>
+<span class="w">  </span><span class="nx">search</span><span class="p">(</span><span class="nx">query_vector</span><span class="p">,</span><span class="w"> </span><span class="nx">k</span><span class="p">,</span><span class="w"> </span><span class="nx">filters</span><span class="o">?</span><span class="p">)</span><span class="o">:</span><span class="w"> </span><span class="nb">Promise</span><span class="o">&lt;</span><span class="nx">VectorRecord</span><span class="p">[]</span><span class="o">&gt;</span><span class="p">;</span>
+<span class="w">  </span><span class="nx">count</span><span class="p">()</span><span class="o">:</span><span class="w"> </span><span class="nb">Promise</span><span class="o">&lt;</span><span class="kt">number</span><span class="o">&gt;</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
+<ul>
 <li>Backends:<ul>
 <li>Azure Vector Search (BYOEB).</li>
 <li>Qdrant + Azure Vector Search (Shiksha).</li>
 <li>Chroma / pgvector for local/offline scenarios.</li>
 </ul>
 </li>
-<li>
-<p>Reuse BYOEB's BaseVectorStore design and vector upsert/similarity logic (including 0.95 similarity de-duplication).</p>
-</li>
-<li>
-<p>Graph Store
-<div class="highlight"><pre><span></span><code>interface GraphStore {
-  upsertNodes(nodes: Node[]);
-  upsertEdges(edges: Edge[]);
-}
-</code></pre></div></p>
-</li>
-<li>
-<p>Neo4j backing for Shiksha’s KG export.</p>
-</li>
-<li>
-<p>Metadata Store</p>
-</li>
+<li>Reuse BYOEB's BaseVectorStore design and vector upsert/similarity logic (including 0.95 similarity de-duplication).</li>
+</ul>
+<p><strong>3. Graph Store</strong></p>
+<div class="highlight"><pre><span></span><code><span class="kd">interface</span><span class="w"> </span><span class="nx">GraphStore</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nx">upsertNodes</span><span class="p">(</span><span class="nx">nodes</span><span class="o">:</span><span class="w"> </span><span class="kt">Node</span><span class="p">[]);</span>
+<span class="w">  </span><span class="nx">upsertEdges</span><span class="p">(</span><span class="nx">edges</span><span class="o">:</span><span class="w"> </span><span class="kt">Edge</span><span class="p">[]);</span>
+<span class="p">}</span>
+</code></pre></div>
+<ul>
+<li>Neo4j backing for Shiksha's KG export.</li>
+</ul>
+<p><strong>4. Metadata Store</strong></p>
+<ul>
 <li>Prefer a common metadata/entity store (e.g., Mongo/Postgres) that holds <code>KnowledgeItem</code> docs referencing object/vector/graph layers.</li>
-<li>
-<p>SEEDS’ <code>KnowledgeItem</code> model is a good starting point, extended slightly to match the canonical KnowledgeItem spec.</p>
-</li>
-<li>
-<p>Registration and Discovery</p>
-</li>
-<li>After ingestion, each pipeline <strong>registers</strong> a <code>KnowledgeItem</code> (or batch) into a <strong>Knowledge Registry</strong>:</li>
+<li>SEEDS' <code>KnowledgeItem</code> model is a good starting point, extended slightly to match the canonical KnowledgeItem spec.</li>
+</ul>
+<p><strong>5. Registration and Discovery</strong></p>
+<ul>
+<li>After ingestion, each pipeline <strong>registers</strong> a <code>KnowledgeItem</code> (or batch) into a <strong>Knowledge Registry</strong>:<ul>
 <li>Saves core attributes (domain_profile, modality, metadata).</li>
 <li>Records pointers to:<ul>
 <li>Blob URIs for raw/processed files.</li>
@@ -1003,7 +1005,9 @@ steps:
 <li><code>get_by_id(id)</code></li>
 </ul>
 </li>
-</ol>
+</ul>
+</li>
+</ul>
 <p>This is the single consistent entrypoint for BYOEB chat, Shiksha copilot, and SEEDS IVR/teacher experiences to <strong>reuse the same knowledge</strong>.</p>
 <h3 id="domain-profiles">Domain Profiles<a class="headerlink" href="#domain-profiles" title="Permanent link">&para;</a></h3>
 <p>Domain profiles use YAML schema with multi tenant isolation &amp; secrets</p>
@@ -1068,27 +1072,36 @@ steps:
 <p><strong>SEEDS</strong>
 No live code yet, so first implementation can start directly as seeds_audio version 1.0.</p>
 <h3 id="introducing-v1x-pipelines">Introducing v1.x Pipelines<a class="headerlink" href="#introducing-v1x-pipelines" title="Permanent link">&para;</a></h3>
-<p>For each domain we can then evolve:
-<strong>byoeb_kb v1.0</strong>: Maybe adds translation agent, or uses a different parser.In new framework:</p>
-<p>Connectors
-- AzureBlobConnector using existing async blob client.</p>
-<p>Steps
-- BYOEBListFilesStep (optional) → lists &amp; filters FileMetadata.
-- BYOEBDownloadStep wrapping _abulk_download_files.
-- BYOEBParseChunksStep wrapping text_parser.get_chunks_from_collection(...).
-- BYOEBUpsertStep wrapping _gather_similar_chunks + _add_nodes_to_vector_store.</p>
+<p>For each domain we can then evolve:</p>
+<hr />
+<p><strong>byoeb_kb v1.0</strong>: Maybe adds translation agent, or uses a different parser. In new framework:</p>
+<p><em>Connectors:</em></p>
+<ul>
+<li><code>AzureBlobConnector</code> using existing async blob client.</li>
+</ul>
+<p><em>Steps:</em></p>
+<ul>
+<li><code>BYOEBListFilesStep</code> (optional) → lists &amp; filters FileMetadata.</li>
+<li><code>BYOEBDownloadStep</code> wrapping <code>_abulk_download_files</code>.</li>
+<li><code>BYOEBParseChunksStep</code> wrapping <code>text_parser.get_chunks_from_collection(...)</code>.</li>
+<li><code>BYOEBUpsertStep</code> wrapping <code>_gather_similar_chunks</code> + <code>_add_nodes_to_vector_store</code>.</li>
+</ul>
+<hr />
 <p><strong>shiksha_textbook v1.0</strong>: Moves to Postgres-backed registry; uses improved chunking for better RAG. In new framework:</p>
 <p>Each of Steps 3–8 (text extraction, cleaning, LO extraction, subtopic cleaning, subtopic-wise LO extraction, create index) becomes a <code>Step</code> in the Ingestion Service.</p>
-<p>The <code>CreateIndexStep</code> additionally:
-- Writes knowledge_items row for the chapter, with metadata <code>{board, grade, subject, chapter_number, medium}</code>.
-- Writes <code>chunks</code> rows for each page/subtopic chunk with Qdrant pointers.</p>
-<p>Optional KG steps become a separate pipeline (shiksha_kg_v1) that reads from the same cleaned markdown and writes to the graph store.</p>
-<p>The Shiksha “experience layer” agents then call the KnowledgeBase tool using board/grade/subject or a combination of all 3 filters that are now available across all stores and Postgres.</p>
-<p><strong>seeds_audio v1.0</strong>: First implementation. Because each <code>knowledge_item</code> row carries pipeline_version_id, retrieval logic can behave differently if necessary (e.g., interpret metadata shapes slightly differently). In new framework:</p>
+<p>The <code>CreateIndexStep</code> additionally:</p>
 <ul>
-<li><code>ExternalSource</code> + <code>audioDownloaderService</code> → <code>SourceConnector</code>implementations.</li>
+<li>Writes <code>knowledge_items</code> row for the chapter, with metadata <code>{board, grade, subject, chapter_number, medium}</code>.</li>
+<li>Writes <code>chunks</code> rows for each page/subtopic chunk with Qdrant pointers.</li>
+</ul>
+<p>Optional KG steps become a separate pipeline (<code>shiksha_kg_v1</code>) that reads from the same cleaned markdown and writes to the graph store.</p>
+<p>The Shiksha "experience layer" agents then call the KnowledgeBase tool using board/grade/subject or a combination of all 3 filters that are now available across all stores and Postgres.</p>
+<hr />
+<p><strong>seeds_audio v1.0</strong>: First implementation. Because each <code>knowledge_item</code> row carries <code>pipeline_version_id</code>, retrieval logic can behave differently if necessary (e.g., interpret metadata shapes slightly differently). In new framework:</p>
+<ul>
+<li><code>ExternalSource</code> + <code>audioDownloaderService</code> → <code>SourceConnector</code> implementations.</li>
 <li>Transcription and keyword extraction steps → agents in the pipeline.</li>
-<li>KnowledgeItem DB model becomes a tenant-specific view of the generic <code>knowledge_items</code> table (we can keep a Mongo version or migrate to Postgres gradually).</li>
+<li><code>KnowledgeItem</code> DB model becomes a tenant-specific view of the generic <code>knowledge_items</code> table (we can keep a Mongo version or migrate to Postgres gradually).</li>
 </ul>
 <p>The canonical <code>knowledge_items</code> row for an audio piece looks like:
 <div class="highlight"><pre><span></span><code>{
