@@ -783,44 +783,48 @@
 <h2 id="layered-architecture">Layered Architecture<a class="headerlink" href="#layered-architecture" title="Permanent link">&para;</a></h2>
 <h3 id="design-drivers">Design Drivers<a class="headerlink" href="#design-drivers" title="Permanent link">&para;</a></h3>
 <ol>
-<li><strong>Aligned with Inclusive Architecture</strong></li>
-<li>Governance is a cross-cutting concern serving multiple domains (healthcare, education, accessibility) via common agents &amp; tools.</li>
 <li>
-<p>All products interact with AI through governance-wrapped interfaces; governance itself is multi-tenant and domain-aware.</p>
+<p><strong>Aligned with Inclusive Architecture</strong></p>
+<ul>
+<li>Governance is a cross-cutting concern serving multiple domains (healthcare, education, accessibility) via common agents &amp; tools.</li>
+<li>All products interact with AI through governance-wrapped interfaces; governance itself is multi-tenant and domain-aware.</li>
+</ul>
 </li>
 <li>
 <p><strong>Multi-Regulation</strong></p>
-</li>
+<ul>
 <li>Healthcare: PHI protection, clinical data handling</li>
 <li>Education: Student data protection, minor data handling</li>
 <li>General: Data privacy, security controls</li>
-<li>
-<p>AI-Specific: Transparency, accountability, bias prevention</p>
+<li>AI-Specific: Transparency, accountability, bias prevention</li>
+</ul>
 </li>
 <li>
 <p><strong>Multi-Concern</strong></p>
-</li>
+<ul>
 <li><strong>Consent &amp; Privacy</strong>: Verifiable consent management (parental consent, data processing authorization)</li>
 <li><strong>Data Protection</strong>: PII/PHI detection, anonymization, retention policies</li>
 <li><strong>Cost Control</strong>: Token tracking, budget enforcement, usage optimization</li>
 <li><strong>Safety</strong>: Content moderation, hallucination detection, topic guards</li>
-<li>
-<p><strong>Audit</strong>: Comprehensive logging, compliance reporting, breach detection</p>
+<li><strong>Audit</strong>: Comprehensive logging, compliance reporting, breach detection</li>
+</ul>
 </li>
 <li>
 <p><strong>Domain-Aware but Reusable</strong></p>
-</li>
+<ul>
 <li>BYOEB's healthcare compliance (PHI handling) should be a profile on top of generic governance steps.</li>
 <li>Shiksha's education compliance (parental consent, student data) should be the default education profile.</li>
-<li>
-<p>SEEDS' accessibility considerations should extend the education profile.</p>
+<li>SEEDS' accessibility considerations should extend the education profile.</li>
+</ul>
 </li>
 <li>
 <p><strong>Non-Blocking &amp; Observable</strong></p>
-</li>
+<ul>
 <li>Governance adds minimal latency to AI interactions.</li>
 <li>Strong observability for compliance audits and incident response.</li>
 <li>Human-in-the-loop escalation for edge cases.</li>
+</ul>
+</li>
 </ol>
 <h3 id="conceptual-model">Conceptual Model<a class="headerlink" href="#conceptual-model" title="Permanent link">&para;</a></h3>
 <p>We define three layers inside the governance system (itself mapped as a horizontal wrapper in the Inclusive Architecture):</p>
@@ -1182,47 +1186,55 @@ interface GuardResult {
 </code></pre></div>
 <p><strong>Guard Types</strong>:</p>
 <ol>
-<li><strong>Consent Guards</strong> <em>(Governance-specific — not in gateway)</em></li>
+<li>
+<p><strong>Consent Guards</strong> <em>(Governance-specific — not in gateway)</em></p>
+<ul>
 <li><code>ParentalConsentGuard</code> — Verify parental consent for minors</li>
 <li><code>DataProcessingAuthorizationGuard</code> — Verify data processing authorization</li>
-<li>
-<p><code>DisclosureConsentGuard</code> — Verify data disclosure consent</p>
+<li><code>DisclosureConsentGuard</code> — Verify data disclosure consent</li>
+</ul>
 </li>
 <li>
 <p><strong>Safety Guards</strong> <em>(Mixed — some leverage gateway, some governance-specific)</em></p>
-</li>
+<ul>
 <li><code>PIIDetectionGuard</code> — <em>Delegates to gateway's Presidio integration</em></li>
 <li><code>PHIFilterGuard</code> — <em>Governance-specific: healthcare PHI beyond generic PII</em></li>
 <li><code>ContentModerationGuard</code> — <em>Delegates to gateway's OpenAI/LlamaGuard integration</em></li>
 <li><code>TopicRestrictionGuard</code> — <em>Governance-specific: domain-aware topic filtering</em></li>
-<li>
-<p><code>MinorDataGuard</code> — <em>Governance-specific: age-appropriate content for minors</em></p>
+<li><code>MinorDataGuard</code> — <em>Governance-specific: age-appropriate content for minors</em></li>
+</ul>
 </li>
 <li>
 <p><strong>Cost Guards</strong> <em>(Leverage gateway with governance extensions)</em></p>
-</li>
+<ul>
 <li><code>BudgetGuard</code> — <em>Queries gateway's spend tracking + governance alert thresholds</em></li>
 <li><code>RateLimitGuard</code> — <em>Delegates to gateway's per-key rate limiting</em></li>
+</ul>
+</li>
 </ol>
 <p><strong>Response Guard</strong>:</p>
 <p>Guards validate AI-generated responses before returning to users.</p>
 <ol>
-<li><strong>Compliance Guards</strong> <em>(Governance-specific — not in gateway)</em></li>
-<li><code>PHIDisclosureGuard</code> — Prevent unauthorized PHI in responses</li>
 <li>
-<p><code>MinorDataGuard</code> — Extra protection for children's data</p>
+<p><strong>Compliance Guards</strong> <em>(Governance-specific — not in gateway)</em></p>
+<ul>
+<li><code>PHIDisclosureGuard</code> — Prevent unauthorized PHI in responses</li>
+<li><code>MinorDataGuard</code> — Extra protection for children's data</li>
+</ul>
 </li>
 <li>
 <p><strong>Quality Guards</strong> <em>(Governance-specific — domain-aware validation)</em></p>
-</li>
+<ul>
 <li><code>HallucinationDetectionGuard</code> — Flag potential fabricated content</li>
-<li>
-<p><code>SourceAttributionGuard</code> — Ensure RAG responses cite sources</p>
+<li><code>SourceAttributionGuard</code> — Ensure RAG responses cite sources</li>
+</ul>
 </li>
 <li>
 <p><strong>Restoration Guards</strong> <em>(Governance-specific — reversible anonymization)</em></p>
-</li>
+<ul>
 <li><code>DeAnonymizationGuard</code> — Restore original values using stored mapping</li>
+</ul>
+</li>
 </ol>
 <h3 id="engine-layer">Engine Layer<a class="headerlink" href="#engine-layer" title="Permanent link">&para;</a></h3>
 <p><strong>1. Consent Engine</strong></p>
@@ -1272,19 +1284,65 @@ interface GuardResult {
 <blockquote>
 <p>🔑 <strong>Key Principle</strong>: Cost Engine <strong>QUERIES</strong> the Gateway—it does NOT duplicate storage. All cost/usage data lives in <code>LiteLLM_SpendLogs</code>.</p>
 </blockquote>
-<p><strong>Proactive vs Reactive Behavior</strong>:
-| Behavior | When | What Happens |
-|----------|------|--------------|
-| <strong>Proactive</strong> | Before LLM call | Query Gateway spend → check against <code>governance_alert_config</code> → send warning if &gt;80% |
-| <strong>Reactive</strong> | After LLM call | Gateway records cost automatically; governance queries for reports |</p>
-<p><strong>Governance-Specific Extensions</strong>:
-| Capability | Gateway (LiteLLM) | Governance Framework Adds |
-|------------|-------------------|---------------------------|
-| Cost calculation | ✅ Per-request automatic | — (use gateway) |
-| Budget enforcement | ✅ Per-key/team <strong>blocking</strong> | <strong>Proactive</strong>: Alert thresholds before blocking (80% warning) |
-| Spend tracking | ✅ PostgreSQL tables | — (query gateway, don't duplicate) |
-| Reporting | Basic spend queries | <strong>Reactive</strong>: Compliance-formatted reports per domain |
-| Attribution | Team/key level | <strong>Reactive</strong>: User + domain profile + regulation context in reports |</p>
+<p><strong>Proactive vs Reactive Behavior</strong>:</p>
+<table>
+<thead>
+<tr>
+<th>Behavior</th>
+<th>When</th>
+<th>What Happens</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Proactive</strong></td>
+<td>Before LLM call</td>
+<td>Query Gateway spend → check against <code>governance_alert_config</code> → send warning if &gt;80%</td>
+</tr>
+<tr>
+<td><strong>Reactive</strong></td>
+<td>After LLM call</td>
+<td>Gateway records cost automatically; governance queries for reports</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Governance-Specific Extensions</strong>:</p>
+<table>
+<thead>
+<tr>
+<th>Capability</th>
+<th>Gateway (LiteLLM)</th>
+<th>Governance Framework Adds</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Cost calculation</td>
+<td>✅ Per-request automatic</td>
+<td>— (use gateway)</td>
+</tr>
+<tr>
+<td>Budget enforcement</td>
+<td>✅ Per-key/team <strong>blocking</strong></td>
+<td><strong>Proactive</strong>: Alert thresholds before blocking (80% warning)</td>
+</tr>
+<tr>
+<td>Spend tracking</td>
+<td>✅ PostgreSQL tables</td>
+<td>— (query gateway, don't duplicate)</td>
+</tr>
+<tr>
+<td>Reporting</td>
+<td>Basic spend queries</td>
+<td><strong>Reactive</strong>: Compliance-formatted reports per domain</td>
+</tr>
+<tr>
+<td>Attribution</td>
+<td>Team/key level</td>
+<td><strong>Reactive</strong>: User + domain profile + regulation context in reports</td>
+</tr>
+</tbody>
+</table>
 <p><strong>3. Safety Engine</strong></p>
 <p>Extends the <a href="../llm-gateway-layer/#2-guardrails--content-safety-">LLM Gateway Layer's built-in guardrails</a> with domain-specific safety logic.</p>
 <blockquote>
@@ -1312,23 +1370,85 @@ interface GuardResult {
 <blockquote>
 <p>🔑 <strong>Key Principle</strong>: Safety Engine adds <strong>domain-specific</strong> detection (PHI, education records) ON TOP of Gateway's generic PII. It also provides <strong>reversible anonymization</strong> with mapping storage.</p>
 </blockquote>
-<p><strong>Proactive vs Reactive Behavior</strong>:
-| Behavior | When | What Happens |
-|----------|------|--------------|
-| <strong>Proactive</strong> | Before LLM call | Detect domain PII → anonymize with mapping → store mapping → send to Gateway |
-| <strong>Reactive</strong> | After LLM call | Retrieve mapping → deanonymize response → check for unauthorized disclosure |</p>
-<p><strong>Governance-Specific Extensions</strong>:
-| Capability | Gateway (LiteLLM) | Governance Framework Adds |
-|------------|-------------------|---------------------------|
-| Generic PII (name, email, phone) | ✅ Presidio integration | — (use gateway) |
-| PHI detection (healthcare identifiers) | ❌ Not domain-aware | <strong>Proactive</strong>: <code>PHIFilterGuard</code> with MRN, conditions, medications |
-| Education PII (student ID, grades) | ❌ Not domain-aware | <strong>Proactive</strong>: <code>EducationDataGuard</code> with education-specific entities |
-| Content moderation | ✅ OpenAI/LlamaGuard | — (use gateway) |
-| Prompt injection | ✅ Lakera integration | — (use gateway) |
-| Topic restrictions | ❌ Generic only | <strong>Proactive</strong>: Domain-specific topic lists per profile |
-| Age-appropriate content | ❌ Not available | <strong>Proactive</strong>: <code>MinorDataGuard</code> for minor data protection |
-| Reversible anonymization | ❌ One-way only | <strong>Proactive + Reactive</strong>: Mapping storage → deanonymization |
-| Response compliance | ❌ Not available | <strong>Reactive</strong>: PHI disclosure check, minor data protection |</p>
+<p><strong>Proactive vs Reactive Behavior</strong>:</p>
+<table>
+<thead>
+<tr>
+<th>Behavior</th>
+<th>When</th>
+<th>What Happens</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Proactive</strong></td>
+<td>Before LLM call</td>
+<td>Detect domain PII → anonymize with mapping → store mapping → send to Gateway</td>
+</tr>
+<tr>
+<td><strong>Reactive</strong></td>
+<td>After LLM call</td>
+<td>Retrieve mapping → deanonymize response → check for unauthorized disclosure</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Governance-Specific Extensions</strong>:</p>
+<table>
+<thead>
+<tr>
+<th>Capability</th>
+<th>Gateway (LiteLLM)</th>
+<th>Governance Framework Adds</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Generic PII (name, email, phone)</td>
+<td>✅ Presidio integration</td>
+<td>— (use gateway)</td>
+</tr>
+<tr>
+<td>PHI detection (healthcare identifiers)</td>
+<td>❌ Not domain-aware</td>
+<td><strong>Proactive</strong>: <code>PHIFilterGuard</code> with MRN, conditions, medications</td>
+</tr>
+<tr>
+<td>Education PII (student ID, grades)</td>
+<td>❌ Not domain-aware</td>
+<td><strong>Proactive</strong>: <code>EducationDataGuard</code> with education-specific entities</td>
+</tr>
+<tr>
+<td>Content moderation</td>
+<td>✅ OpenAI/LlamaGuard</td>
+<td>— (use gateway)</td>
+</tr>
+<tr>
+<td>Prompt injection</td>
+<td>✅ Lakera integration</td>
+<td>— (use gateway)</td>
+</tr>
+<tr>
+<td>Topic restrictions</td>
+<td>❌ Generic only</td>
+<td><strong>Proactive</strong>: Domain-specific topic lists per profile</td>
+</tr>
+<tr>
+<td>Age-appropriate content</td>
+<td>❌ Not available</td>
+<td><strong>Proactive</strong>: <code>MinorDataGuard</code> for minor data protection</td>
+</tr>
+<tr>
+<td>Reversible anonymization</td>
+<td>❌ One-way only</td>
+<td><strong>Proactive + Reactive</strong>: Mapping storage → deanonymization</td>
+</tr>
+<tr>
+<td>Response compliance</td>
+<td>❌ Not available</td>
+<td><strong>Reactive</strong>: PHI disclosure check, minor data protection</td>
+</tr>
+</tbody>
+</table>
 <p><strong>4. Audit Engine</strong></p>
 <p>Extends the <a href="../llm-gateway-layer/#4-audit-logging--observability-">LLM Gateway Layer's logging</a> with compliance-specific audit trails.</p>
 <blockquote>
@@ -1360,26 +1480,100 @@ interface GuardResult {
 <blockquote>
 <p>🔑 <strong>Key Principle</strong>: Audit Engine logs <strong>governance-specific events</strong> (consent, guards, PII handling) to <code>governance_audit_events</code>. It links to Gateway logs via <code>gateway_request_id</code> for unified compliance reporting—it does NOT duplicate LLM call data.</p>
 </blockquote>
-<p><strong>Proactive vs Reactive Behavior</strong>:
-| Behavior | When | What Happens |
-|----------|------|--------------|
-| <strong>Reactive</strong> | During request | Log consent checks, guard decisions, PII detection events |
-| <strong>Reactive</strong> | After request | Link governance event to Gateway log via <code>gateway_request_id</code> |
-| <strong>On-Demand</strong> | Compliance audit | Query governance events + Gateway logs → generate unified report |
-| <strong>Scheduled</strong> | Background | Enforce retention policies, detect anomalies/breaches |</p>
-<p><strong>Governance-Specific Extensions</strong>:
-| Capability | Gateway (LiteLLM) | Governance Framework Adds |
-|------------|-------------------|---------------------------|
-| LLM call logging | ✅ Full request/response | — (use gateway) |
-| Token/cost tracking | ✅ Per-request automatic | — (use gateway) |
-| Latency metrics | ✅ Built-in | — (use gateway) |
-| Observability export | ✅ Langfuse, Prometheus | — (use gateway) |
-| Consent events | ❌ Not tracked | <strong>Reactive</strong>: <code>CONSENT_CHECKED</code>, <code>CONSENT_GRANTED</code>, <code>CONSENT_WITHDRAWN</code> |
-| Guard decisions | ❌ Not tracked | <strong>Reactive</strong>: <code>REQUEST_BLOCKED</code>, <code>REQUEST_MODIFIED</code>, <code>ESCALATION_TRIGGERED</code> |
-| PII detection events | ❌ Not tracked | <strong>Reactive</strong>: <code>PII_DETECTED</code>, <code>PII_ANONYMIZED</code>, <code>PII_DEANONYMIZED</code> |
-| Compliance reports | ❌ Generic queries only | <strong>On-Demand</strong>: Domain-specific audit reports, disclosure logs |
-| Regulatory retention | ❌ Not enforced | <strong>Scheduled</strong>: Configurable retention per domain profile |
-| Breach detection | ❌ Not available | <strong>Scheduled</strong>: Unusual access patterns, unauthorized disclosure alerts |</p>
+<p><strong>Proactive vs Reactive Behavior</strong>:</p>
+<table>
+<thead>
+<tr>
+<th>Behavior</th>
+<th>When</th>
+<th>What Happens</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Reactive</strong></td>
+<td>During request</td>
+<td>Log consent checks, guard decisions, PII detection events</td>
+</tr>
+<tr>
+<td><strong>Reactive</strong></td>
+<td>After request</td>
+<td>Link governance event to Gateway log via <code>gateway_request_id</code></td>
+</tr>
+<tr>
+<td><strong>On-Demand</strong></td>
+<td>Compliance audit</td>
+<td>Query governance events + Gateway logs → generate unified report</td>
+</tr>
+<tr>
+<td><strong>Scheduled</strong></td>
+<td>Background</td>
+<td>Enforce retention policies, detect anomalies/breaches</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Governance-Specific Extensions</strong>:</p>
+<table>
+<thead>
+<tr>
+<th>Capability</th>
+<th>Gateway (LiteLLM)</th>
+<th>Governance Framework Adds</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>LLM call logging</td>
+<td>✅ Full request/response</td>
+<td>— (use gateway)</td>
+</tr>
+<tr>
+<td>Token/cost tracking</td>
+<td>✅ Per-request automatic</td>
+<td>— (use gateway)</td>
+</tr>
+<tr>
+<td>Latency metrics</td>
+<td>✅ Built-in</td>
+<td>— (use gateway)</td>
+</tr>
+<tr>
+<td>Observability export</td>
+<td>✅ Langfuse, Prometheus</td>
+<td>— (use gateway)</td>
+</tr>
+<tr>
+<td>Consent events</td>
+<td>❌ Not tracked</td>
+<td><strong>Reactive</strong>: <code>CONSENT_CHECKED</code>, <code>CONSENT_GRANTED</code>, <code>CONSENT_WITHDRAWN</code></td>
+</tr>
+<tr>
+<td>Guard decisions</td>
+<td>❌ Not tracked</td>
+<td><strong>Reactive</strong>: <code>REQUEST_BLOCKED</code>, <code>REQUEST_MODIFIED</code>, <code>ESCALATION_TRIGGERED</code></td>
+</tr>
+<tr>
+<td>PII detection events</td>
+<td>❌ Not tracked</td>
+<td><strong>Reactive</strong>: <code>PII_DETECTED</code>, <code>PII_ANONYMIZED</code>, <code>PII_DEANONYMIZED</code></td>
+</tr>
+<tr>
+<td>Compliance reports</td>
+<td>❌ Generic queries only</td>
+<td><strong>On-Demand</strong>: Domain-specific audit reports, disclosure logs</td>
+</tr>
+<tr>
+<td>Regulatory retention</td>
+<td>❌ Not enforced</td>
+<td><strong>Scheduled</strong>: Configurable retention per domain profile</td>
+</tr>
+<tr>
+<td>Breach detection</td>
+<td>❌ Not available</td>
+<td><strong>Scheduled</strong>: Unusual access patterns, unauthorized disclosure alerts</td>
+</tr>
+</tbody>
+</table>
 <h3 id="policy-configuration-layer">Policy &amp; Configuration Layer<a class="headerlink" href="#policy-configuration-layer" title="Permanent link">&para;</a></h3>
 <p><strong>Domain Profiles</strong>:</p>
 <p>Domain profiles use YAML schema with regulatory mappings and tenant configuration.</p>
@@ -1589,70 +1783,41 @@ interface GuardResult {
 <blockquote>
 <p>📖 <strong>Gateway Internals</strong>: For detailed Gateway architecture and internals, see <a href="../llm-gateway-layer/#recommended-architecture">LLM Gateway Layer Architecture</a>.</p>
 </blockquote>
-<p>From the Agent Orchestrator's point of view, Governance is a <strong>wrapper</strong> that layers on top of the LLM Gateway:</p>
-<div class="highlight"><pre><span></span><code>┌─────────────────────────────────────────────────────────────┐
-│                    Agent Orchestrator                        │
-│                           │                                  │
-│                           ▼                                  │
-│  ┌─────────────────────────────────────────────────────────┐│
-│  │           GovernedLLMClient (This Framework)            ││
-│  │  ┌─────────────────────────────────────────────────────┐││
-│  │  │ Governance-Specific (NOT in Gateway)                │││
-│  │  │ • Consent verification (parental, data processing)  │││
-│  │  │ • Domain PII guards (PHI, education records)        │││
-│  │  │ • Topic restrictions per domain profile             │││
-│  │  │ • Governance audit events (consent, guard decisions)│││
-│  │  │ • Compliance reporting &amp; regulatory exports         │││
-│  │  │ • Reversible anonymization with mapping             │││
-│  │  └─────────────────────────────────────────────────────┘││
-│  │                           │                              ││
-│  │                           ▼                              ││
-│  │  ┌─────────────────────────────────────────────────────┐││
-│  │  │ LLM Gateway Layer (LiteLLM) - See separate doc      │││
-│  │  │ • Unified API (OpenAI-compatible)                   │││
-│  │  │ • Multi-provider routing &amp; failover                 │││
-│  │  │ • Per-request cost calculation                      │││
-│  │  │ • Budget enforcement (per-key/team)                 │││
-│  │  │ • Generic PII detection (Presidio)                  │││
-│  │  │ • Content moderation (OpenAI, LlamaGuard)           │││
-│  │  │ • Request/response logging to observability         │││
-│  │  └─────────────────────────────────────────────────────┘││
-│  └─────────────────────────────────────────────────────────┘│
-│                           │                                  │
-│                           ▼                                  │
-│              LLM Providers (Azure, Anthropic, etc.)          │
-└─────────────────────────────────────────────────────────────┘
-</code></pre></div>
+<p>From the Agent Orchestrator's point of view, Governance is a <strong>wrapper</strong> that layers on top of the LLM Gateway.</p>
 <p><strong>Governance-Specific Tools</strong> (not provided by gateway):</p>
 <ul>
-<li>Tool: <code>check_consent</code></li>
-<li>Inputs: { <code>user_id</code>, <code>consent_type</code>, <code>data_category</code> }</li>
-<li>Output: { <code>has_consent</code>, <code>reason</code> }</li>
 <li>
-<p><em>Why governance-specific</em>: Domain-specific consent tracking (parental, data processing authorization)</p>
+<p><strong>Tool: <code>check_consent</code></strong></p>
+<ul>
+<li><strong>Inputs</strong>: { <code>user_id</code>, <code>consent_type</code>, <code>data_category</code> }</li>
+<li><strong>Output</strong>: { <code>has_consent</code>, <code>reason</code> }</li>
+<li><strong>Why governance-specific</strong>: Domain-specific consent tracking (parental, data processing authorization)</li>
+</ul>
 </li>
 <li>
-<p>Tool: <code>check_domain_compliance</code></p>
-</li>
-<li>Inputs: { <code>text</code>, <code>domain_profile</code> }</li>
-<li>Output: { <code>compliant</code>, <code>violations[]</code> }</li>
-<li>
-<p><em>Why governance-specific</em>: Domain-aware rules (PHI handling, age-appropriate content)</p>
-</li>
-<li>
-<p>Tool: <code>anonymize_with_mapping</code></p>
-</li>
-<li>Inputs: { <code>text</code>, <code>domain_profile</code> }</li>
-<li>Output: { <code>anonymized_text</code>, <code>mapping</code> }</li>
-<li>
-<p><em>Why governance-specific</em>: Reversible anonymization for response restoration</p>
+<p><strong>Tool: <code>check_domain_compliance</code></strong></p>
+<ul>
+<li><strong>Inputs</strong>: { <code>text</code>, <code>domain_profile</code> }</li>
+<li><strong>Output</strong>: { <code>compliant</code>, <code>violations[]</code> }</li>
+<li><strong>Why governance-specific</strong>: Domain-aware rules (PHI handling, age-appropriate content)</li>
+</ul>
 </li>
 <li>
-<p>Tool: <code>log_governance_event</code></p>
+<p><strong>Tool: <code>anonymize_with_mapping</code></strong></p>
+<ul>
+<li><strong>Inputs</strong>: { <code>text</code>, <code>domain_profile</code> }</li>
+<li><strong>Output</strong>: { <code>anonymized_text</code>, <code>mapping</code> }</li>
+<li><strong>Why governance-specific</strong>: Reversible anonymization for response restoration</li>
+</ul>
 </li>
-<li>Inputs: { <code>event_type</code>, <code>context</code>, <code>details</code> }</li>
-<li>Output: { <code>event_id</code> }</li>
-<li><em>Why governance-specific</em>: Compliance audit trail (consent events, guard decisions)</li>
+<li>
+<p><strong>Tool: <code>log_governance_event</code></strong></p>
+<ul>
+<li><strong>Inputs</strong>: { <code>event_type</code>, <code>context</code>, <code>details</code> }</li>
+<li><strong>Output</strong>: { <code>event_id</code> }</li>
+<li><strong>Why governance-specific</strong>: Compliance audit trail (consent events, guard decisions)</li>
+</ul>
+</li>
 </ul>
 <p>This gives one <strong>Governance interface</strong> for all three systems &amp; any new ones, while leveraging the <a href="../llm-gateway-layer/">LLM Gateway Layer</a> for foundational LLM operations.</p>
 <h2 id="backward-compatibility-versioning-strategy">Backward Compatibility &amp; Versioning Strategy<a class="headerlink" href="#backward-compatibility-versioning-strategy" title="Permanent link">&para;</a></h2>
