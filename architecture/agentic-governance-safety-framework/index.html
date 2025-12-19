@@ -1,0 +1,2084 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+        <link rel="canonical" href="https://a4i-tech.github.io/public-docs/architecture/agentic-governance-safety-framework/">
+      
+      
+        <link rel="prev" href="../universal-knowledge-ingestion/">
+      
+      
+        <link rel="next" href="../llm-gateway-layer/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.1">
+    
+    
+      
+        <title>Agentic Governance & Safety Framework - A4i Tech Public Docs</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.484c7ddc.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    <body dir="ltr">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#purpose-and-scope" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="A4i Tech Public Docs" class="md-header__button md-logo" aria-label="A4i Tech Public Docs" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            A4i Tech Public Docs
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Agentic Governance & Safety Framework
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+  
+
+<nav class="md-nav md-nav--primary md-nav--integrated" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="A4i Tech Public Docs" class="md-nav__button md-logo" aria-label="A4i Tech Public Docs" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    A4i Tech Public Docs
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_1" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_1" id="__nav_1_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Architecture
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_1_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_1">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Architecture
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Inclusive-Architecture/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Inclusive Architecture
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../universal-knowledge-ingestion/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Universal Knowledge Ingestion Framework
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Agentic Governance & Safety Framework
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Agentic Governance & Safety Framework
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#purpose-and-scope" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Purpose and Scope
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#document-navigation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Document Navigation
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#layered-architecture" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Layered Architecture
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Layered Architecture">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#design-drivers" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Design Drivers
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#conceptual-model" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Conceptual Model
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#high-level-governance-flow" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        High-Level Governance Flow
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#governancecontext-the-canonical-data-model" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        GovernanceContext: The Canonical Data Model
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="GovernanceContext: The Canonical Data Model">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#how-the-system-works" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        How the System Works
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#core-implementation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Core Implementation
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Core Implementation">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#what-the-gateway-provides-vs-what-governance-adds" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        What the Gateway Provides vs What Governance Adds
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#guard-layer" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Guard Layer
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#engine-layer" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Engine Layer
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#policy-configuration-layer" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Policy &amp; Configuration Layer
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#governance-pipeline-orchestration" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Governance Pipeline Orchestration
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#storage-registration-layer" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Storage &amp; Registration Layer
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#multi-tenant-support" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Multi-Tenant Support
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#how-this-hooks-back-into-the-agentic-layer" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        How This Hooks Back into the Agentic Layer
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#backward-compatibility-versioning-strategy" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Backward Compatibility &amp; Versioning Strategy
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Backward Compatibility &amp; Versioning Strategy">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#register-current-safety-mechanisms-as-v0x-profiles" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Register Current Safety Mechanisms as v0.x Profiles
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#introducing-v1x-profiles" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Introducing v1.x Profiles
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#low-level-design" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Low Level Design
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Low Level Design">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#database-architecture" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Database Architecture
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Database Architecture">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#what-the-gateway-already-stores" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        What the Gateway Already Stores
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#governance-specific-tables" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Governance-Specific Tables
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#guard-engine-abstractions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Guard &amp; Engine Abstractions
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#governance-pipeline-runner" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Governance Pipeline Runner
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#future-extensions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Future Extensions
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../llm-gateway-layer/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    LLM Gateway Layer
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+  <h1>Agentic Governance & Safety Framework</h1>
+
+<h2 id="purpose-and-scope">Purpose and Scope<a class="headerlink" href="#purpose-and-scope" title="Permanent link">&para;</a></h2>
+<p>This document proposes a common, cross-cutting governance and safety framework that embeds compliance, cost control, and safety into every AI interaction across digital public AI goods:</p>
+<ul>
+<li>BYOEB (ASHA WhatsApp RAG for healthcare) — healthcare compliance</li>
+<li>Shiksha Copilot (lesson outcome–driven education copilot) — education compliance</li>
+<li>SEEDS (audio-first IVR and conferencing for visually impaired learners) — education + accessibility compliance</li>
+</ul>
+<p>…and is extensible to new products, domains, and regulatory requirements.</p>
+<p>It aligns with the Inclusive Architecture as a <strong>horizontal layer</strong> that wraps around the Business &amp; Agentic Orchestration Layer — "request guard → consent check → cost tracking → LLM call → response guard → audit logging" — and implements those as reusable agents and tools across domains.</p>
+<blockquote>
+<p>📖 <strong>Related</strong>: The LLM call step is abstracted through the <a href="../llm-gateway-layer/">LLM Gateway Layer</a>, which provides unified access to multiple LLM providers with built-in cost tracking, failover, and guardrails.</p>
+</blockquote>
+<h2 id="document-navigation">Document Navigation<a class="headerlink" href="#document-navigation" title="Permanent link">&para;</a></h2>
+<ul>
+<li><strong>New to the system?</strong> Start with <a href="../llm-gateway-layer/">LLM Gateway Layer</a> to understand foundational infrastructure</li>
+<li><strong>Understanding integration?</strong> See <a href="#what-the-gateway-provides-vs-what-governance-adds">What the Gateway Provides vs What Governance Adds</a> (this document)</li>
+<li><strong>Implementing Gateway?</strong> See <a href="../llm-gateway-layer/#built-in-governance-features">LLM Gateway Layer Built-in Features</a></li>
+<li><strong>Implementing Governance?</strong> See <a href="#engine-layer">Engine Layer</a> (this document)</li>
+</ul>
+<h2 id="layered-architecture">Layered Architecture<a class="headerlink" href="#layered-architecture" title="Permanent link">&para;</a></h2>
+<h3 id="design-drivers">Design Drivers<a class="headerlink" href="#design-drivers" title="Permanent link">&para;</a></h3>
+<ol>
+<li><strong>Aligned with Inclusive Architecture</strong></li>
+<li>Governance is a cross-cutting concern serving multiple domains (healthcare, education, accessibility) via common agents &amp; tools.</li>
+<li>
+<p>All products interact with AI through governance-wrapped interfaces; governance itself is multi-tenant and domain-aware.</p>
+</li>
+<li>
+<p><strong>Multi-Regulation</strong></p>
+</li>
+<li>Healthcare: PHI protection, clinical data handling</li>
+<li>Education: Student data protection, minor data handling</li>
+<li>General: Data privacy, security controls</li>
+<li>
+<p>AI-Specific: Transparency, accountability, bias prevention</p>
+</li>
+<li>
+<p><strong>Multi-Concern</strong></p>
+</li>
+<li><strong>Consent &amp; Privacy</strong>: Verifiable consent management (parental consent, data processing authorization)</li>
+<li><strong>Data Protection</strong>: PII/PHI detection, anonymization, retention policies</li>
+<li><strong>Cost Control</strong>: Token tracking, budget enforcement, usage optimization</li>
+<li><strong>Safety</strong>: Content moderation, hallucination detection, topic guards</li>
+<li>
+<p><strong>Audit</strong>: Comprehensive logging, compliance reporting, breach detection</p>
+</li>
+<li>
+<p><strong>Domain-Aware but Reusable</strong></p>
+</li>
+<li>BYOEB's healthcare compliance (PHI handling) should be a profile on top of generic governance steps.</li>
+<li>Shiksha's education compliance (parental consent, student data) should be the default education profile.</li>
+<li>
+<p>SEEDS' accessibility considerations should extend the education profile.</p>
+</li>
+<li>
+<p><strong>Non-Blocking &amp; Observable</strong></p>
+</li>
+<li>Governance adds minimal latency to AI interactions.</li>
+<li>Strong observability for compliance audits and incident response.</li>
+<li>Human-in-the-loop escalation for edge cases.</li>
+</ol>
+<h3 id="conceptual-model">Conceptual Model<a class="headerlink" href="#conceptual-model" title="Permanent link">&para;</a></h3>
+<p>We define three layers inside the governance system (itself mapped as a horizontal wrapper in the Inclusive Architecture):</p>
+<ol>
+<li><strong>Guard Layer</strong>: Request and response interception with policy evaluation.</li>
+<li><strong>Engine Layer</strong>: Consent, Cost, Safety, and Audit engines that implement governance logic.</li>
+<li><strong>Policy &amp; Configuration Layer</strong>: Domain profiles, regulatory mappings, and tenant configuration.</li>
+</ol>
+<h3 id="high-level-governance-flow">High-Level Governance Flow<a class="headerlink" href="#high-level-governance-flow" title="Permanent link">&para;</a></h3>
+<p>The governance flow maps to the <strong>Inclusive Architecture layers</strong> while progressively enriching the <strong>GovernanceContext</strong>—a data structure that flows with each request.</p>
+<table>
+<thead>
+<tr>
+<th>Step</th>
+<th>Description</th>
+<th>IA Layer</th>
+<th>Governance Concept</th>
+<th>Context Field Enriched</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1. <strong>Request Received</strong></td>
+<td>User request arrives via channel</td>
+<td>Integration</td>
+<td>—</td>
+<td><code>request_id</code>, <code>channel</code></td>
+</tr>
+<tr>
+<td>2. <strong>Context Initialization</strong></td>
+<td>Create GovernanceContext, resolve user/tenant</td>
+<td>Experience</td>
+<td>GovernanceContext</td>
+<td><code>user_id</code>, <code>tenant_id</code>, <code>domain_profile</code></td>
+</tr>
+<tr>
+<td>3. <strong>Consent Resolution</strong></td>
+<td>Query for user's consent status</td>
+<td>Experience</td>
+<td>Engine Layer: Consent</td>
+<td><code>consent_status</code></td>
+</tr>
+<tr>
+<td>4. <strong>Budget Resolution</strong></td>
+<td>Query Gateway for spend status</td>
+<td>Experience</td>
+<td>LLM Gateway</td>
+<td><code>budget_status</code></td>
+</tr>
+<tr>
+<td>5. <strong>Request Guards</strong></td>
+<td>Evaluate consent guards, budget alerts</td>
+<td>Business &amp; Agentic</td>
+<td>Guard Layer: Request</td>
+<td><code>guard_results</code></td>
+</tr>
+<tr>
+<td>6. <strong>Domain PII Handling</strong></td>
+<td>Detect domain-specific PII (PHI, education) &amp; anonymize</td>
+<td>Business &amp; Agentic</td>
+<td>Engine Layer: Safety</td>
+<td><code>anonymization_mapping_id</code></td>
+</tr>
+<tr>
+<td>7. <strong>LLM Execution</strong></td>
+<td>Call LLM via Gateway (generic PII + moderation)</td>
+<td>Business &amp; Agentic</td>
+<td>LLM Gateway</td>
+<td><code>gateway_request_id</code></td>
+</tr>
+<tr>
+<td>8. <strong>Response Guards</strong></td>
+<td>Evaluate output compliance, deanonymize domain PII</td>
+<td>Business &amp; Agentic</td>
+<td>Guard Layer: Response</td>
+<td><code>response_guard_results</code></td>
+</tr>
+<tr>
+<td>9. <strong>Cost Capture</strong></td>
+<td>Extract cost/tokens from Gateway response</td>
+<td>Business &amp; Agentic</td>
+<td>LLM Gateway</td>
+<td><code>cost</code>, <code>tokens_used</code>, <code>model_used</code></td>
+</tr>
+<tr>
+<td>10. <strong>Audit Logging</strong></td>
+<td>Log governance-specific events (guards, consent)</td>
+<td>Business &amp; Agentic</td>
+<td>Engine Layer: Audit</td>
+<td>— (persisted)</td>
+</tr>
+<tr>
+<td>11. <strong>Response Delivery</strong></td>
+<td>Return response to user via channel</td>
+<td>Integration</td>
+<td>—</td>
+<td>—</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>📖 <strong>Gateway vs Governance Responsibilities</strong>: See <a href="#what-the-gateway-provides-vs-what-governance-adds">What the Gateway Provides vs What Governance Adds</a> below for detailed responsibility boundaries.</p>
+</blockquote>
+<p>We implement each step as one or more <strong>agents</strong> (reasoning/policy-heavy) and <strong>tools</strong> (IO or deterministic work).</p>
+<hr />
+<h3 id="governancecontext-the-canonical-data-model">GovernanceContext: The Canonical Data Model<a class="headerlink" href="#governancecontext-the-canonical-data-model" title="Permanent link">&para;</a></h3>
+<p>The <code>GovernanceContext</code> is an <strong>in-memory data structure</strong> that flows through Inclusive Architecture layers, getting enriched at each step. It is NOT a separate application—rather, it's the "request context" for governance operations.</p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Description</th>
+<th>LiteLLM Mapping</th>
+<th>Storage</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>request_id</code></td>
+<td>UUID for this governance request</td>
+<td><code>metadata.request_id</code></td>
+<td><code>governance_audit_events</code></td>
+</tr>
+<tr>
+<td><code>correlation_id</code></td>
+<td>UUID linking related requests</td>
+<td><code>metadata.correlation_id</code></td>
+<td><code>governance_audit_events</code></td>
+</tr>
+<tr>
+<td><code>tenant_id</code></td>
+<td>Tenant/partner/org context</td>
+<td><code>metadata.team_id</code> (virtual key)</td>
+<td><code>governance_audit_events</code></td>
+</tr>
+<tr>
+<td><code>user_id</code></td>
+<td>User making the request</td>
+<td><code>metadata.user_id</code> (spend tracking)</td>
+<td><code>governance_audit_events</code></td>
+</tr>
+<tr>
+<td><code>domain_profile</code></td>
+<td>health_byoeb / education_shiksha / etc.</td>
+<td><code>metadata.domain_profile</code></td>
+<td><code>governance_audit_events</code></td>
+</tr>
+<tr>
+<td><code>consent_status</code></td>
+<td>Map of consent types to status</td>
+<td>—</td>
+<td><code>consent_records</code></td>
+</tr>
+<tr>
+<td><code>budget_status</code></td>
+<td>Current spend vs. limits (queried from Gateway)</td>
+<td>—</td>
+<td>— <em>(read from <code>LiteLLM_TeamTable</code>)</em></td>
+</tr>
+<tr>
+<td><code>anonymization_mapping_id</code></td>
+<td>Reference to domain PII mapping for deanonymization</td>
+<td><code>metadata.anon_mapping_id</code></td>
+<td><code>anonymization_mappings</code></td>
+</tr>
+<tr>
+<td><code>gateway_request_id</code></td>
+<td>LiteLLM's request ID for correlation</td>
+<td>Response <code>id</code></td>
+<td>— <em>(stored in <code>LiteLLM_SpendLogs</code>)</em></td>
+</tr>
+<tr>
+<td><code>cost</code></td>
+<td>Request cost in USD</td>
+<td>Response <code>response_cost</code></td>
+<td>— <em>(stored in <code>LiteLLM_SpendLogs</code>)</em></td>
+</tr>
+<tr>
+<td><code>tokens_used</code></td>
+<td>Total tokens consumed</td>
+<td>Response <code>usage.total_tokens</code></td>
+<td>— <em>(stored in <code>LiteLLM_SpendLogs</code>)</em></td>
+</tr>
+<tr>
+<td><code>model_used</code></td>
+<td>Actual model that served the request</td>
+<td>Response <code>model</code></td>
+<td>— <em>(stored in <code>LiteLLM_SpendLogs</code>)</em></td>
+</tr>
+<tr>
+<td><code>guard_results</code></td>
+<td>Results from request/response guards</td>
+<td>—</td>
+<td><code>governance_audit_events</code></td>
+</tr>
+<tr>
+<td><code>audit_metadata</code></td>
+<td>Timestamps, IP, user agent, regulations</td>
+<td>—</td>
+<td><code>governance_audit_events</code></td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>📝 <strong>Storage Principle</strong>: Fields with LiteLLM mapping are stored by the Gateway—governance queries them, doesn't duplicate. Governance only stores compliance-specific data (consent, guard decisions, anonymization mappings).</p>
+</blockquote>
+<h4 id="how-the-system-works">How the System Works<a class="headerlink" href="#how-the-system-works" title="Permanent link">&para;</a></h4>
+<p><strong>1. GovernanceContext flows through Inclusive Architecture layers:</strong></p>
+<pre class="mermaid"><code>flowchart LR
+    subgraph Request Flow
+        A[User Request] --&gt; B[Integration Layer]
+        B --&gt; C[Experience Layer]
+        C --&gt; D[Business &amp; Agentic Layer]
+    end
+    subgraph Governance Engine
+        B --&gt; B1[context created]
+        B1 --"request_id, channel" --&gt; B
+        C --&gt; C1[context enriched]
+        C1 --"user_id, tenant_id, consent_status, budget_status" --&gt; C
+    end
+    subgraph LLM Gateway 
+        D1[+guards + audit] --&gt; E   
+        D --&gt; D1
+        E[LLM Invocation] --&gt; D1
+    end</code></pre>
+<p><strong>2. Governance Engines are stateful services the context interacts with:</strong></p>
+<pre class="mermaid"><code>flowchart TB
+    subgraph Governance Tools
+        CE[ConsentEngine&lt;br/&gt;getStatus, request, verify]
+        COE[CostEngine&lt;br/&gt;getBudget, alert]
+        SE[SafetyEngine&lt;br/&gt;anonymize, deanonymize]
+        AE[AuditEngine&lt;br/&gt;log, query, export]
+    end
+
+    subgraph Storage
+        PG[(PostgreSQL&lt;br/&gt;Governance Schema)]
+    end
+
+    CE --&gt; PG
+    COE --&gt; PG
+    SE --&gt; PG
+    AE --&gt; PG</code></pre>
+<p><strong>3. LLM Gateway receives context as metadata:</strong></p>
+<pre class="mermaid"><code>sequenceDiagram
+    participant GC as GovernanceContext
+    participant GW as LLM Gateway (LiteLLM)
+    participant LLM as LLM Provider
+
+    GC-&gt;&gt;GW: completion(model, messages, metadata)
+    Note right of GC: metadata = {&lt;br/&gt;request_id,&lt;br/&gt;team_id (tenant),&lt;br/&gt;user_id,&lt;br/&gt;domain_profile&lt;br/&gt;}
+    GW-&gt;&gt;LLM: Routed request
+    LLM--&gt;&gt;GW: Response + usage
+    GW--&gt;&gt;GC: Response enriches context
+    Note right of GC: context.cost = response_cost&lt;br/&gt;context.tokens = total_tokens&lt;br/&gt;context.gateway_id = response.id</code></pre>
+<p><strong>Summary</strong>: GovernanceContext is a <strong>data structure that flows with the request</strong> through Inclusive Architecture layers. It interacts with <strong>Governance Engines</strong> (stateful services) to resolve consent, budget, and safety status, and passes relevant fields to the <strong>LLM Gateway</strong> as metadata. After the LLM call, cost and usage data from the Gateway enriches the context before final audit logging.</p>
+<h2 id="core-implementation">Core Implementation<a class="headerlink" href="#core-implementation" title="Permanent link">&para;</a></h2>
+<blockquote>
+<p>⚠️ <strong>Implementation Layering</strong>: This framework builds ON TOP of the <a href="../llm-gateway-layer/">LLM Gateway Layer</a>. The gateway provides foundational capabilities (unified LLM API, cost tracking, generic PII detection, content moderation, rate limiting, observability). This governance framework adds <strong>domain-specific compliance logic</strong> that the gateway cannot provide: consent management, regulatory audit trails, PHI/education-specific guards, and compliance reporting.</p>
+</blockquote>
+<h3 id="what-the-gateway-provides-vs-what-governance-adds">What the Gateway Provides vs What Governance Adds<a class="headerlink" href="#what-the-gateway-provides-vs-what-governance-adds" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Capability</th>
+<th>LLM Gateway (LiteLLM)</th>
+<th>Governance Framework</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>LLM routing &amp; failover</td>
+<td>✅ Built-in</td>
+<td>—</td>
+</tr>
+<tr>
+<td>Cost calculation</td>
+<td>✅ Per-request automatic</td>
+<td>Compliance cost reports</td>
+</tr>
+<tr>
+<td>Budget enforcement</td>
+<td>✅ Per-key/team blocking</td>
+<td>Alert thresholds, compliance attribution</td>
+</tr>
+<tr>
+<td>Generic PII detection</td>
+<td>✅ Presidio integration</td>
+<td>—</td>
+</tr>
+<tr>
+<td>Domain PII (PHI, education)</td>
+<td>❌</td>
+<td>✅ Domain-specific guards</td>
+</tr>
+<tr>
+<td>Content moderation</td>
+<td>✅ OpenAI/LlamaGuard</td>
+<td>—</td>
+</tr>
+<tr>
+<td>Prompt injection</td>
+<td>✅ Lakera integration</td>
+<td>—</td>
+</tr>
+<tr>
+<td>Topic restrictions</td>
+<td>❌ Generic only</td>
+<td>✅ Domain-specific topic lists</td>
+</tr>
+<tr>
+<td>Age-appropriate content</td>
+<td>❌</td>
+<td>✅ Minor data protection guards</td>
+</tr>
+<tr>
+<td>Consent management</td>
+<td>❌</td>
+<td>✅ Domain-specific consent</td>
+</tr>
+<tr>
+<td>LLM call logging</td>
+<td>✅ Full metadata</td>
+<td>—</td>
+</tr>
+<tr>
+<td>Governance events</td>
+<td>❌</td>
+<td>✅ Consent, guard decisions</td>
+</tr>
+<tr>
+<td>Compliance reports</td>
+<td>❌</td>
+<td>✅ Regulatory exports</td>
+</tr>
+<tr>
+<td>Retention policies</td>
+<td>❌</td>
+<td>✅ Configurable per domain</td>
+</tr>
+</tbody>
+</table>
+<h3 id="guard-layer">Guard Layer<a class="headerlink" href="#guard-layer" title="Permanent link">&para;</a></h3>
+<p><strong>Request Guard</strong>:</p>
+<p>Guards intercept requests before they reach the agentic layer. A guard evaluates a request and returns one of:
+- <code>ALLOW</code> — Request proceeds unchanged
+- <code>BLOCK</code> — Request is rejected with reason
+- <code>MODIFY</code> — Request content is transformed (e.g., PII anonymized)
+- <code>ESCALATE</code> — Request requires human review</p>
+<div class="highlight"><pre><span></span><code>interface RequestGuard {
+  evaluate(request: GovernanceRequest): Promise&lt;GuardResult&gt;;
+}
+
+interface GuardResult {
+  decision: &#39;allow&#39; | &#39;block&#39; | &#39;modify&#39; | &#39;escalate&#39;;
+  reason?: string;
+  modifiedContent?: string;
+  violations?: string[];
+}
+</code></pre></div>
+<p><strong>Guard Types</strong>:</p>
+<ol>
+<li><strong>Consent Guards</strong> <em>(Governance-specific — not in gateway)</em></li>
+<li><code>ParentalConsentGuard</code> — Verify parental consent for minors</li>
+<li><code>DataProcessingAuthorizationGuard</code> — Verify data processing authorization</li>
+<li>
+<p><code>DisclosureConsentGuard</code> — Verify data disclosure consent</p>
+</li>
+<li>
+<p><strong>Safety Guards</strong> <em>(Mixed — some leverage gateway, some governance-specific)</em></p>
+</li>
+<li><code>PIIDetectionGuard</code> — <em>Delegates to gateway's Presidio integration</em></li>
+<li><code>PHIFilterGuard</code> — <em>Governance-specific: healthcare PHI beyond generic PII</em></li>
+<li><code>ContentModerationGuard</code> — <em>Delegates to gateway's OpenAI/LlamaGuard integration</em></li>
+<li><code>TopicRestrictionGuard</code> — <em>Governance-specific: domain-aware topic filtering</em></li>
+<li>
+<p><code>MinorDataGuard</code> — <em>Governance-specific: age-appropriate content for minors</em></p>
+</li>
+<li>
+<p><strong>Cost Guards</strong> <em>(Leverage gateway with governance extensions)</em></p>
+</li>
+<li><code>BudgetGuard</code> — <em>Queries gateway's spend tracking + governance alert thresholds</em></li>
+<li><code>RateLimitGuard</code> — <em>Delegates to gateway's per-key rate limiting</em></li>
+</ol>
+<p><strong>Response Guard</strong>:</p>
+<p>Guards validate AI-generated responses before returning to users.</p>
+<ol>
+<li><strong>Compliance Guards</strong> <em>(Governance-specific — not in gateway)</em></li>
+<li><code>PHIDisclosureGuard</code> — Prevent unauthorized PHI in responses</li>
+<li>
+<p><code>MinorDataGuard</code> — Extra protection for children's data</p>
+</li>
+<li>
+<p><strong>Quality Guards</strong> <em>(Governance-specific — domain-aware validation)</em></p>
+</li>
+<li><code>HallucinationDetectionGuard</code> — Flag potential fabricated content</li>
+<li>
+<p><code>SourceAttributionGuard</code> — Ensure RAG responses cite sources</p>
+</li>
+<li>
+<p><strong>Restoration Guards</strong> <em>(Governance-specific — reversible anonymization)</em></p>
+</li>
+<li><code>DeAnonymizationGuard</code> — Restore original values using stored mapping</li>
+</ol>
+<h3 id="engine-layer">Engine Layer<a class="headerlink" href="#engine-layer" title="Permanent link">&para;</a></h3>
+<p><strong>1. Consent Engine</strong></p>
+<p>Manages user consent across regulatory requirements.</p>
+<div class="highlight"><pre><span></span><code>interface ConsentEngine {
+  checkConsent(userId, consentType, dataCategory): Promise&lt;boolean&gt;;
+  requestConsent(userId, consentType, scope): Promise&lt;ConsentRequest&gt;;
+  verifyConsent(consentId, verificationData): Promise&lt;boolean&gt;;
+  withdrawConsent(userId, consentType): Promise&lt;void&gt;;
+  getConsentHistory(userId): Promise&lt;ConsentRecord[]&gt;;
+}
+</code></pre></div>
+<p><strong>Consent Types</strong>:
+- <code>PARENTAL_CONSENT</code> — Verifiable parental consent for minors
+- <code>DISCLOSURE_CONSENT</code> — Authorization for data disclosure
+- <code>DATA_PROCESSING_AUTHORIZATION</code> — Sensitive data processing authorization
+- <code>AI_PROCESSING</code> — General AI processing consent
+- <code>DATA_RETENTION</code> — Consent for data storage beyond session</p>
+<p><strong>Parental Consent Verification Methods</strong>:
+- Credit card micro-transaction
+- Knowledge-based authentication
+- Government ID verification
+- Video call verification</p>
+<p><strong>2. Cost Engine</strong></p>
+<p>Extends the <a href="../llm-gateway-layer/#1-cost-tracking--budget-management-">LLM Gateway Layer's built-in cost tracking</a> with governance-specific capabilities.</p>
+<blockquote>
+<p>📖 <strong>Gateway Provides</strong>: Per-request cost calculation, virtual key budgets, spend tracking database, per-team/per-key limits. See <a href="../llm-gateway-layer/#1-cost-tracking--budget-management-">LLM Gateway Layer Cost Tracking</a> for implementation details and code examples.</p>
+</blockquote>
+<p><strong>Governance Framework Adds</strong>:</p>
+<div class="highlight"><pre><span></span><code>interface GovernanceCostEngine {
+  // ── PROACTIVE (before LLM call) ──
+  // Query gateway for current spend, trigger warning alerts
+  checkBudgetStatus(tenantId): Promise&lt;BudgetStatus&gt;;
+  checkAlertThreshold(tenantId): Promise&lt;AlertStatus&gt;;
+
+  // ── REACTIVE (after LLM call / on-demand) ──
+  // Query gateway data for compliance reporting (no duplication)
+  queryGatewaySpend(tenantId, dateRange): Promise&lt;SpendData&gt;;
+  getUsageSummary(tenantId, domainProfile?, dateRange): Promise&lt;UsageSummary&gt;;
+  generateCostReport(tenantId, regulation, dateRange): Promise&lt;CostReport&gt;;
+
+  // ── CONFIGURATION ──
+  configureAlerts(tenantId, alertConfig): Promise&lt;void&gt;;
+  getAlertHistory(tenantId): Promise&lt;AlertEvent[]&gt;;
+}
+</code></pre></div>
+<blockquote>
+<p>🔑 <strong>Key Principle</strong>: Cost Engine <strong>QUERIES</strong> the Gateway—it does NOT duplicate storage. All cost/usage data lives in <code>LiteLLM_SpendLogs</code>.</p>
+</blockquote>
+<p><strong>Proactive vs Reactive Behavior</strong>:
+| Behavior | When | What Happens |
+|----------|------|--------------|
+| <strong>Proactive</strong> | Before LLM call | Query Gateway spend → check against <code>governance_alert_config</code> → send warning if &gt;80% |
+| <strong>Reactive</strong> | After LLM call | Gateway records cost automatically; governance queries for reports |</p>
+<p><strong>Governance-Specific Extensions</strong>:
+| Capability | Gateway (LiteLLM) | Governance Framework Adds |
+|------------|-------------------|---------------------------|
+| Cost calculation | ✅ Per-request automatic | — (use gateway) |
+| Budget enforcement | ✅ Per-key/team <strong>blocking</strong> | <strong>Proactive</strong>: Alert thresholds before blocking (80% warning) |
+| Spend tracking | ✅ PostgreSQL tables | — (query gateway, don't duplicate) |
+| Reporting | Basic spend queries | <strong>Reactive</strong>: Compliance-formatted reports per domain |
+| Attribution | Team/key level | <strong>Reactive</strong>: User + domain profile + regulation context in reports |</p>
+<p><strong>3. Safety Engine</strong></p>
+<p>Extends the <a href="../llm-gateway-layer/#2-guardrails--content-safety-">LLM Gateway Layer's built-in guardrails</a> with domain-specific safety logic.</p>
+<blockquote>
+<p>📖 <strong>Gateway Provides</strong>: Generic PII detection (Presidio), prompt injection protection (Lakera), content moderation (OpenAI Moderation, LlamaGuard), custom guardrail hooks. See <a href="../llm-gateway-layer/#2-guardrails--content-safety-">LLM Gateway Layer Guardrails</a> for implementation details and configuration examples.</p>
+</blockquote>
+<p><strong>Governance Framework Adds</strong>:</p>
+<div class="highlight"><pre><span></span><code>interface GovernanceSafetyEngine {
+  // ── PROACTIVE (before LLM call) ──
+  // Domain-specific PII beyond gateway&#39;s generic detection
+  detectDomainPII(text, domainProfile): Promise&lt;DomainPIIDetection[]&gt;;
+  // Reversible anonymization (gateway&#39;s Presidio is one-way)
+  anonymizeWithMapping(text, detections): Promise&lt;{text: string, mapping: AnonymizationMapping}&gt;;
+  // Domain-specific topic compliance
+  checkTopicCompliance(text, domainProfile): Promise&lt;TopicResult&gt;;
+  // Age-appropriate content filtering
+  checkAgeAppropriateness(text, userAge): Promise&lt;AgeComplianceResult&gt;;
+
+  // ── REACTIVE (after LLM call) ──
+  // Restore original values in response using stored mapping
+  deanonymize(text, mappingId): string;
+  // Check response for PHI disclosure
+  checkResponseCompliance(response, domainProfile): Promise&lt;ComplianceResult&gt;;
+}
+</code></pre></div>
+<blockquote>
+<p>🔑 <strong>Key Principle</strong>: Safety Engine adds <strong>domain-specific</strong> detection (PHI, education records) ON TOP of Gateway's generic PII. It also provides <strong>reversible anonymization</strong> with mapping storage.</p>
+</blockquote>
+<p><strong>Proactive vs Reactive Behavior</strong>:
+| Behavior | When | What Happens |
+|----------|------|--------------|
+| <strong>Proactive</strong> | Before LLM call | Detect domain PII → anonymize with mapping → store mapping → send to Gateway |
+| <strong>Reactive</strong> | After LLM call | Retrieve mapping → deanonymize response → check for unauthorized disclosure |</p>
+<p><strong>Governance-Specific Extensions</strong>:
+| Capability | Gateway (LiteLLM) | Governance Framework Adds |
+|------------|-------------------|---------------------------|
+| Generic PII (name, email, phone) | ✅ Presidio integration | — (use gateway) |
+| PHI detection (healthcare identifiers) | ❌ Not domain-aware | <strong>Proactive</strong>: <code>PHIFilterGuard</code> with MRN, conditions, medications |
+| Education PII (student ID, grades) | ❌ Not domain-aware | <strong>Proactive</strong>: <code>EducationDataGuard</code> with education-specific entities |
+| Content moderation | ✅ OpenAI/LlamaGuard | — (use gateway) |
+| Prompt injection | ✅ Lakera integration | — (use gateway) |
+| Topic restrictions | ❌ Generic only | <strong>Proactive</strong>: Domain-specific topic lists per profile |
+| Age-appropriate content | ❌ Not available | <strong>Proactive</strong>: <code>MinorDataGuard</code> for minor data protection |
+| Reversible anonymization | ❌ One-way only | <strong>Proactive + Reactive</strong>: Mapping storage → deanonymization |
+| Response compliance | ❌ Not available | <strong>Reactive</strong>: PHI disclosure check, minor data protection |</p>
+<p><strong>4. Audit Engine</strong></p>
+<p>Extends the <a href="../llm-gateway-layer/#4-audit-logging--observability-">LLM Gateway Layer's logging</a> with compliance-specific audit trails.</p>
+<blockquote>
+<p>📖 <strong>Gateway Provides</strong>: Request/response metadata, token counts, costs, latency, model used, error details, callbacks to observability platforms (Langfuse, Prometheus, OpenTelemetry). See <a href="../llm-gateway-layer/#4-audit-logging--observability-">LLM Gateway Layer Audit Logging</a> for implementation details and observability setup.</p>
+</blockquote>
+<p><strong>Governance Framework Adds</strong>:</p>
+<div class="highlight"><pre><span></span><code>interface GovernanceAuditEngine {
+  // ── REACTIVE (during/after request processing) ──
+  // Log governance-specific events (not LLM call metadata)
+  logConsentEvent(event: ConsentEvent): Promise&lt;string&gt;;
+  logGuardDecision(context: GovernanceContext, result: GuardResult): Promise&lt;string&gt;;
+  logPIIEvent(event: PIIEvent): Promise&lt;string&gt;;
+
+  // Link governance audit to gateway logs (via gateway_request_id)
+  linkToGatewayLog(governanceEventId, gatewayRequestId): Promise&lt;void&gt;;
+
+  // ── ON-DEMAND (compliance reporting) ──
+  // Query governance events + gateway logs for unified reports
+  generateComplianceReport(tenantId, regulation, dateRange): Promise&lt;ComplianceReport&gt;;
+  exportForRegulator(tenantId, regulation, dateRange): Promise&lt;RegulatoryExport&gt;;
+
+  // ── SCHEDULED (background jobs) ──
+  // Retention policy enforcement per regulation
+  enforceRetention(regulation): Promise&lt;RetentionResult&gt;;
+  // Breach detection patterns
+  detectAnomalies(tenantId, dateRange): Promise&lt;AnomalyReport&gt;;
+}
+</code></pre></div>
+<blockquote>
+<p>🔑 <strong>Key Principle</strong>: Audit Engine logs <strong>governance-specific events</strong> (consent, guards, PII handling) to <code>governance_audit_events</code>. It links to Gateway logs via <code>gateway_request_id</code> for unified compliance reporting—it does NOT duplicate LLM call data.</p>
+</blockquote>
+<p><strong>Proactive vs Reactive Behavior</strong>:
+| Behavior | When | What Happens |
+|----------|------|--------------|
+| <strong>Reactive</strong> | During request | Log consent checks, guard decisions, PII detection events |
+| <strong>Reactive</strong> | After request | Link governance event to Gateway log via <code>gateway_request_id</code> |
+| <strong>On-Demand</strong> | Compliance audit | Query governance events + Gateway logs → generate unified report |
+| <strong>Scheduled</strong> | Background | Enforce retention policies, detect anomalies/breaches |</p>
+<p><strong>Governance-Specific Extensions</strong>:
+| Capability | Gateway (LiteLLM) | Governance Framework Adds |
+|------------|-------------------|---------------------------|
+| LLM call logging | ✅ Full request/response | — (use gateway) |
+| Token/cost tracking | ✅ Per-request automatic | — (use gateway) |
+| Latency metrics | ✅ Built-in | — (use gateway) |
+| Observability export | ✅ Langfuse, Prometheus | — (use gateway) |
+| Consent events | ❌ Not tracked | <strong>Reactive</strong>: <code>CONSENT_CHECKED</code>, <code>CONSENT_GRANTED</code>, <code>CONSENT_WITHDRAWN</code> |
+| Guard decisions | ❌ Not tracked | <strong>Reactive</strong>: <code>REQUEST_BLOCKED</code>, <code>REQUEST_MODIFIED</code>, <code>ESCALATION_TRIGGERED</code> |
+| PII detection events | ❌ Not tracked | <strong>Reactive</strong>: <code>PII_DETECTED</code>, <code>PII_ANONYMIZED</code>, <code>PII_DEANONYMIZED</code> |
+| Compliance reports | ❌ Generic queries only | <strong>On-Demand</strong>: Domain-specific audit reports, disclosure logs |
+| Regulatory retention | ❌ Not enforced | <strong>Scheduled</strong>: Configurable retention per domain profile |
+| Breach detection | ❌ Not available | <strong>Scheduled</strong>: Unusual access patterns, unauthorized disclosure alerts |</p>
+<h3 id="policy-configuration-layer">Policy &amp; Configuration Layer<a class="headerlink" href="#policy-configuration-layer" title="Permanent link">&para;</a></h3>
+<p><strong>Domain Profiles</strong>:</p>
+<p>Domain profiles use YAML schema with regulatory mappings and tenant configuration.</p>
+<div class="highlight"><pre><span></span><code><span class="nt">domain_profile</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">health_byoeb</span>
+<span class="nt">domain_type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">healthcare</span>
+<span class="nt">pii_types</span><span class="p">:</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">name</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">dob</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ssn</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">mrn</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">health_condition</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">medication</span>
+<span class="nt">consent_required</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+<span class="nt">consent_types</span><span class="p">:</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">DATA_PROCESSING_AUTHORIZATION</span>
+<span class="nt">audit_level</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">full</span>
+<span class="nt">retention_years</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">6</span>
+<span class="nt">guards</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">request</span><span class="p">:</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">DataProcessingAuthorizationGuard</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">PHIFilterGuard</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">BudgetGuard</span>
+<span class="w">  </span><span class="nt">response</span><span class="p">:</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">PHIDisclosureGuard</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">HallucinationDetectionGuard</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="nt">domain_profile</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">education_shiksha</span>
+<span class="nt">domain_type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">education</span>
+<span class="nt">pii_types</span><span class="p">:</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">name</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">dob</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">student_id</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">grades</span>
+<span class="nt">age_gate_threshold</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">13</span>
+<span class="nt">parental_consent_required</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+<span class="nt">consent_types</span><span class="p">:</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">PARENTAL_CONSENT</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">DISCLOSURE_CONSENT</span>
+<span class="nt">audit_level</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">full</span>
+<span class="nt">retention_years</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">5</span>
+<span class="nt">guards</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">request</span><span class="p">:</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ParentalConsentGuard</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">PIIDetectionGuard</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">TopicRestrictionGuard</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">BudgetGuard</span>
+<span class="w">  </span><span class="nt">response</span><span class="p">:</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">MinorDataGuard</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ContentModerationGuard</span>
+</code></pre></div>
+<h3 id="governance-pipeline-orchestration">Governance Pipeline Orchestration<a class="headerlink" href="#governance-pipeline-orchestration" title="Permanent link">&para;</a></h3>
+<p><strong>Static Orchestration with Policy-Driven Guards</strong>:</p>
+<p>The governance framework uses <strong>declarative, static pipelines</strong> — NOT LLM-driven decision-making for governance. This is deliberate:</p>
+<table>
+<thead>
+<tr>
+<th>Aspect</th>
+<th>Our Approach</th>
+<th>Alternative (LLM Governance)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Guard sequencing</strong></td>
+<td>Defined in config, runs deterministically</td>
+<td>LLM decides which guards to apply</td>
+</tr>
+<tr>
+<td><strong>LLM usage</strong></td>
+<td>Only within safety engines (e.g., content moderation)</td>
+<td>Also for policy decisions</td>
+</tr>
+<tr>
+<td><strong>Predictability</strong></td>
+<td>High — same request gets same governance</td>
+<td>Variable — LLM may interpret policies differently</td>
+</tr>
+<tr>
+<td><strong>Auditability</strong></td>
+<td>Full — policy version = exact behavior</td>
+<td>Partial — depends on LLM reasoning</td>
+</tr>
+<tr>
+<td><strong>Compliance</strong></td>
+<td>Provable — regulators can verify logic</td>
+<td>Uncertain — LLM decisions are opaque</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Why static orchestration?</strong></p>
+<ul>
+<li>Governance requires <strong>predictability</strong> — the same request must be treated the same way.</li>
+<li>Compliance audits require <strong>provable behavior</strong> — we must show exactly what logic was applied.</li>
+<li>Guards are already <strong>policy-rich</strong> — they encode regulatory requirements, not general reasoning.</li>
+<li>Cost-efficient: No reasoning overhead for clear-cut compliance decisions.</li>
+</ul>
+<p>Example pipeline configuration:</p>
+<div class="highlight"><pre><span></span><code><span class="nt">governance_pipeline</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">byoeb_healthcare_v1</span>
+<span class="nt">domain_profile</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">health_byoeb</span>
+<span class="nt">request_guards</span><span class="p">:</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">guard</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">DataProcessingAuthorizationGuard</span>
+<span class="w">    </span><span class="nt">config</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">{</span><span class="nt"> authorization_types</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">&quot;treatment&quot;</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">&quot;payment&quot;</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">&quot;operations&quot;</span><span class="p p-Indicator">]</span><span class="w"> </span><span class="p p-Indicator">}</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">guard</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">PHIFilterGuard</span>
+<span class="w">    </span><span class="nt">config</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">{</span><span class="nt"> anonymize</span><span class="p">:</span><span class="w"> </span><span class="nv">true</span><span class="p p-Indicator">,</span><span class="nt"> hash_algorithm</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;sha256&quot;</span><span class="w"> </span><span class="p p-Indicator">}</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">guard</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">BudgetGuard</span>
+<span class="w">    </span><span class="nt">config</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">{</span><span class="nt"> check_user</span><span class="p">:</span><span class="w"> </span><span class="nv">true</span><span class="p p-Indicator">,</span><span class="nt"> check_tenant</span><span class="p">:</span><span class="w"> </span><span class="nv">true</span><span class="w"> </span><span class="p p-Indicator">}</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">guard</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ContentModerationGuard</span>
+<span class="nt">response_guards</span><span class="p">:</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">guard</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">PHIDisclosureGuard</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">guard</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">DeAnonymizationGuard</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">guard</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">HallucinationDetectionGuard</span>
+<span class="w">    </span><span class="nt">config</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">{</span><span class="nt"> threshold</span><span class="p">:</span><span class="w"> </span><span class="nv">0.7</span><span class="w"> </span><span class="p p-Indicator">}</span>
+<span class="nt">engines</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">consent</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">store</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">postgres</span>
+<span class="w">    </span><span class="nt">verification_methods</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">&quot;knowledge_based&quot;</span><span class="p p-Indicator">]</span>
+<span class="w">  </span><span class="nt">cost</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">pricing_version</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;2024-12&quot;</span>
+<span class="w">    </span><span class="nt">daily_budget</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">100</span>
+<span class="w">    </span><span class="nt">monthly_budget</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">2000</span>
+<span class="w">  </span><span class="nt">audit</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">retention_days</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">365</span>
+<span class="w">    </span><span class="nt">export_format</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">json</span>
+</code></pre></div>
+<h3 id="storage-registration-layer">Storage &amp; Registration Layer<a class="headerlink" href="#storage-registration-layer" title="Permanent link">&para;</a></h3>
+<blockquote>
+<p>📖 <strong>Storage Split</strong>: Usage/cost data lives in the <a href="../llm-gateway-layer/">LLM Gateway's database</a>. Governance maintains separate stores for compliance-specific data.</p>
+</blockquote>
+<p><strong>Governance-Specific Stores</strong> (not in gateway):</p>
+<p><strong>1. Consent Store</strong></p>
+<div class="highlight"><pre><span></span><code>interface ConsentStore {
+  save(consent: ConsentRecord): Promise&lt;void&gt;;
+  getActiveConsent(userId, consentType): Promise&lt;ConsentRecord | null&gt;;
+  getConsentHistory(userId): Promise&lt;ConsentRecord[]&gt;;
+  update(consent: ConsentRecord): Promise&lt;void&gt;;
+}
+</code></pre></div>
+<ul>
+<li>Implementation: PostgreSQL <code>consent_records</code> table with encryption at rest</li>
+<li>Retention: Per domain profile configuration (e.g., healthcare: 6 years, education: 5 years)</li>
+</ul>
+<p><strong>2. Governance Audit Store</strong> (not LLM call logs)</p>
+<div class="highlight"><pre><span></span><code>interface GovernanceAuditStore {
+  logGovernanceEvent(event: GovernanceAuditEvent): Promise&lt;void&gt;;
+  getConsentEvents(tenantId, userId?, dateRange): Promise&lt;ConsentEvent[]&gt;;
+  getGuardDecisions(tenantId, dateRange): Promise&lt;GuardDecision[]&gt;;
+  exportComplianceReport(tenantId, regulation, dateRange): Promise&lt;ExportResult&gt;;
+}
+</code></pre></div>
+<ul>
+<li>Implementation: PostgreSQL <code>governance_audit_events</code> table</li>
+<li>Retention: Per domain profile configuration</li>
+<li><em>Note</em>: LLM request/response logs are in the gateway's <code>LiteLLM_SpendLogs</code></li>
+</ul>
+<p><strong>3. Anonymization Mapping Store</strong></p>
+<div class="highlight"><pre><span></span><code>interface AnonymizationStore {
+  saveMapping(requestId, mapping): Promise&lt;string&gt;;
+  getMapping(mappingId): Promise&lt;AnonymizationMapping | null&gt;;
+  expireMapping(mappingId): Promise&lt;void&gt;;
+}
+</code></pre></div>
+<ul>
+<li>Implementation: PostgreSQL <code>anonymization_mappings</code> table</li>
+<li>Short-lived: Mappings expire after response delivery</li>
+</ul>
+<p><strong>4. Policy Store</strong></p>
+<div class="highlight"><pre><span></span><code>interface PolicyStore {
+  getDomainProfile(profileName): Promise&lt;DomainProfile&gt;;
+  getGovernancePipeline(pipelineName): Promise&lt;GovernancePipeline&gt;;
+  getTenantConfig(tenantId): Promise&lt;TenantConfig&gt;;
+}
+</code></pre></div>
+<ul>
+<li>Implementation: YAML files in git (versioned) + runtime cache</li>
+<li>Tenant overrides stored in PostgreSQL</li>
+</ul>
+<p><strong>Gateway Data Access</strong> (query, don't duplicate):</p>
+<div class="highlight"><pre><span></span><code>interface GatewayDataAccess {
+  // Query LiteLLM&#39;s spend tracking
+  getTenantSpend(tenantId, dateRange): Promise&lt;SpendSummary&gt;;
+  getUserSpend(userId, tenantId, dateRange): Promise&lt;SpendSummary&gt;;
+
+  // Query LiteLLM&#39;s request logs for compliance reports
+  getRequestLogs(tenantId, dateRange, filters?): Promise&lt;RequestLog[]&gt;;
+}
+</code></pre></div>
+<ul>
+<li>Implementation: Read-only queries against LiteLLM's PostgreSQL tables</li>
+<li>Used for: Compliance cost reports, usage attribution</li>
+</ul>
+<h3 id="multi-tenant-support">Multi-Tenant Support<a class="headerlink" href="#multi-tenant-support" title="Permanent link">&para;</a></h3>
+<p>Every governance operation is scoped to a tenant:</p>
+<ul>
+<li><code>tenant.slug</code> determines storage partitions (consent, usage, audit tables)</li>
+<li>Tenant-specific budget limits and policy overrides</li>
+<li>Tenant-specific consent configurations</li>
+</ul>
+<p><strong>Tenant–Profile Relationship</strong>:</p>
+<p>A single tenant can operate across multiple domain profiles. For example, a healthcare education company might use:
+- <code>health_byoeb</code> profile for patient-facing content
+- <code>education_shiksha</code> profile for provider training content</p>
+<p>The governance context carries both <code>tenant_id</code> and <code>domain_profile</code>, allowing:
+- Shared billing and usage tracking across profiles
+- Profile-specific consent and compliance requirements
+- Unified audit trail across all interactions</p>
+<h3 id="how-this-hooks-back-into-the-agentic-layer">How This Hooks Back into the Agentic Layer<a class="headerlink" href="#how-this-hooks-back-into-the-agentic-layer" title="Permanent link">&para;</a></h3>
+<blockquote>
+<p>📖 <strong>Gateway Internals</strong>: For detailed Gateway architecture and internals, see <a href="../llm-gateway-layer/#recommended-architecture">LLM Gateway Layer Architecture</a>.</p>
+</blockquote>
+<p>From the Agent Orchestrator's point of view, Governance is a <strong>wrapper</strong> that layers on top of the LLM Gateway:</p>
+<div class="highlight"><pre><span></span><code>┌─────────────────────────────────────────────────────────────┐
+│                    Agent Orchestrator                        │
+│                           │                                  │
+│                           ▼                                  │
+│  ┌─────────────────────────────────────────────────────────┐│
+│  │           GovernedLLMClient (This Framework)            ││
+│  │  ┌─────────────────────────────────────────────────────┐││
+│  │  │ Governance-Specific (NOT in Gateway)                │││
+│  │  │ • Consent verification (parental, data processing)  │││
+│  │  │ • Domain PII guards (PHI, education records)        │││
+│  │  │ • Topic restrictions per domain profile             │││
+│  │  │ • Governance audit events (consent, guard decisions)│││
+│  │  │ • Compliance reporting &amp; regulatory exports         │││
+│  │  │ • Reversible anonymization with mapping             │││
+│  │  └─────────────────────────────────────────────────────┘││
+│  │                           │                              ││
+│  │                           ▼                              ││
+│  │  ┌─────────────────────────────────────────────────────┐││
+│  │  │ LLM Gateway Layer (LiteLLM) - See separate doc      │││
+│  │  │ • Unified API (OpenAI-compatible)                   │││
+│  │  │ • Multi-provider routing &amp; failover                 │││
+│  │  │ • Per-request cost calculation                      │││
+│  │  │ • Budget enforcement (per-key/team)                 │││
+│  │  │ • Generic PII detection (Presidio)                  │││
+│  │  │ • Content moderation (OpenAI, LlamaGuard)           │││
+│  │  │ • Request/response logging to observability         │││
+│  │  └─────────────────────────────────────────────────────┘││
+│  └─────────────────────────────────────────────────────────┘│
+│                           │                                  │
+│                           ▼                                  │
+│              LLM Providers (Azure, Anthropic, etc.)          │
+└─────────────────────────────────────────────────────────────┘
+</code></pre></div>
+<p><strong>Governance-Specific Tools</strong> (not provided by gateway):</p>
+<ul>
+<li>Tool: <code>check_consent</code></li>
+<li>Inputs: { <code>user_id</code>, <code>consent_type</code>, <code>data_category</code> }</li>
+<li>Output: { <code>has_consent</code>, <code>reason</code> }</li>
+<li>
+<p><em>Why governance-specific</em>: Domain-specific consent tracking (parental, data processing authorization)</p>
+</li>
+<li>
+<p>Tool: <code>check_domain_compliance</code></p>
+</li>
+<li>Inputs: { <code>text</code>, <code>domain_profile</code> }</li>
+<li>Output: { <code>compliant</code>, <code>violations[]</code> }</li>
+<li>
+<p><em>Why governance-specific</em>: Domain-aware rules (PHI handling, age-appropriate content)</p>
+</li>
+<li>
+<p>Tool: <code>anonymize_with_mapping</code></p>
+</li>
+<li>Inputs: { <code>text</code>, <code>domain_profile</code> }</li>
+<li>Output: { <code>anonymized_text</code>, <code>mapping</code> }</li>
+<li>
+<p><em>Why governance-specific</em>: Reversible anonymization for response restoration</p>
+</li>
+<li>
+<p>Tool: <code>log_governance_event</code></p>
+</li>
+<li>Inputs: { <code>event_type</code>, <code>context</code>, <code>details</code> }</li>
+<li>Output: { <code>event_id</code> }</li>
+<li><em>Why governance-specific</em>: Compliance audit trail (consent events, guard decisions)</li>
+</ul>
+<p>This gives one <strong>Governance interface</strong> for all three systems &amp; any new ones, while leveraging the <a href="../llm-gateway-layer/">LLM Gateway Layer</a> for foundational LLM operations.</p>
+<h2 id="backward-compatibility-versioning-strategy">Backward Compatibility &amp; Versioning Strategy<a class="headerlink" href="#backward-compatibility-versioning-strategy" title="Permanent link">&para;</a></h2>
+<h3 id="register-current-safety-mechanisms-as-v0x-profiles">Register Current Safety Mechanisms as v0.x Profiles<a class="headerlink" href="#register-current-safety-mechanisms-as-v0x-profiles" title="Permanent link">&para;</a></h3>
+<p><strong>BYOEB</strong>
+- Current prompt engineering and content validation becomes profile <code>byoeb_health</code> version <code>0.1</code>
+- MD5 hashing of user IDs continues; governance adds PHI detection layer on top
+- Existing rate limiting becomes part of <code>BudgetGuard</code></p>
+<p><strong>Shiksha Copilot</strong>
+- Current topic restrictions in prompts become <code>TopicRestrictionGuard</code>
+- Existing Azure auth becomes identity provider for consent checks
+- Token tracking in logs becomes formal cost tracking</p>
+<p><strong>SEEDS</strong>
+- Currently AI-free; governance prepares for future AI features
+- Phone number handling gets PII detection
+- Rate limiting becomes formal budget control</p>
+<h3 id="introducing-v1x-profiles">Introducing v1.x Profiles<a class="headerlink" href="#introducing-v1x-profiles" title="Permanent link">&para;</a></h3>
+<p>For each domain we can then evolve:</p>
+<hr />
+<p><strong>byoeb_health v1.0</strong>: Adds healthcare compliance layer.</p>
+<p><em>Guards:</em>
+- <code>DataProcessingAuthorizationGuard</code> — Check authorization before PHI access
+- <code>PHIFilterGuard</code> — Detect and anonymize healthcare identifiers
+- <code>PHIDisclosureGuard</code> — Prevent unauthorized PHI in responses</p>
+<p><em>Engines:</em>
+- <code>ConsentEngine</code> with data processing authorization tracking
+- <code>AuditEngine</code> with configurable retention and breach detection</p>
+<hr />
+<p><strong>shiksha_education v1.0</strong>: Adds education compliance layer.</p>
+<p><em>Guards:</em>
+- <code>ParentalConsentGuard</code> — Verify parental consent for minors
+- <code>AgeVerificationGuard</code> — Age-gate before collecting data
+- <code>DisclosureConsentGuard</code> — Track education record disclosures</p>
+<p><em>Engines:</em>
+- <code>ConsentEngine</code> with parental verification workflow
+- <code>AuditEngine</code> with disclosure logging</p>
+<hr />
+<p><strong>seeds_accessibility v1.0</strong>: Extends education profile for future AI features.</p>
+<p><em>Guards:</em>
+- Inherits education guards
+- <code>VoiceConsentGuard</code> — Verbal consent for IVR interactions</p>
+<p><em>Engines:</em>
+- <code>ConsentEngine</code> adapted for voice channel
+- <code>AuditEngine</code> with call metadata</p>
+<hr />
+<p><strong>generic_governance v1.0</strong>: A starter profile for new applications.</p>
+<div class="highlight"><pre><span></span><code><span class="nt">governance_pipeline</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">generic_v1</span>
+<span class="nt">domain_profile</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">generic</span>
+<span class="nt">request_guards</span><span class="p">:</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">guard</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">PIIDetectionGuard</span>
+<span class="w">    </span><span class="nt">config</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">{</span><span class="nt"> pii_types</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">&quot;name&quot;</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">&quot;email&quot;</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">&quot;phone&quot;</span><span class="p p-Indicator">]</span><span class="w"> </span><span class="p p-Indicator">}</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">guard</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">BudgetGuard</span>
+<span class="w">    </span><span class="nt">config</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">{</span><span class="nt"> daily_limit</span><span class="p">:</span><span class="w"> </span><span class="nv">100</span><span class="p p-Indicator">,</span><span class="nt"> monthly_limit</span><span class="p">:</span><span class="w"> </span><span class="nv">2000</span><span class="w"> </span><span class="p p-Indicator">}</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">guard</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ContentModerationGuard</span>
+<span class="nt">response_guards</span><span class="p">:</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">guard</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ContentModerationGuard</span>
+<span class="nt">engines</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">cost</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">daily_budget</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">100</span>
+<span class="w">    </span><span class="nt">monthly_budget</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">2000</span>
+<span class="w">  </span><span class="nt">audit</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">retention_days</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">90</span>
+</code></pre></div>
+<p>New applications can:
+1. <strong>Start with generic_v1</strong> to get basic governance immediately
+2. <strong>Fork and customize</strong> — add domain-specific guards, adjust policies
+3. <strong>Graduate to a named profile</strong> — register as <code>myapp_v1</code> with specific requirements</p>
+<h2 id="low-level-design">Low Level Design<a class="headerlink" href="#low-level-design" title="Permanent link">&para;</a></h2>
+<h3 id="database-architecture">Database Architecture<a class="headerlink" href="#database-architecture" title="Permanent link">&para;</a></h3>
+<blockquote>
+<p>⚠️ <strong>Gateway vs Governance Storage</strong>: The <a href="../llm-gateway-layer/">LLM Gateway Layer (LiteLLM)</a> maintains its own PostgreSQL database for spend tracking, usage records, and request logging. The governance framework maintains <strong>separate tables</strong> for compliance-specific data that the gateway doesn't track.</p>
+</blockquote>
+<h4 id="what-the-gateway-already-stores">What the Gateway Already Stores<a class="headerlink" href="#what-the-gateway-already-stores" title="Permanent link">&para;</a></h4>
+<blockquote>
+<p>📖 <strong>Gateway Logging Details</strong>: For what data the Gateway logs and how to configure observability, see <a href="../llm-gateway-layer/#4-audit-logging--observability-">LLM Gateway Layer Audit Logging</a>.</p>
+</blockquote>
+<p>The LLM Gateway (LiteLLM) provides these tables out-of-the-box — <strong>do not duplicate</strong>:</p>
+<table>
+<thead>
+<tr>
+<th>LiteLLM Table</th>
+<th>Purpose</th>
+<th>Governance Access</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>LiteLLM_SpendLogs</code></td>
+<td>Per-request cost, tokens, model, latency</td>
+<td>Query for compliance reports</td>
+</tr>
+<tr>
+<td><code>LiteLLM_UserTable</code></td>
+<td>User spend totals, budgets</td>
+<td>Query for budget status</td>
+</tr>
+<tr>
+<td><code>LiteLLM_TeamTable</code></td>
+<td>Team/tenant spend, limits</td>
+<td>Map to governance tenants</td>
+</tr>
+<tr>
+<td><code>LiteLLM_VerificationToken</code></td>
+<td>Virtual keys with budgets</td>
+<td>Manage via LiteLLM API</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Integration Pattern</strong>: Query LiteLLM's database for cost/usage data; don't maintain separate usage tables.</p>
+<h4 id="governance-specific-tables">Governance-Specific Tables<a class="headerlink" href="#governance-specific-tables" title="Permanent link">&para;</a></h4>
+<p>These tables store data the gateway <strong>cannot provide</strong>:</p>
+<p><strong>tenants</strong> (shared with Ingestion Framework)
+<div class="highlight"><pre><span></span><code><span class="k">CREATE</span><span class="w"> </span><span class="k">TABLE</span><span class="w"> </span><span class="n">tenants</span><span class="w"> </span><span class="p">(</span>
+<span class="w">  </span><span class="n">id</span><span class="w">            </span><span class="n">UUID</span><span class="w"> </span><span class="k">PRIMARY</span><span class="w"> </span><span class="k">KEY</span><span class="p">,</span>
+<span class="w">  </span><span class="n">slug</span><span class="w">          </span><span class="nb">TEXT</span><span class="w"> </span><span class="k">UNIQUE</span><span class="w"> </span><span class="k">NOT</span><span class="w"> </span><span class="k">NULL</span><span class="p">,</span>
+<span class="w">  </span><span class="n">display_name</span><span class="w">  </span><span class="nb">TEXT</span><span class="w"> </span><span class="k">NOT</span><span class="w"> </span><span class="k">NULL</span><span class="p">,</span>
+<span class="w">  </span><span class="n">litellm_team_id</span><span class="w"> </span><span class="nb">TEXT</span><span class="p">,</span><span class="w">                       </span><span class="c1">-- Maps to LiteLLM team for spend queries</span>
+<span class="w">  </span><span class="n">created_at</span><span class="w">    </span><span class="n">TIMESTAMPTZ</span><span class="w"> </span><span class="k">NOT</span><span class="w"> </span><span class="k">NULL</span><span class="w"> </span><span class="k">DEFAULT</span><span class="w"> </span><span class="n">now</span><span class="p">()</span>
+<span class="p">);</span>
+</code></pre></div></p>
+<p><strong>consent_records</strong> — regulatory consent tracking <em>(not in gateway)</em>
+<div class="highlight"><pre><span></span><code><span class="k">CREATE</span><span class="w"> </span><span class="k">TABLE</span><span class="w"> </span><span class="n">consent_records</span><span class="w"> </span><span class="p">(</span>
+<span class="w">  </span><span class="n">id</span><span class="w">                  </span><span class="n">UUID</span><span class="w"> </span><span class="k">PRIMARY</span><span class="w"> </span><span class="k">KEY</span><span class="p">,</span>
+<span class="w">  </span><span class="n">tenant_id</span><span class="w">           </span><span class="n">UUID</span><span class="w"> </span><span class="k">REFERENCES</span><span class="w"> </span><span class="n">tenants</span><span class="p">(</span><span class="n">id</span><span class="p">),</span>
+<span class="w">  </span><span class="n">user_id</span><span class="w">             </span><span class="nb">TEXT</span><span class="w"> </span><span class="k">NOT</span><span class="w"> </span><span class="k">NULL</span><span class="p">,</span>
+<span class="w">  </span><span class="n">consent_type</span><span class="w">        </span><span class="nb">TEXT</span><span class="w"> </span><span class="k">NOT</span><span class="w"> </span><span class="k">NULL</span><span class="p">,</span><span class="w">           </span><span class="c1">-- &#39;PARENTAL_CONSENT&#39;, &#39;DATA_PROCESSING_AUTHORIZATION&#39;, &#39;DISCLOSURE_CONSENT&#39;</span>
+<span class="w">  </span><span class="n">status</span><span class="w">              </span><span class="nb">TEXT</span><span class="w"> </span><span class="k">NOT</span><span class="w"> </span><span class="k">NULL</span><span class="p">,</span><span class="w">           </span><span class="c1">-- &#39;pending&#39;, &#39;granted&#39;, &#39;denied&#39;, &#39;withdrawn&#39;, &#39;expired&#39;</span>
+<span class="w">  </span><span class="n">data_categories</span><span class="w">     </span><span class="n">JSONB</span><span class="w"> </span><span class="k">NOT</span><span class="w"> </span><span class="k">NULL</span><span class="p">,</span><span class="w">          </span><span class="c1">-- [&#39;ai_processing&#39;, &#39;phi_access&#39;]</span>
+<span class="w">  </span><span class="n">processing_purposes</span><span class="w"> </span><span class="n">JSONB</span><span class="w"> </span><span class="k">NOT</span><span class="w"> </span><span class="k">NULL</span><span class="p">,</span>
+<span class="w">  </span><span class="n">third_parties</span><span class="w">       </span><span class="n">JSONB</span><span class="p">,</span>
+<span class="w">  </span><span class="n">requested_at</span><span class="w">        </span><span class="n">TIMESTAMPTZ</span><span class="w"> </span><span class="k">NOT</span><span class="w"> </span><span class="k">NULL</span><span class="w"> </span><span class="k">DEFAULT</span><span class="w"> </span><span class="n">now</span><span class="p">(),</span>
+<span class="w">  </span><span class="n">granted_at</span><span class="w">          </span><span class="n">TIMESTAMPTZ</span><span class="p">,</span>
+<span class="w">  </span><span class="n">expires_at</span><span class="w">          </span><span class="n">TIMESTAMPTZ</span><span class="p">,</span>
+<span class="w">  </span><span class="n">withdrawn_at</span><span class="w">        </span><span class="n">TIMESTAMPTZ</span><span class="p">,</span>
+<span class="w">  </span><span class="n">verification_method</span><span class="w"> </span><span class="nb">TEXT</span><span class="p">,</span><span class="w">                    </span><span class="c1">-- &#39;credit_card&#39;, &#39;knowledge_based&#39;, &#39;video_call&#39;</span>
+<span class="w">  </span><span class="n">verified_by</span><span class="w">         </span><span class="nb">TEXT</span><span class="p">,</span><span class="w">                    </span><span class="c1">-- parent/guardian user ID for parental consent</span>
+<span class="w">  </span><span class="n">ip_address</span><span class="w">          </span><span class="n">INET</span><span class="p">,</span>
+<span class="w">  </span><span class="n">user_agent</span><span class="w">          </span><span class="nb">TEXT</span><span class="p">,</span>
+<span class="w">  </span><span class="k">UNIQUE</span><span class="p">(</span><span class="n">tenant_id</span><span class="p">,</span><span class="w"> </span><span class="n">user_id</span><span class="p">,</span><span class="w"> </span><span class="n">consent_type</span><span class="p">)</span>
+<span class="p">);</span>
+
+<span class="k">CREATE</span><span class="w"> </span><span class="k">INDEX</span><span class="w"> </span><span class="n">idx_consent_user</span><span class="w"> </span><span class="k">ON</span><span class="w"> </span><span class="n">consent_records</span><span class="p">(</span><span class="n">tenant_id</span><span class="p">,</span><span class="w"> </span><span class="n">user_id</span><span class="p">,</span><span class="w"> </span><span class="n">status</span><span class="p">);</span>
+</code></pre></div></p>
+<p><strong>governance_audit_events</strong> — compliance-specific events <em>(not LLM call logs)</em>
+<div class="highlight"><pre><span></span><code><span class="c1">-- NOTE: LLM request/response logging is in LiteLLM&#39;s SpendLogs table.</span>
+<span class="c1">-- This table is ONLY for governance-specific events the gateway doesn&#39;t track.</span>
+
+<span class="k">CREATE</span><span class="w"> </span><span class="k">TABLE</span><span class="w"> </span><span class="n">governance_audit_events</span><span class="w"> </span><span class="p">(</span>
+<span class="w">  </span><span class="n">id</span><span class="w">              </span><span class="n">UUID</span><span class="w"> </span><span class="k">PRIMARY</span><span class="w"> </span><span class="k">KEY</span><span class="p">,</span>
+<span class="w">  </span><span class="n">tenant_id</span><span class="w">       </span><span class="n">UUID</span><span class="w"> </span><span class="k">REFERENCES</span><span class="w"> </span><span class="n">tenants</span><span class="p">(</span><span class="n">id</span><span class="p">),</span>
+<span class="w">  </span><span class="k">timestamp</span><span class="w">       </span><span class="n">TIMESTAMPTZ</span><span class="w"> </span><span class="k">NOT</span><span class="w"> </span><span class="k">NULL</span><span class="w"> </span><span class="k">DEFAULT</span><span class="w"> </span><span class="n">now</span><span class="p">(),</span>
+<span class="w">  </span><span class="n">event_type</span><span class="w">      </span><span class="nb">TEXT</span><span class="w"> </span><span class="k">NOT</span><span class="w"> </span><span class="k">NULL</span><span class="p">,</span><span class="w">              </span><span class="c1">-- Governance events only (see below)</span>
+<span class="w">  </span><span class="n">request_id</span><span class="w">      </span><span class="n">UUID</span><span class="p">,</span><span class="w">                       </span><span class="c1">-- Links to LiteLLM SpendLogs if applicable</span>
+<span class="w">  </span><span class="n">user_id</span><span class="w">         </span><span class="nb">TEXT</span><span class="p">,</span>
+
+<span class="w">  </span><span class="c1">-- Consent events</span>
+<span class="w">  </span><span class="n">consent_type</span><span class="w">    </span><span class="nb">TEXT</span><span class="p">,</span>
+<span class="w">  </span><span class="n">consent_status</span><span class="w">  </span><span class="nb">TEXT</span><span class="p">,</span>
+
+<span class="w">  </span><span class="c1">-- Guard decision events  </span>
+<span class="w">  </span><span class="n">guard_name</span><span class="w">      </span><span class="nb">TEXT</span><span class="p">,</span>
+<span class="w">  </span><span class="n">guard_decision</span><span class="w">  </span><span class="nb">TEXT</span><span class="p">,</span><span class="w">                       </span><span class="c1">-- &#39;allow&#39;, &#39;block&#39;, &#39;modify&#39;, &#39;escalate&#39;</span>
+<span class="w">  </span><span class="n">guard_reason</span><span class="w">    </span><span class="nb">TEXT</span><span class="p">,</span>
+<span class="w">  </span><span class="n">violations</span><span class="w">      </span><span class="n">JSONB</span><span class="p">,</span>
+
+<span class="w">  </span><span class="c1">-- PII/PHI events (domain-specific detection)</span>
+<span class="w">  </span><span class="n">pii_types_detected</span><span class="w"> </span><span class="n">JSONB</span><span class="p">,</span><span class="w">                   </span><span class="c1">-- [&#39;mrn&#39;, &#39;health_condition&#39;, &#39;student_id&#39;]</span>
+<span class="w">  </span><span class="n">anonymization_mapping_id</span><span class="w"> </span><span class="n">UUID</span><span class="p">,</span><span class="w">              </span><span class="c1">-- Reference to stored mapping for deanonymization</span>
+
+<span class="w">  </span><span class="c1">-- Metadata</span>
+<span class="w">  </span><span class="n">domain_profile</span><span class="w">  </span><span class="nb">TEXT</span><span class="p">,</span>
+<span class="w">  </span><span class="n">ip_address</span><span class="w">      </span><span class="n">INET</span><span class="p">,</span>
+<span class="w">  </span><span class="n">user_agent</span><span class="w">      </span><span class="nb">TEXT</span><span class="p">,</span>
+<span class="w">  </span><span class="n">metadata</span><span class="w">        </span><span class="n">JSONB</span>
+<span class="p">);</span>
+
+<span class="k">CREATE</span><span class="w"> </span><span class="k">INDEX</span><span class="w"> </span><span class="n">idx_gov_audit_tenant_date</span><span class="w"> </span><span class="k">ON</span><span class="w"> </span><span class="n">governance_audit_events</span><span class="p">(</span><span class="n">tenant_id</span><span class="p">,</span><span class="w"> </span><span class="k">timestamp</span><span class="p">);</span>
+<span class="k">CREATE</span><span class="w"> </span><span class="k">INDEX</span><span class="w"> </span><span class="n">idx_gov_audit_request</span><span class="w"> </span><span class="k">ON</span><span class="w"> </span><span class="n">governance_audit_events</span><span class="p">(</span><span class="n">request_id</span><span class="p">);</span>
+<span class="k">CREATE</span><span class="w"> </span><span class="k">INDEX</span><span class="w"> </span><span class="n">idx_gov_audit_type</span><span class="w"> </span><span class="k">ON</span><span class="w"> </span><span class="n">governance_audit_events</span><span class="p">(</span><span class="n">tenant_id</span><span class="p">,</span><span class="w"> </span><span class="n">event_type</span><span class="p">,</span><span class="w"> </span><span class="k">timestamp</span><span class="p">);</span>
+</code></pre></div></p>
+<p><strong>Governance Event Types</strong> (what this table tracks):
+- <code>CONSENT_REQUESTED</code>, <code>CONSENT_GRANTED</code>, <code>CONSENT_DENIED</code>, <code>CONSENT_WITHDRAWN</code>
+- <code>GUARD_BLOCK</code>, <code>GUARD_MODIFY</code>, <code>GUARD_ESCALATE</code>
+- <code>DOMAIN_PII_DETECTED</code> (PHI, education records — beyond gateway's generic PII)
+- <code>ANONYMIZATION_APPLIED</code>, <code>DEANONYMIZATION_APPLIED</code>
+- <code>COMPLIANCE_VIOLATION</code>, <code>ESCALATION_CREATED</code></p>
+<p><strong>anonymization_mappings</strong> — reversible anonymization storage <em>(not in gateway)</em>
+<div class="highlight"><pre><span></span><code><span class="k">CREATE</span><span class="w"> </span><span class="k">TABLE</span><span class="w"> </span><span class="n">anonymization_mappings</span><span class="w"> </span><span class="p">(</span>
+<span class="w">  </span><span class="n">id</span><span class="w">              </span><span class="n">UUID</span><span class="w"> </span><span class="k">PRIMARY</span><span class="w"> </span><span class="k">KEY</span><span class="p">,</span>
+<span class="w">  </span><span class="n">tenant_id</span><span class="w">       </span><span class="n">UUID</span><span class="w"> </span><span class="k">REFERENCES</span><span class="w"> </span><span class="n">tenants</span><span class="p">(</span><span class="n">id</span><span class="p">),</span>
+<span class="w">  </span><span class="n">request_id</span><span class="w">      </span><span class="n">UUID</span><span class="w"> </span><span class="k">NOT</span><span class="w"> </span><span class="k">NULL</span><span class="p">,</span>
+<span class="w">  </span><span class="n">mapping</span><span class="w">         </span><span class="n">JSONB</span><span class="w"> </span><span class="k">NOT</span><span class="w"> </span><span class="k">NULL</span><span class="p">,</span><span class="w">             </span><span class="c1">-- {&#39;[REDACTED_MRN_1]&#39;: &#39;MRN123456&#39;, ...}</span>
+<span class="w">  </span><span class="n">created_at</span><span class="w">      </span><span class="n">TIMESTAMPTZ</span><span class="w"> </span><span class="k">NOT</span><span class="w"> </span><span class="k">NULL</span><span class="w"> </span><span class="k">DEFAULT</span><span class="w"> </span><span class="n">now</span><span class="p">(),</span>
+<span class="w">  </span><span class="n">expires_at</span><span class="w">      </span><span class="n">TIMESTAMPTZ</span><span class="p">,</span><span class="w">                </span><span class="c1">-- Auto-cleanup after response delivered</span>
+<span class="w">  </span><span class="n">used_at</span><span class="w">         </span><span class="n">TIMESTAMPTZ</span><span class="w">                 </span><span class="c1">-- When deanonymization was applied</span>
+<span class="p">);</span>
+
+<span class="k">CREATE</span><span class="w"> </span><span class="k">INDEX</span><span class="w"> </span><span class="n">idx_anon_request</span><span class="w"> </span><span class="k">ON</span><span class="w"> </span><span class="n">anonymization_mappings</span><span class="p">(</span><span class="n">request_id</span><span class="p">);</span>
+</code></pre></div></p>
+<p><strong>governance_pipelines</strong> — versioned governance configurations <em>(not in gateway)</em>
+<div class="highlight"><pre><span></span><code><span class="k">CREATE</span><span class="w"> </span><span class="k">TABLE</span><span class="w"> </span><span class="n">governance_pipelines</span><span class="w"> </span><span class="p">(</span>
+<span class="w">  </span><span class="n">id</span><span class="w">              </span><span class="n">UUID</span><span class="w"> </span><span class="k">PRIMARY</span><span class="w"> </span><span class="k">KEY</span><span class="p">,</span>
+<span class="w">  </span><span class="n">name</span><span class="w">            </span><span class="nb">TEXT</span><span class="w"> </span><span class="k">NOT</span><span class="w"> </span><span class="k">NULL</span><span class="p">,</span><span class="w">              </span><span class="c1">-- &#39;byoeb_health_v1&#39;</span>
+<span class="w">  </span><span class="n">domain_profile</span><span class="w">  </span><span class="nb">TEXT</span><span class="w"> </span><span class="k">NOT</span><span class="w"> </span><span class="k">NULL</span><span class="p">,</span>
+<span class="w">  </span><span class="k">version</span><span class="w">         </span><span class="nb">TEXT</span><span class="w"> </span><span class="k">NOT</span><span class="w"> </span><span class="k">NULL</span><span class="p">,</span>
+<span class="w">  </span><span class="n">config_yaml</span><span class="w">     </span><span class="nb">TEXT</span><span class="w"> </span><span class="k">NOT</span><span class="w"> </span><span class="k">NULL</span><span class="p">,</span><span class="w">              </span><span class="c1">-- Full pipeline config</span>
+<span class="w">  </span><span class="n">is_default</span><span class="w">      </span><span class="nb">BOOLEAN</span><span class="w"> </span><span class="k">NOT</span><span class="w"> </span><span class="k">NULL</span><span class="w"> </span><span class="k">DEFAULT</span><span class="w"> </span><span class="k">false</span><span class="p">,</span>
+<span class="w">  </span><span class="n">created_at</span><span class="w">      </span><span class="n">TIMESTAMPTZ</span><span class="w"> </span><span class="k">NOT</span><span class="w"> </span><span class="k">NULL</span><span class="w"> </span><span class="k">DEFAULT</span><span class="w"> </span><span class="n">now</span><span class="p">(),</span>
+<span class="w">  </span><span class="k">UNIQUE</span><span class="p">(</span><span class="n">name</span><span class="p">,</span><span class="w"> </span><span class="k">version</span><span class="p">)</span>
+<span class="p">);</span>
+</code></pre></div></p>
+<p><strong>governance_alert_config</strong> — alert thresholds beyond gateway's hard limits <em>(governance extension)</em>
+<div class="highlight"><pre><span></span><code><span class="c1">-- NOTE: Budget enforcement (blocking) is in LiteLLM via virtual key limits.</span>
+<span class="c1">-- This table configures warning alerts BEFORE the gateway blocks.</span>
+
+<span class="k">CREATE</span><span class="w"> </span><span class="k">TABLE</span><span class="w"> </span><span class="n">governance_alert_config</span><span class="w"> </span><span class="p">(</span>
+<span class="w">  </span><span class="n">tenant_id</span><span class="w">                 </span><span class="n">UUID</span><span class="w"> </span><span class="k">REFERENCES</span><span class="w"> </span><span class="n">tenants</span><span class="p">(</span><span class="n">id</span><span class="p">)</span><span class="w"> </span><span class="k">PRIMARY</span><span class="w"> </span><span class="k">KEY</span><span class="p">,</span>
+<span class="w">  </span><span class="n">daily_warning_threshold</span><span class="w">   </span><span class="nb">INTEGER</span><span class="w"> </span><span class="k">NOT</span><span class="w"> </span><span class="k">NULL</span><span class="w"> </span><span class="k">DEFAULT</span><span class="w"> </span><span class="mi">80</span><span class="p">,</span><span class="w">   </span><span class="c1">-- % of LiteLLM budget</span>
+<span class="w">  </span><span class="n">monthly_warning_threshold</span><span class="w"> </span><span class="nb">INTEGER</span><span class="w"> </span><span class="k">NOT</span><span class="w"> </span><span class="k">NULL</span><span class="w"> </span><span class="k">DEFAULT</span><span class="w"> </span><span class="mi">80</span><span class="p">,</span>
+<span class="w">  </span><span class="n">alert_channels</span><span class="w">            </span><span class="n">JSONB</span><span class="p">,</span><span class="w">                         </span><span class="c1">-- [&#39;email&#39;, &#39;slack&#39;, &#39;webhook&#39;]</span>
+<span class="w">  </span><span class="n">alert_recipients</span><span class="w">          </span><span class="n">JSONB</span><span class="p">,</span>
+<span class="w">  </span><span class="n">updated_at</span><span class="w">                </span><span class="n">TIMESTAMPTZ</span><span class="w"> </span><span class="k">NOT</span><span class="w"> </span><span class="k">NULL</span><span class="w"> </span><span class="k">DEFAULT</span><span class="w"> </span><span class="n">now</span><span class="p">()</span>
+<span class="p">);</span>
+</code></pre></div></p>
+<h4 id="guard-engine-abstractions">Guard &amp; Engine Abstractions<a class="headerlink" href="#guard-engine-abstractions" title="Permanent link">&para;</a></h4>
+<p><strong>Guard Interface</strong></p>
+<p>All guards implement a common protocol:</p>
+<div class="highlight"><pre><span></span><code>class Guard(Protocol):
+    name: str
+
+    async def evaluate(self, context: GovernanceContext) -&gt; GuardResult:
+        ...
+</code></pre></div>
+<p>Where:
+<div class="highlight"><pre><span></span><code>@dataclass
+class GuardResult:
+    decision: GuardDecision  # ALLOW, BLOCK, MODIFY, ESCALATE
+    reason: str | None = None
+    modified_content: str | None = None
+    violations: list[str] | None = None
+    metadata: dict | None = None
+</code></pre></div></p>
+<p><strong>Engine Interfaces</strong></p>
+<blockquote>
+<p>🔑 <strong>Design Principle</strong>: Engines are categorized by their relationship to the Gateway:
+- <strong>Governance-Only</strong>: No Gateway equivalent (Consent)
+- <strong>Gateway-Extending</strong>: Adds domain-specific logic on top of Gateway (Safety)
+- <strong>Gateway-Querying</strong>: Queries Gateway data, adds governance alerting/reporting (Cost, Audit)</p>
+</blockquote>
+<p><strong>1. Consent Engine</strong> <em>(Governance-Only — no Gateway equivalent)</em></p>
+<div class="highlight"><pre><span></span><code>class ConsentEngine(Protocol):
+    &quot;&quot;&quot;Regulatory consent tracking. Fully governance-specific.&quot;&quot;&quot;
+    # PROACTIVE: Check before processing
+    async def check(self, user_id: str, consent_type: str, category: str) -&gt; bool: ...
+
+    # REACTIVE: Manage consent lifecycle
+    async def request(self, user_id: str, consent_type: str, scope: dict) -&gt; str: ...
+    async def verify(self, consent_id: str, verification_data: dict) -&gt; bool: ...
+    async def withdraw(self, user_id: str, consent_type: str) -&gt; None: ...
+</code></pre></div>
+<p><strong>2. Safety Engine</strong> <em>(Gateway-Extending — adds domain-specific detection)</em></p>
+<div class="highlight"><pre><span></span><code>class GovernanceSafetyEngine(Protocol):
+    &quot;&quot;&quot;Domain-specific PII handling. Extends Gateway&#39;s generic Presidio.&quot;&quot;&quot;
+    # PROACTIVE: Detect and anonymize before LLM call
+    async def detect_domain_pii(self, text: str, profile: str) -&gt; list[PIIDetection]: ...
+    async def anonymize_with_mapping(self, text: str, detections: list) -&gt; tuple[str, str]: ...
+
+    # REACTIVE: Restore after LLM call
+    async def deanonymize(self, text: str, mapping_id: str) -&gt; str: ...
+</code></pre></div>
+<p><strong>3. Cost Engine</strong> <em>(Gateway-Querying — queries LiteLLM, adds alerting)</em></p>
+<div class="highlight"><pre><span></span><code>class GovernanceCostEngine(Protocol):
+    &quot;&quot;&quot;Cost alerting and reporting. Queries Gateway—does NOT duplicate storage.&quot;&quot;&quot;
+    # PROACTIVE: Check budget before LLM call
+    async def check_budget_status(self, tenant_id: str) -&gt; BudgetStatus:
+        # Queries LiteLLM_TeamTable
+        ...
+    async def check_alert_threshold(self, tenant_id: str) -&gt; AlertStatus:
+        # Compares Gateway spend against governance_alert_config
+        ...
+
+    # REACTIVE: Generate reports from Gateway data
+    async def query_gateway_spend(self, tenant_id: str, date_range: DateRange) -&gt; SpendData: ...
+    async def generate_cost_report(self, tenant_id: str, regulation: str, date_range: DateRange) -&gt; CostReport: ...
+</code></pre></div>
+<p><strong>4. Audit Engine</strong> <em>(Gateway-Querying — logs governance events, queries Gateway for unified reports)</em></p>
+<div class="highlight"><pre><span></span><code>class GovernanceAuditEngine(Protocol):
+    &quot;&quot;&quot;Compliance audit trail. Logs governance events, links to Gateway logs.&quot;&quot;&quot;
+    # REACTIVE: Log governance-specific events
+    async def log_consent_event(self, event: ConsentEvent) -&gt; str: ...
+    async def log_guard_decision(self, context: GovernanceContext, result: GuardResult) -&gt; str: ...
+    async def log_pii_event(self, event: PIIEvent) -&gt; str: ...
+    async def link_to_gateway_log(self, governance_event_id: str, gateway_request_id: str) -&gt; None: ...
+
+    # ON-DEMAND: Unified compliance reporting
+    async def generate_compliance_report(self, tenant_id: str, regulation: str, date_range: DateRange) -&gt; ComplianceReport:
+        # Queries governance_audit_events + LiteLLM_SpendLogs
+        ...
+</code></pre></div>
+<h4 id="governance-pipeline-runner">Governance Pipeline Runner<a class="headerlink" href="#governance-pipeline-runner" title="Permanent link">&para;</a></h4>
+<p>The Governance Service wraps AI operations using configured pipelines:</p>
+<div class="highlight"><pre><span></span><code>class GovernanceRunner:
+    async def wrap(self, context: GovernanceContext, operation: Callable) -&gt; Any:
+        # 1. Run governance-specific request guards (consent, domain PII, topic)
+        for guard in self.pipeline.request_guards:
+            result = await guard.evaluate(context)
+            if result.decision == BLOCK:
+                await self.governance_audit.log_guard_decision(context, result)
+                raise GovernanceBlockedError(result.reason)
+            if result.decision == MODIFY:
+                context.content = result.modified_content
+
+        # 2. Check budget via gateway (LiteLLM handles enforcement)
+        #    Governance adds warning alerts before hard block
+        alert_status = await self.budget_checker.check_alert_threshold(context.tenant_id)
+        if alert_status.should_warn:
+            await self.send_budget_alert(context.tenant_id, alert_status)
+
+        # 3. Execute operation via LLM Gateway
+        #    Gateway handles: routing, failover, generic guardrails, cost tracking, logging
+        result = await operation(context)
+
+        # NOTE: Cost recording happens automatically in gateway&#39;s LiteLLM_SpendLogs
+        # No need to record here - governance queries gateway for reports
+
+        # 4. Run governance-specific response guards (PHI disclosure, minor data)
+        for guard in self.pipeline.response_guards:
+            guard_result = await guard.evaluate(context, result)
+            if guard_result.decision == BLOCK:
+                await self.governance_audit.log_guard_decision(context, guard_result)
+                raise GovernanceBlockedError(guard_result.reason)
+            if guard_result.decision == MODIFY:
+                result.content = guard_result.modified_content
+
+        # 5. Log governance-specific audit event (consent verified, guards passed)
+        #    NOTE: LLM request/response already logged by gateway
+        await self.governance_audit.log_request_completed(context)
+
+        return result
+</code></pre></div>
+<h2 id="future-extensions">Future Extensions<a class="headerlink" href="#future-extensions" title="Permanent link">&para;</a></h2>
+<p><strong>LLM Gateway Layer Integration</strong>
+- See <a href="../llm-gateway-layer/">LLM Gateway Layer Architecture</a> for detailed implementation of the unified LLM access layer
+- Provides foundation for multi-provider strategy, cost optimization, and built-in guardrails
+- Recommended as the first foundational component to implement</p>
+<p><strong>AI-Specific Regulatory Compliance (EU AI Act)</strong>
+- Risk classification for high-risk AI systems (healthcare, education)
+- Technical documentation generation for AI components
+- Bias testing and fairness monitoring
+- Explainability logging for AI decisions</p>
+<p><strong>Advanced PII Detection</strong>
+- NER-based entity detection for context-aware PII
+- Multi-language PII detection (Hindi, Kannada for Indian deployments)
+- Audio PII detection for voice channels
+- Image/document PII detection for uploaded files</p>
+<p><strong>Federated Governance</strong>
+- Cross-organization consent sharing
+- Distributed audit aggregation
+- Multi-jurisdiction compliance (US + EU)</p>
+<p><strong>Human-in-the-Loop Workflows</strong>
+- Escalation routing to human reviewers
+- Expert consensus for edge cases (like BYOEB's expert loop)
+- Appeal and override mechanisms</p>
+<p><strong>Real-Time Monitoring &amp; Alerting</strong>
+- Budget threshold alerts
+- Unusual activity detection
+- Compliance violation alerts
+- SLA monitoring for governance overhead</p>
+<p><strong>MCP-Based Governance Tools</strong>
+- Expose governance as MCP tools for LLM agents
+- Enable agents to check consent, budget, and compliance status
+- Support autonomous compliance decisions within agent workflows</p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.expand", "navigation.sections", "toc.integrate"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+    
+  </body>
+</html>
