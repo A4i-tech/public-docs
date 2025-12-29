@@ -1356,17 +1356,49 @@ curl<span class="w"> </span>-X<span class="w"> </span>POST<span class="w"> </spa
 <span class="w">        </span><span class="nt">guardrail</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">lakera</span>
 <span class="w">        </span><span class="nt">api_key</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">os.environ/LAKERA_API_KEY</span>
 </code></pre></div></p>
-<p><strong>Supported Guardrail Providers</strong>:
-| Provider | Capabilities |
-|----------|--------------|
-| <strong>Aporia</strong> | PII detection, prompt injection, topic filtering |
-| <strong>Lakera</strong> | Prompt injection, jailbreak detection, PII |
-| <strong>Bedrock Guardrails</strong> | AWS-native content filtering |
-| <strong>Azure AI Content Safety</strong> | Microsoft content moderation |
-| <strong>Presidio</strong> | Open-source PII detection |
-| <strong>LlamaGuard</strong> | Meta's safety classifier |
-| <strong>Google Text Moderation</strong> | Harmful content detection |
-| <strong>OpenAI Moderation</strong> | Built-in moderation endpoint |</p>
+<p><strong>Supported Guardrail Providers</strong>:</p>
+<table>
+<thead>
+<tr>
+<th>Provider</th>
+<th>Capabilities</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Aporia</strong></td>
+<td>PII detection, prompt injection, topic filtering</td>
+</tr>
+<tr>
+<td><strong>Lakera</strong></td>
+<td>Prompt injection, jailbreak detection, PII</td>
+</tr>
+<tr>
+<td><strong>Bedrock Guardrails</strong></td>
+<td>AWS-native content filtering</td>
+</tr>
+<tr>
+<td><strong>Azure AI Content Safety</strong></td>
+<td>Microsoft content moderation</td>
+</tr>
+<tr>
+<td><strong>Presidio</strong></td>
+<td>Open-source PII detection</td>
+</tr>
+<tr>
+<td><strong>LlamaGuard</strong></td>
+<td>Meta's safety classifier</td>
+</tr>
+<tr>
+<td><strong>Google Text Moderation</strong></td>
+<td>Harmful content detection</td>
+</tr>
+<tr>
+<td><strong>OpenAI Moderation</strong></td>
+<td>Built-in moderation endpoint</td>
+</tr>
+</tbody>
+</table>
 <p><strong>Custom Guardrails</strong>:
 <div class="highlight"><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">litellm.proxy.guardrails.guardrail_hooks</span><span class="w"> </span><span class="kn">import</span> <span class="n">GuardrailItem</span>
 

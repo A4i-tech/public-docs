@@ -1336,17 +1336,21 @@ interface GuardResult {
   getConsentHistory(userId): Promise&lt;ConsentRecord[]&gt;;
 }
 </code></pre></div>
-<p><strong>Consent Types</strong>:
-- <code>PARENTAL_CONSENT</code> — Verifiable parental consent for minors
-- <code>DISCLOSURE_CONSENT</code> — Authorization for data disclosure
-- <code>DATA_PROCESSING_AUTHORIZATION</code> — Sensitive data processing authorization
-- <code>AI_PROCESSING</code> — General AI processing consent
-- <code>DATA_RETENTION</code> — Consent for data storage beyond session</p>
-<p><strong>Parental Consent Verification Methods</strong>:
-- Credit card micro-transaction
-- Knowledge-based authentication
-- Government ID verification
-- Video call verification</p>
+<p><strong>Consent Types</strong>:</p>
+<ul>
+<li><code>PARENTAL_CONSENT</code> — Verifiable parental consent for minors</li>
+<li><code>DISCLOSURE_CONSENT</code> — Authorization for data disclosure</li>
+<li><code>DATA_PROCESSING_AUTHORIZATION</code> — Sensitive data processing authorization</li>
+<li><code>AI_PROCESSING</code> — General AI processing consent</li>
+<li><code>DATA_RETENTION</code> — Consent for data storage beyond session</li>
+</ul>
+<p><strong>Parental Consent Verification Methods</strong>:</p>
+<ul>
+<li>Credit card micro-transaction</li>
+<li>Knowledge-based authentication</li>
+<li>Government ID verification</li>
+<li>Video call verification</li>
+</ul>
 <p><strong>2. Cost Engine</strong></p>
 <p>Extends the <a href="../llm-gateway-layer/#1-cost-tracking--budget-management-">LLM Gateway Layer's built-in cost tracking</a> with governance-specific capabilities.</p>
 <blockquote>

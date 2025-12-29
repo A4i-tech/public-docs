@@ -668,7 +668,6 @@
 
 <h1 id="agentic-governance-safety-framework">Agentic Governance &amp; Safety Framework<a class="headerlink" href="#agentic-governance-safety-framework" title="Permanent link">&para;</a></h1>
 <p><em>A Business Case for Responsible, Inclusive AI</em></p>
-<hr />
 <h2 id="the-problem-ai-without-guardrails-is-a-business-risk">The Problem: AI Without Guardrails is a Business Risk<a class="headerlink" href="#the-problem-ai-without-guardrails-is-a-business-risk" title="Permanent link">&para;</a></h2>
 <p>Organizations deploying AI—especially in sensitive domains like <strong>healthcare</strong>, <strong>education</strong>, and <strong>public services</strong>—face a growing dilemma:</p>
 <table>
@@ -763,7 +762,6 @@
 <h3 id="for-accessibility-inclusion">For Accessibility &amp; Inclusion<a class="headerlink" href="#for-accessibility-inclusion" title="Permanent link">&para;</a></h3>
 <ul>
 <li>AI doesn't assume all users have smartphones or high-speed internet</li>
-<li>Responses are validated to work across channels: voice, text, Braille</li>
 <li>Cost controls ensure AI resources are distributed equitably across user segments (<a href="../../architecture/agentic-governance-safety-framework/#2-cost-engine">Cost Engine</a>)</li>
 <li>Bias detection ensures underserved communities receive the same quality of service (<a href="../../architecture/agentic-governance-safety-framework/#3-safety-engine">Safety Engine</a>)</li>
 </ul>
@@ -891,19 +889,23 @@
 <h2 id="architecture-documentation">Architecture Documentation<a class="headerlink" href="#architecture-documentation" title="Permanent link">&para;</a></h2>
 <p>For detailed technical implementation, see:</p>
 <ul>
-<li><strong><a href="../../architecture/agentic-governance-safety-framework/">Agentic Governance &amp; Safety Framework</a></strong> — Complete architecture, engines, guards, and implementation details</li>
+<li>
+<p><strong><a href="../../architecture/agentic-governance-safety-framework/">Agentic Governance &amp; Safety Framework</a></strong> — Complete architecture, engines, guards, and implementation details</p>
+<ul>
 <li><a href="../../architecture/agentic-governance-safety-framework/#guard-layer">Guard Layer</a> — Request and response guards</li>
 <li><a href="../../architecture/agentic-governance-safety-framework/#engine-layer">Engine Layer</a> — Consent, Cost, Safety, and Audit engines</li>
 <li><a href="../../architecture/agentic-governance-safety-framework/#domain-profiles">Domain Profiles</a> — Healthcare, education, and accessibility configurations</li>
-<li>
-<p><a href="../../architecture/agentic-governance-safety-framework/#database-architecture">Database Architecture</a> — Storage and audit trail design</p>
+<li><a href="../../architecture/agentic-governance-safety-framework/#database-architecture">Database Architecture</a> — Storage and audit trail design</li>
+</ul>
 </li>
 <li>
 <p><strong><a href="../../architecture/llm-gateway-layer/">LLM Gateway Layer</a></strong> — Foundational infrastructure for LLM access</p>
-</li>
+<ul>
 <li><a href="../../architecture/llm-gateway-layer/#1-cost-tracking--budget-management-">Cost Tracking &amp; Budget Management</a> — Per-request cost calculation and budgets</li>
 <li><a href="../../architecture/llm-gateway-layer/#2-guardrails--content-safety-">Guardrails &amp; Content Safety</a> — Built-in PII detection and content moderation</li>
 <li><a href="../../architecture/llm-gateway-layer/#integration-with-governance-framework">Integration with Governance Framework</a> — How Gateway and Governance work together</li>
+</ul>
+</li>
 </ul>
 <hr />
 <p><em>© 2026 A4I. Part of the Inclusive Agentic Architecture.</em></p>
