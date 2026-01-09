@@ -488,6 +488,167 @@
 <li>GitHub Actions run lint/tests on PR</li>
 <li>Staging deployment happens via a4i/main branch</li>
 </ul>
+<h1 id="nodejs-development-guide-for-seeds">Node.js Development Guide for SEEDS<a class="headerlink" href="#nodejs-development-guide-for-seeds" title="Permanent link">&para;</a></h1>
+<p>This document outlines the standards and best practices for Node.js development across all SEEDS projects.</p>
+<h2 id="table-of-contents">Table of Contents<a class="headerlink" href="#table-of-contents" title="Permanent link">&para;</a></h2>
+<ul>
+<li><a href="#code-style-standards">Code Style Standards</a></li>
+<li><a href="#linting-and-formatting">Linting and Formatting</a></li>
+<li><a href="#project-structure">Project Structure</a></li>
+<li><a href="#development-workflow">Development Workflow</a></li>
+<li><a href="#testing">Testing</a></li>
+<li><a href="#common-scripts">Common Scripts</a></li>
+<li><a href="#git-workflow">Git Workflow</a></li>
+<li><a href="#environment-configuration">Environment Configuration</a></li>
+</ul>
+<hr />
+<h2 id="code-style-standards">Code Style Standards<a class="headerlink" href="#code-style-standards" title="Permanent link">&para;</a></h2>
+<h3 id="general-rules">General Rules<a class="headerlink" href="#general-rules" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>Quotes</strong>: Use double quotes (<code>"</code>) for all strings in JavaScript</li>
+<li><strong>Semicolons</strong>: Always use semicolons at the end of statements</li>
+<li><strong>Trailing Commas</strong>: Do NOT use trailing commas in objects, arrays, or function parameters</li>
+<li><strong>Line Width</strong>: Maximum 100 characters per line</li>
+<li><strong>Indentation</strong>: 2 spaces (enforced by Prettier)</li>
+</ul>
+<h3 id="example">Example<a class="headerlink" href="#example" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="c1">// ✅ CORRECT</span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">user</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">name</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;John Doe&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nx">email</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;john@example.com&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nx">role</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;admin&quot;</span><span class="p">,</span>
+<span class="p">};</span>
+
+<span class="kd">function</span><span class="w"> </span><span class="nx">greet</span><span class="p">(</span><span class="nx">name</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&quot;Hello, &quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nx">name</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="c1">// ❌ INCORRECT</span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">user</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">name</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;John Doe&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nx">email</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;john@example.com&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nx">role</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;admin&quot;</span><span class="p">,</span>
+<span class="p">};</span>
+
+<span class="kd">function</span><span class="w"> </span><span class="nx">greet</span><span class="p">(</span><span class="nx">name</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&quot;Hello, &quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nx">name</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div>
+<h2 id="linting-and-formatting">Linting and Formatting<a class="headerlink" href="#linting-and-formatting" title="Permanent link">&para;</a></h2>
+<p>All projects use <strong>ESLint</strong> for linting and <strong>Prettier</strong> for code formatting.</p>
+<h3 id="configuration-files">Configuration Files<a class="headerlink" href="#configuration-files" title="Permanent link">&para;</a></h3>
+<h4 id="nodejs-backend-projects-commonjs">Node.js Backend Projects (CommonJS)<a class="headerlink" href="#nodejs-backend-projects-commonjs" title="Permanent link">&para;</a></h4>
+<ul>
+<li><code>eslint.config.js</code> - ESLint flat config (v9+)</li>
+<li><code>.prettierrc</code> - Prettier configuration</li>
+</ul>
+<h4 id="react-projects">React Projects<a class="headerlink" href="#react-projects" title="Permanent link">&para;</a></h4>
+<ul>
+<li><code>.eslintrc.json</code> - ESLint configuration extending <code>react-app</code> and <code>prettier</code></li>
+<li><code>.prettierrc</code> - Prettier configuration</li>
+</ul>
+<h3 id="auto-formatting">Auto-Formatting<a class="headerlink" href="#auto-formatting" title="Permanent link">&para;</a></h3>
+<p><strong>VS Code</strong> is configured to auto-format on save:</p>
+<ul>
+<li>Prettier runs automatically when you save files</li>
+<li>ESLint auto-fixes issues on save</li>
+<li>Configuration in <code>.vscode/settings.json</code></li>
+</ul>
+<h3 id="manual-commands">Manual Commands<a class="headerlink" href="#manual-commands" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="c1"># Lint entire project</span>
+npm<span class="w"> </span>run<span class="w"> </span>lint
+
+<span class="c1"># Fix all linting and formatting issues</span>
+npm<span class="w"> </span>run<span class="w"> </span>lint:fix
+
+<span class="c1"># Fix a specific file</span>
+npm<span class="w"> </span>run<span class="w"> </span>fix:file<span class="w"> </span>--<span class="w"> </span>src/index.js
+
+<span class="c1"># Fix multiple files</span>
+npm<span class="w"> </span>run<span class="w"> </span>fix:file<span class="w"> </span>--<span class="w"> </span>src/index.js<span class="w"> </span>src/config/env.js
+</code></pre></div>
+<h3 id="pre-execution-hooks">Pre-Execution Hooks<a class="headerlink" href="#pre-execution-hooks" title="Permanent link">&para;</a></h3>
+<p>Linting runs automatically before:</p>
+<ul>
+<li><strong>Starting the dev server</strong>: <code>npm start</code> → runs <code>lint:fix</code> first</li>
+<li><strong>Running tests</strong>: <code>npm test</code> → runs <code>lint:fix</code> first</li>
+</ul>
+<p>This ensures code is always properly formatted before execution.</p>
+<h2 id="development-workflow">Development Workflow<a class="headerlink" href="#development-workflow" title="Permanent link">&para;</a></h2>
+<h3 id="1-setting-up-a-new-project">1. Setting Up a New Project<a class="headerlink" href="#1-setting-up-a-new-project" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="c1"># Clone the repository</span>
+git<span class="w"> </span>clone<span class="w"> </span>&lt;repository-url&gt;
+<span class="nb">cd</span><span class="w"> </span>&lt;project-directory&gt;
+
+<span class="c1"># Install dependencies</span>
+npm<span class="w"> </span>install
+
+<span class="c1"># Start development server</span>
+npm<span class="w"> </span>start
+</code></pre></div>
+<h3 id="2-before-making-changes">2. Before Making Changes<a class="headerlink" href="#2-before-making-changes" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="c1"># Create a new branch</span>
+git<span class="w"> </span>checkout<span class="w"> </span>-b<span class="w"> </span>feature/your-feature-name
+
+<span class="c1"># Ensure dependencies are up to date</span>
+npm<span class="w"> </span>install
+</code></pre></div>
+<h3 id="3-during-development">3. During Development<a class="headerlink" href="#3-during-development" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>Write code</strong> following the style guide</li>
+<li><strong>Save frequently</strong> - auto-formatting will apply</li>
+<li><strong>Run tests</strong> regularly: <code>npm test</code></li>
+<li><strong>Check for errors</strong> in the terminal and VS Code Problems panel</li>
+</ul>
+<h3 id="4-before-committing">4. Before Committing<a class="headerlink" href="#4-before-committing" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="c1"># Run linting manually (optional, as it runs on pretest/prestart)</span>
+npm<span class="w"> </span>run<span class="w"> </span>lint:fix
+
+<span class="c1"># Run all tests</span>
+npm<span class="w"> </span><span class="nb">test</span>
+
+<span class="c1"># Check coverage (should be generated automatically)</span>
+</code></pre></div>
+<h2 id="common-scripts">Common Scripts<a class="headerlink" href="#common-scripts" title="Permanent link">&para;</a></h2>
+<p>All SEEDS projects include these standard npm scripts:</p>
+<table>
+<thead>
+<tr>
+<th>Script</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>npm start</code></td>
+<td>Start the development server (auto-lints first)</td>
+</tr>
+<tr>
+<td><code>npm test</code></td>
+<td>Run all tests with coverage (auto-lints first)</td>
+</tr>
+<tr>
+<td><code>npm run lint</code></td>
+<td>Check for linting issues (no fixes)</td>
+</tr>
+<tr>
+<td><code>npm run lint:fix</code></td>
+<td>Fix all linting and formatting issues</td>
+</tr>
+<tr>
+<td><code>npm run fix:file -- &lt;path&gt;</code></td>
+<td>Fix specific file(s)</td>
+</tr>
+<tr>
+<td><code>npm run build</code></td>
+<td>Build for production (React projects)</td>
+</tr>
+<tr>
+<td><code>npm run dev</code></td>
+<td>Start with nodemon (backend projects)</td>
+</tr>
+</tbody>
+</table>
 
 
 
