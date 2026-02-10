@@ -485,6 +485,56 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#why-ai-governance-matters" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Why AI Governance Matters
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Why AI Governance Matters">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-safety-beyond-best-effort" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Safety Beyond "Best Effort"
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-compliance-as-a-design-principle-not-an-audit" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Compliance as a Design Principle, Not an Audit
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-inclusion-through-intentional-design" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Inclusion Through Intentional Design
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#the-problem-ai-without-guardrails-is-a-business-risk" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -500,6 +550,17 @@
     <span class="md-ellipsis">
       
         Vision: AI You Can Trust
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#how-it-works-governance-architecture-overview" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        How It Works: Governance Architecture Overview
       
     </span>
   </a>
@@ -587,6 +648,84 @@
     </span>
   </a>
   
+    <nav class="md-nav" aria-label="Why This Matters for Inclusive AI">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#accessibility-challenges" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Accessibility Challenges
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#inclusion-challenges" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Inclusion Challenges
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#why-governance-matters-for-both" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Why Governance Matters for Both
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#domain-extensibility-beyond-mapped-sectors" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Domain Extensibility: Beyond Mapped Sectors
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Domain Extensibility: Beyond Mapped Sectors">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#example-agricultural-extension-services" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Example: Agricultural Extension Services
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#supported-domain-types" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Supported Domain Types
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
       
         <li class="md-nav__item">
@@ -601,10 +740,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#call-to-action" class="md-nav__link">
+  <a href="#the-path-forward" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Call to Action
+        The Path Forward
       
     </span>
   </a>
@@ -668,102 +807,201 @@
 
 <h1 id="agentic-governance-safety-framework">Agentic Governance &amp; Safety Framework<a class="headerlink" href="#agentic-governance-safety-framework" title="Permanent link">&para;</a></h1>
 <p><em>A Business Case for Responsible, Inclusive AI</em></p>
+<h2 id="why-ai-governance-matters">Why AI Governance Matters<a class="headerlink" href="#why-ai-governance-matters" title="Permanent link">&para;</a></h2>
+<p>When AI systems serve vulnerable populations - health workers in rural communities, visually impaired learners, teachers across diverse linguistic contexts -the stakes are fundamentally different than in consumer applications.</p>
+<p>Traditional AI deployments assume users have alternatives: another app, another service, technical support. <strong>Our users often have none of these.</strong> When an AI system fails a rural health worker diagnosing an infant, or provides inaccessible content to a visually impaired student, there is no backup option.</p>
+<p>This creates three critical requirements:</p>
+<h3 id="1-safety-beyond-best-effort">1. Safety Beyond "Best Effort"<a class="headerlink" href="#1-safety-beyond-best-effort" title="Permanent link">&para;</a></h3>
+<p>AI systems must prevent harmful outputs before they reach users. This means:
+- Detecting and protecting sensitive health information (patient diagnoses, medical record numbers)
+- Preventing medical advice that could endanger patients
+- Ensuring age-appropriate educational content
+- Automatically escalating emergencies to human professionals</p>
+<p><em>Technical note: This requires "guardrails"—automated safety checks that run before and after every AI interaction.</em></p>
+<h3 id="2-compliance-as-a-design-principle-not-an-audit">2. Compliance as a Design Principle, Not an Audit<a class="headerlink" href="#2-compliance-as-a-design-principle-not-an-audit" title="Permanent link">&para;</a></h3>
+<p>Healthcare regulations, education privacy laws, and child protection rules must be enforced automatically, not checked after deployment. Every AI interaction must generate an audit trail showing what happened and why.</p>
+<p><em>Technical note: This requires governance "engines" that track consent, log decisions, and enforce regulatory requirements in real-time.</em></p>
+<h3 id="3-inclusion-through-intentional-design">3. Inclusion Through Intentional Design<a class="headerlink" href="#3-inclusion-through-intentional-design" title="Permanent link">&para;</a></h3>
+<p>Serving diverse populations requires more than just "access" - it requires equitable resource allocation and culturally appropriate design:</p>
+<p><strong>Geographic &amp; Economic Inclusion:</strong>
+- Rural health workers using feature phones with intermittent connectivity
+- Community volunteers with limited data plans
+- Solution: Low-bandwidth interfaces, messaging fallbacks, voice-first design</p>
+<p><strong>Disability Inclusion:</strong>
+- Visually impaired students and teachers
+- Solution: Screen reader compatibility, IVR (voice) interfaces, audio-first content</p>
+<p><strong>Cultural &amp; Linguistic Inclusion:</strong>
+- Users across different states, languages, and cultural contexts
+- Solution: Multilingual support, culturally grounded content, local context awareness</p>
+<p><strong>Resource Equity:</strong>
+- Preventing AI systems from prioritizing high-value users over vulnerable populations
+- Solution: Fair allocation policies that ensure equitable distribution of AI resources</p>
+<p>This framework ensures that <strong>"inclusive AI" means both accessible technology AND equitable service</strong>—deliberately designed for populations historically excluded from technology benefits.</p>
+<hr />
 <h2 id="the-problem-ai-without-guardrails-is-a-business-risk">The Problem: AI Without Guardrails is a Business Risk<a class="headerlink" href="#the-problem-ai-without-guardrails-is-a-business-risk" title="Permanent link">&para;</a></h2>
-<p>Organizations deploying AI—especially in sensitive domains like <strong>healthcare</strong>, <strong>education</strong>, and <strong>public services</strong>—face a growing dilemma:</p>
-<table>
-<thead>
-<tr>
-<th>Risk</th>
-<th>Business Impact</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><strong>AI says something wrong or harmful</strong></td>
-<td>Reputation damage, user harm, legal liability</td>
-</tr>
-<tr>
-<td><strong>Compliance violations</strong></td>
-<td>Regulatory fines, loss of operating license, audit failures</td>
-</tr>
-<tr>
-<td><strong>Unpredictable costs</strong></td>
-<td>AI usage bills spiral; CFO asks "who approved this?"</td>
-</tr>
-<tr>
-<td><strong>No audit trail</strong></td>
-<td>When something goes wrong, you can't explain what happened</td>
-</tr>
-<tr>
-<td><strong>Bias and exclusion</strong></td>
-<td>AI serves some users well, fails others—especially vulnerable populations</td>
-</tr>
-</tbody>
-</table>
-<p><strong>The hard truth:</strong> Most AI systems today are deployed with minimal governance. Teams move fast, ship features, and hope nothing goes wrong. When it does, the scramble begins.</p>
-<p>For <strong>inclusive AI</strong>—systems serving health workers in rural areas, visually impaired learners, or underserved communities—the stakes are even higher. These users often have no alternative. If the AI fails them, they're left with nothing.</p>
+<p>Organizations deploying AI in sensitive domains - <strong>healthcare</strong>, <strong>education</strong>, <strong>public services</strong> face critical risks:</p>
+<ul>
+<li><strong>Harmful outputs</strong> → Reputation damage, user harm, legal liability</li>
+<li>
+<p><em>Example: A mental health chatbot tells a distressed user their problems "aren't that serious," delaying critical intervention</em></p>
+</li>
+<li>
+<p><strong>Compliance violations</strong> → Regulatory fines, loss of operating license</p>
+</li>
+<li>
+<p><em>Example: AI shares a patient's HIV status in a group chat, violating HIPAA—resulting in $100K+ fines</em></p>
+</li>
+<li>
+<p><strong>Unpredictable costs</strong> → AI bills spiral out of control</p>
+</li>
+<li>
+<p><em>Example: A rural health program's AI costs jumped from $500/month to $12,000/month due to unmonitored usage</em></p>
+</li>
+<li>
+<p><strong>No audit trail</strong> → Can't explain what happened when things go wrong</p>
+</li>
+<li>
+<p><em>Example: A school can't determine why AI flagged a student's assignment as plagiarized, leading to unfair penalties</em></p>
+</li>
+<li>
+<p><strong>Bias and exclusion</strong> → AI fails vulnerable populations with no alternatives</p>
+</li>
+<li><em>Example: AI trained primarily on urban health data provides irrelevant advice for rural malnutrition cases</em></li>
+</ul>
+<p><strong>The challenge:</strong> Most teams move fast and hope nothing goes wrong. For AI serving rural health workers, visually impaired learners, or underserved communities - <strong>failure is not an option. Our users have no alternatives.</strong></p>
 <hr />
 <h2 id="vision-ai-you-can-trust">Vision: AI You Can Trust<a class="headerlink" href="#vision-ai-you-can-trust" title="Permanent link">&para;</a></h2>
-<p>The <strong>Agentic Governance &amp; Safety Framework</strong> is a foundational layer of the Inclusive Architecture that ensures every AI interaction is:</p>
+<p>The <strong>Agentic Governance &amp; Safety Framework</strong> is a novel synthesis drawing from:
+- Industry standards (NIST AI Risk Management Framework 2023, ISO 42001, EU AI Act principles)
+- Domain-specific regulations adopted internationally(HIPAA, FERPA, COPPA)
+- Inclusive design research (W3C Accessibility Guidelines, participatory design principles, Van Dijk's Digital Divide framework 2005)
+- Field learnings from deploying AI in resource-constrained contexts
+- Safety and security; adversarial robustness research (Goodfellow et al. 2014), content moderation frameworks, hallucination detection</p>
+<p><em>We recommend partnering with researchers in AI safety, digital governance, and domain-specific compliance to continuously refine implementation.</em></p>
+<p><strong>Guiding Principles</strong></p>
+<p>It operates as a foundational layer of the Inclusive Architecture, ensuring every AI interaction meets five core principles. The ordering prioritizes:</p>
 <table>
 <thead>
 <tr>
 <th>Principle</th>
 <th>What It Means</th>
-<th>Architecture Reference</th>
+<th>Our Differentiator</th>
+<th>Component</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td><strong>Safe</strong></td>
 <td>Harmful, misleading, or inappropriate content is caught before it reaches users</td>
+<td>Domain-aware protection—detects healthcare PHI (MRN, conditions), student IDs/grades—not just names/emails like Aporia/Lakera. Plus reversible anonymization vs. one-way redaction</td>
 <td><a href="../../architecture/agentic-governance-safety-framework/#guard-layer">Guard Layer</a></td>
-</tr>
-<tr>
-<td><strong>Compliant</strong></td>
-<td>Healthcare, education, and data privacy regulations are enforced automatically</td>
-<td><a href="../../architecture/agentic-governance-safety-framework/#engine-layer">Engine Layer</a></td>
 </tr>
 <tr>
 <td><strong>Accountable</strong></td>
 <td>Every AI decision has a clear audit trail—who, what, when, why</td>
+<td>Governance event tracing (consent checks, guard decisions) linked to LLM calls. Compare: Fiddler has post-hoc analysis; Cloud providers log requests but not governance decisions</td>
 <td><a href="../../architecture/agentic-governance-safety-framework/#4-audit-engine">Audit Engine</a></td>
+</tr>
+<tr>
+<td><strong>Compliant</strong></td>
+<td>Healthcare, education, and data privacy regulations are enforced automatically</td>
+<td>Regulatory profiles (HIPAA, FERPA, COPPA) built-in. Compare: Aporia/Lakera have no regulatory features; AWS/Azure offer infrastructure compliance only, not app-level</td>
+<td><a href="../../architecture/agentic-governance-safety-framework/#engine-layer">Engine Layer</a></td>
+</tr>
+<tr>
+<td><strong>Inclusive</strong></td>
+<td>Governance rules ensure AI serves all users equitably, with particular attention to historically underserved populations</td>
+<td>Fair resource allocation policies (not first-come-first-served), cultural appropriateness checks, multi-language support, and representation in training data. Combines accessibility features (feature phone support, voice interfaces) with equity measures (proportional resource distribution, bias detection)</td>
+<td><a href="../../architecture/agentic-governance-safety-framework/#policy--configuration-layer">Policy &amp; Configuration Layer</a></td>
 </tr>
 <tr>
 <td><strong>Cost-Controlled</strong></td>
 <td>Budgets are respected; no surprise bills; intelligent resource allocation</td>
+<td>80% warning alerts before blocking—avoids hard stops (LiteLLM/Cloud default). Plus compliance-attributed reports by domain/regulation—unavailable in competing solutions</td>
 <td><a href="../../architecture/agentic-governance-safety-framework/#2-cost-engine">Cost Engine</a></td>
-</tr>
-<tr>
-<td><strong>Inclusive</strong></td>
-<td>Governance rules ensure AI serves all users equitably, especially the underserved</td>
-<td><a href="../../architecture/agentic-governance-safety-framework/#policy--configuration-layer">Policy &amp; Configuration Layer</a></td>
 </tr>
 </tbody>
 </table>
 <hr />
+<h2 id="how-it-works-governance-architecture-overview">How It Works: Governance Architecture Overview<a class="headerlink" href="#how-it-works-governance-architecture-overview" title="Permanent link">&para;</a></h2>
+<p>The governance framework operates as a protective layer that wraps around every AI interaction, checking safety, consent, and costs before and after each request.</p>
+<pre class="mermaid"><code>flowchart TB
+    subgraph User["👤 User Interaction"]
+        A[User Request&lt;br/&gt;via WhatsApp/Web/IVR]
+    end
+
+    subgraph Guards["🛡️ Guard Layer&lt;br/&gt;&lt;i&gt;Safety Checkpoints&lt;/i&gt;"]
+        B1[Request Guards&lt;br/&gt;Check consent, detect sensitive data,&lt;br/&gt;verify budgets]
+        B2[Response Guards&lt;br/&gt;Verify no sensitive info leaked,&lt;br/&gt;validate content quality]
+    end
+
+    subgraph Engines["⚙️ Engine Layer&lt;br/&gt;&lt;i&gt;Governance Logic&lt;/i&gt;"]
+        C1[Consent Engine&lt;br/&gt;Parental consent, data permissions]
+        C2[Cost Engine&lt;br/&gt;Budget tracking, spending alerts]
+        C3[Safety Engine&lt;br/&gt;PHI/student data detection]
+        C4[Audit Engine&lt;br/&gt;Compliance logging, reports]
+    end
+
+    subgraph Gateway["🌐 LLM Gateway&lt;br/&gt;&lt;i&gt;AI Provider Access&lt;/i&gt;"]
+        D[Unified AI Access&lt;br/&gt;Azure OpenAI, Anthropic, Google&lt;br/&gt;Automatic failover &amp; cost tracking]
+    end
+
+    subgraph Policy["📋 Policy Layer&lt;br/&gt;&lt;i&gt;Domain Rules&lt;/i&gt;"]
+        E1[Healthcare Profile&lt;br/&gt; PHI compliance rules]
+        E2[Education Profile&lt;br/&gt; Learnig Outcomes and other compliance rules]
+        E3[Accessibility Profile&lt;br/&gt;Inclusive design rules]
+    end
+
+    A --&gt; B1
+    B1 &lt;--&gt; C1
+    B1 &lt;--&gt; C2
+    B1 &lt;--&gt; C3
+    B1 --&gt; D
+    D --&gt; B2
+    B2 &lt;--&gt; C3
+    B2 &lt;--&gt; C4
+    B2 --&gt; F[User Response]
+
+    C1 -.reads rules.-&gt; Policy
+    C2 -.reads rules.-&gt; Policy
+    C3 -.reads rules.-&gt; Policy
+    C4 -.reads rules.-&gt; Policy
+
+    style User fill:#e1f5ff
+    style Guards fill:#fff4e1
+    style Engines fill:#f0e1ff
+    style Gateway fill:#e1ffe1
+    style Policy fill:#ffe1e1</code></pre>
+<p><strong>Flow Explanation:</strong></p>
+<ol>
+<li><strong>User Request</strong> arrives through any channel (WhatsApp, web, voice)</li>
+<li><strong>Request Guards</strong> check: Does user have consent? Is budget available? Any sensitive data to protect?</li>
+<li><strong>Engines</strong> provide the answers by checking their databases and domain policies</li>
+<li><strong>LLM Gateway</strong> routes the request to the best AI provider (with automatic backup if one fails)</li>
+<li><strong>Response Guards</strong> verify: No sensitive info leaked? Content is appropriate?</li>
+<li><strong>Audit Engine</strong> logs everything for compliance reviews</li>
+<li><strong>User receives safe, compliant response</strong></li>
+</ol>
+<hr />
 <h2 id="what-this-means-for-organizations">What This Means for Organizations<a class="headerlink" href="#what-this-means-for-organizations" title="Permanent link">&para;</a></h2>
 <h3 id="for-healthcare-deployments">For Healthcare Deployments<a class="headerlink" href="#for-healthcare-deployments" title="Permanent link">&para;</a></h3>
 <ul>
-<li>AI never provides diagnoses—it shares information and always recommends professional consultation</li>
-<li>Emergency situations are immediately escalated to human responders</li>
-<li>Patient data handling follows local compliance and privacy regulations by design (<a href="../../architecture/agentic-governance-safety-framework/#3-safety-engine">PHI detection &amp; anonymization</a>)</li>
-<li>Every health-related AI response is logged for clinical audit</li>
-<li>See <a href="../../architecture/agentic-governance-safety-framework/#domain-profiles">Healthcare Domain Profile</a> for complete healthcare compliance configuration</li>
+<li>AI shares information, never diagnoses—always recommends professional consultation</li>
+<li>Emergency situations escalate to humans automatically</li>
+<li>Patient data handling follows HIPAA/local regulations by design</li>
+<li>Complete audit trail for every health-related response</li>
 </ul>
 <h3 id="for-education-deployments">For Education Deployments<a class="headerlink" href="#for-education-deployments" title="Permanent link">&para;</a></h3>
 <ul>
-<li>Content is age-appropriate and curriculum-aligned (<a href="../../architecture/agentic-governance-safety-framework/#guard-layer">Minor Data Guard</a>)</li>
-<li>Student data is protected; parents and institutions maintain control (<a href="../../architecture/agentic-governance-safety-framework/#1-consent-engine">Parental Consent Guard</a>)</li>
-<li>AI adapts difficulty without frustrating or discouraging learners</li>
-<li>Teacher oversight is preserved—AI assists, never replaces</li>
-<li>See <a href="../../architecture/agentic-governance-safety-framework/#domain-profiles">Education Domain Profile</a> for complete education compliance configuration</li>
+<li>Age-appropriate content with automatic filtering</li>
+<li>Student data protected with parental consent controls</li>
+<li>Teacher oversight preserved—AI assists, never replaces</li>
 </ul>
 <h3 id="for-accessibility-inclusion">For Accessibility &amp; Inclusion<a class="headerlink" href="#for-accessibility-inclusion" title="Permanent link">&para;</a></h3>
 <ul>
-<li>AI doesn't assume all users have smartphones or high-speed internet</li>
-<li>Cost controls ensure AI resources are distributed equitably across user segments (<a href="../../architecture/agentic-governance-safety-framework/#2-cost-engine">Cost Engine</a>)</li>
-<li>Bias detection ensures underserved communities receive the same quality of service (<a href="../../architecture/agentic-governance-safety-framework/#3-safety-engine">Safety Engine</a>)</li>
+<li>Low-bandwidth interfaces and voice-first design for feature phone users</li>
+<li>Fair resource distribution ensuring equitable service across all user segments</li>
+<li>Bias detection and cultural appropriateness checks for underserved communities</li>
 </ul>
 <hr />
 <h2 id="the-business-case">The Business Case<a class="headerlink" href="#the-business-case" title="Permanent link">&para;</a></h2>
@@ -841,45 +1079,65 @@
 </table>
 <hr />
 <h2 id="why-this-matters-for-inclusive-ai">Why This Matters for Inclusive AI<a class="headerlink" href="#why-this-matters-for-inclusive-ai" title="Permanent link">&para;</a></h2>
-<p>Traditional AI governance frameworks are built for enterprise chatbots and consumer apps. They assume users have:</p>
+<p>Traditional AI governance assumes users have powerful devices, reliable internet, and alternatives if AI fails. <strong>Our users often have none of these.</strong></p>
+<h3 id="accessibility-challenges">Accessibility Challenges<a class="headerlink" href="#accessibility-challenges" title="Permanent link">&para;</a></h3>
 <ul>
-<li>Reliable internet connectivity</li>
-<li>Smartphones or computers</li>
-<li>Ability to read and respond to disclaimers</li>
-<li>Alternative channels if AI fails</li>
+<li>Rural health workers communicate via WhatsApp on phones with intermittent connectivity</li>
+<li>Visually impaired students rely on IVR systems and handheld devices with no screen-based alternatives</li>
+<li>Community volunteers use basic mobile devices with limited data plans</li>
 </ul>
-<p><strong>Our users often have none of these.</strong></p>
-<p>A health worker in rural Rajasthan using WhatsApp to access medical information. A visually impaired student in Karnataka using an IVR system to learn mathematics. A community volunteer using a feature phone to report local health data.</p>
-<p>For these users, <strong>AI governance isn't just about protecting the organization—it's about protecting the people who have no alternative.</strong></p>
-<p>The Agentic Governance &amp; Safety Framework ensures that inclusive AI is also <strong>responsible AI</strong>:</p>
+<p><strong>Our response:</strong> Low-bandwidth interfaces, voice-first design, SMS fallbacks, offline-capable components.</p>
+<h3 id="inclusion-challenges">Inclusion Challenges<a class="headerlink" href="#inclusion-challenges" title="Permanent link">&para;</a></h3>
 <ul>
-<li><strong>If the AI doesn't know, it says so</strong>—no confident-sounding hallucinations (<a href="../../architecture/agentic-governance-safety-framework/#response-guard">Hallucination Detection Guard</a>)</li>
-<li><strong>If the situation is serious, humans are involved</strong>—escalation is automatic, not optional (<a href="../../architecture/agentic-governance-safety-framework/#guard-layer">Guard Escalation</a>)</li>
-<li><strong>If resources are limited, they're allocated fairly</strong>—not just to high-value users (<a href="../../architecture/agentic-governance-safety-framework/#2-cost-engine">Cost Engine</a>)</li>
-<li><strong>If something goes wrong, we can explain what happened</strong>—and improve (<a href="../../architecture/agentic-governance-safety-framework/#4-audit-engine">Audit Engine</a>)</li>
+<li>AI training data over-represents urban, English-speaking, high-income populations</li>
+<li>Resource allocation algorithms favor high-value users in first-come-first-served systems</li>
+<li>Cultural contexts of marginalized communities are absent from AI decision-making</li>
+</ul>
+<p><strong>Our response:</strong> Fair allocation policies, multilingual support, culturally grounded content guidelines, representative training data requirements.</p>
+<h3 id="why-governance-matters-for-both">Why Governance Matters for Both<a class="headerlink" href="#why-governance-matters-for-both" title="Permanent link">&para;</a></h3>
+<p>For users with no alternatives, <strong>governance isn't just about protecting the organization - it's about protecting people.</strong></p>
+<p>Our framework ensures:</p>
+<ul>
+<li><strong>AI admits when it doesn't know</strong> — no hallucinations that could mislead vulnerable users</li>
+<li><strong>Serious situations escalate to humans</strong> — automatically, not optionally</li>
+<li><strong>Resources are allocated equitably</strong> — not just to high-value or high-volume users</li>
+<li><strong>Everything is explainable</strong> — we can show what happened and why, in languages communities understand</li>
+</ul>
+<p><strong>Inclusion &amp; Accessibility Foundations</strong></p>
+<p>Our approach to equitable AI draws from:
+- <strong>Digital Inclusion:</strong> Research on access gaps across geography, economic status, and infrastructure (rural connectivity, device disparities)
+- <strong>Disability Inclusion:</strong> W3C Web Accessibility Guidelines (WCAG), assistive technology standards, universal design principles
+- <strong>Algorithmic Fairness:</strong> Fair resource allocation, bias detection in ML systems, representation in training data
+- <strong>Participatory Design:</strong> Community-centered development, co-design with marginalized populations</p>
+<p><em>This framework is strengthened through ongoing partnership with HCI researchers, disability advocates, and community representatives.</em></p>
+<hr />
+<h2 id="domain-extensibility-beyond-mapped-sectors">Domain Extensibility: Beyond Mapped Sectors<a class="headerlink" href="#domain-extensibility-beyond-mapped-sectors" title="Permanent link">&para;</a></h2>
+<p>While this document emphasizes certain sectoral solutions and deployments, the framework is <strong>domain-agnostic by design</strong>. The architecture supports custom domain profiles for any sensitive context.</p>
+<h3 id="example-agricultural-extension-services">Example: Agricultural Extension Services<a class="headerlink" href="#example-agricultural-extension-services" title="Permanent link">&para;</a></h3>
+<p><strong>Domain Profile: Agriculture</strong>
+- <strong>Safety concerns</strong>: Preventing dangerous pesticide/fertilizer advice, weather-dependent recommendations
+- <strong>Compliance</strong>: Agricultural data privacy, seed/chemical regulations
+- <strong>Inclusion</strong>: Supporting smallholder farmers, local language support, oral communication preferences
+- <strong>Accessibility</strong>: SMS-based interfaces, offline-first design for remote areas</p>
+<p>The framework's <a href="../../architecture/agentic-governance-safety-framework/#domain-profiles">Domain Profiles</a> architecture enables adding new domains without rebuilding core governance infrastructure.</p>
+<h3 id="supported-domain-types">Supported Domain Types<a class="headerlink" href="#supported-domain-types" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>Healthcare</strong>: Patient safety, PHI protection, clinical accuracy</li>
+<li><strong>Education</strong>: Age-appropriate content, student data privacy, learning outcomes</li>
+<li><strong>Agriculture</strong>: Livelihood safety, environmental compliance, smallholder inclusion</li>
+<li><strong>Financial Services</strong>: Fraud prevention, financial privacy, economic inclusion</li>
+<li><strong>Public Services</strong>: Citizen data protection, equitable access, multi-language support</li>
 </ul>
 <hr />
 <h2 id="the-bottom-line">The Bottom Line<a class="headerlink" href="#the-bottom-line" title="Permanent link">&para;</a></h2>
 <blockquote>
-<p><strong>"Move fast and break things" doesn't work when you're serving vulnerable populations.</strong></p>
+<p><strong>"Move fast and break things" doesn't work when serving vulnerable populations.</strong></p>
 </blockquote>
-<p>The Agentic Governance &amp; Safety Framework enables organizations to deploy AI that is:</p>
-<ul>
-<li><strong>Bold</strong> in its ambition to serve underserved communities</li>
-<li><strong>Responsible</strong> in how it handles sensitive information and high-stakes decisions</li>
-<li><strong>Sustainable</strong> in its cost structure and operational model</li>
-<li><strong>Trustworthy</strong> in the eyes of users, regulators, and partners</li>
-</ul>
+<p>This framework enables AI that is <strong>bold</strong> in ambition, <strong>responsible</strong> in handling sensitive data, <strong>sustainable</strong> in costs, and <strong>trustworthy</strong> to users, regulators, and partners.</p>
 <hr />
-<h2 id="call-to-action">Call to Action<a class="headerlink" href="#call-to-action" title="Permanent link">&para;</a></h2>
-<p>As you scale AI across healthcare, education, and accessibility:</p>
-<ol>
-<li><strong>Don't bolt on governance later</strong>—build it into the foundation</li>
-<li><strong>Don't treat compliance as a checkbox</strong>—make it continuous and automatic</li>
-<li><strong>Don't assume your users can recover from AI failures</strong>—design for the most vulnerable</li>
-<li><strong>Don't let AI costs surprise you</strong>—govern them proactively</li>
-</ol>
-<p>The Inclusive Architecture's Governance &amp; Safety Framework gives you all of this—so you can focus on impact, not damage control.</p>
+<h2 id="the-path-forward">The Path Forward<a class="headerlink" href="#the-path-forward" title="Permanent link">&para;</a></h2>
+<p>Build governance into the foundation—not as an afterthought. Make compliance continuous and automatic. Design for the most vulnerable users. Control costs proactively.</p>
+<p>The Agentic Governance &amp; Safety Framework delivers all of this—enabling you to focus on impact, not damage control.</p>
 <hr />
 <h2 id="related-concepts">Related Concepts<a class="headerlink" href="#related-concepts" title="Permanent link">&para;</a></h2>
 <ul>
