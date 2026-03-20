@@ -1,0 +1,1985 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+        <link rel="canonical" href="https://a4i-tech.github.io/public-docs/tool-registry-research-and-plan/">
+      
+      
+      
+      
+        
+      
+      
+      <link rel="icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.6">
+    
+    
+      
+        <title>Tool Registry: Research, Design, and Implementation Plan - A4I Docs</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.484c7ddc.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    <body dir="ltr">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#tool-registry-research-design-and-implementation-plan" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href=".." title="A4I Docs" class="md-header__button md-logo" aria-label="A4I Docs" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            A4I Docs
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Tool Registry: Research, Design, and Implementation Plan
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+  
+
+<nav class="md-nav md-nav--primary md-nav--integrated" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="A4I Docs" class="md-nav__button md-logo" aria-label="A4I Docs" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    A4I Docs
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_1" id="__nav_1_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Architecture
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_1">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Architecture
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../architecture/Inclusive-Architecture/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Inclusive Architecture
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../architecture/universal-knowledge-ingestion/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Universal Knowledge Ingestion Framework
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../architecture/agentic-governance-safety-framework/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Agentic Governance & Safety Framework
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../architecture/llm-gateway-layer/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    LLM Gateway Layer
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Concepts
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Concepts
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../concepts/AI-Governance/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    AI Governance
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="tool-registry-research-design-and-implementation-plan">Tool Registry: Research, Design, and Implementation Plan<a class="headerlink" href="#tool-registry-research-design-and-implementation-plan" title="Permanent link">&para;</a></h1>
+<p><em>Context: Inclusive Agentic Architecture — Phase 2 deliverable for Issue #173</em></p>
+<hr />
+<h2 id="1-problem-statement">1. Problem Statement<a class="headerlink" href="#1-problem-statement" title="Permanent link">&para;</a></h2>
+<p>The Inclusive Architecture defines a <strong>Tool Library</strong> used by the Agent Orchestration layer to perform deterministic I/O operations — data retrieval, writes, vector search, object storage, and messaging. The goal is to establish a <strong>governed, extensible tool registry</strong> that:</p>
+<ul>
+<li>Is entirely free (no paid SaaS)</li>
+<li>Gets the foundation right from day one (no "upgrade later" technical debt)</li>
+<li>Reuses community-maintained MCP servers where they exist</li>
+<li>Exposes common abstractions for Postgres, MongoDB, Azure Blob, Qdrant, Azure AI Search, LanceDB, and messaging (Azure Queue, Kafka, RabbitMQ)</li>
+<li>Keeps secrets and credentials completely isolated from the LLM context</li>
+</ul>
+<hr />
+<h2 id="2-industry-landscape">2. Industry Landscape<a class="headerlink" href="#2-industry-landscape" title="Permanent link">&para;</a></h2>
+<h3 id="21-how-leading-companies-approach-tool-registries">2.1 How Leading Companies Approach Tool Registries<a class="headerlink" href="#21-how-leading-companies-approach-tool-registries" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Company</th>
+<th>Approach</th>
+<th>Key Insight</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Anthropic</strong></td>
+<td>MCP Protocol + public MCP Registry (federated)</td>
+<td>Sub-registries for enterprise private use; tool schema is JSON Schema; tools/list RPC for runtime discovery</td>
+</tr>
+<tr>
+<td><strong>Microsoft</strong></td>
+<td>Azure API Center (MCP server catalog) + Semantic Kernel Plugins</td>
+<td>Plugin = named group of related tool functions; Azure API Center generates OpenAPI defs from registered MCP servers</td>
+</tr>
+<tr>
+<td><strong>Google</strong></td>
+<td>ADK with native MCP + Agent2Agent (A2A) protocol</td>
+<td>Agent Cards for capability discovery; native Qdrant and OpenAPI tool integrations</td>
+</tr>
+<tr>
+<td><strong>OpenAI</strong></td>
+<td>Function Calling (JSON Schema) + AgentKit Connector Registry</td>
+<td>Strict schema enforcement (<code>strict: true</code>); tool count kept under 20 per call for accuracy</td>
+</tr>
+<tr>
+<td><strong>Salesforce</strong></td>
+<td>Agentforce + A2A for cross-org agent interop</td>
+<td>Lifecycle management as first-class concern; governed agent registry</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Patterns common to all:</strong>
+- Tool metadata (name, description, JSON Schema, version, owner) is stored <strong>separately</strong> from tool implementation
+- Tools are <strong>stateless</strong> — all context injected as parameters; connection and credentials injected at registration time, never in the LLM context
+- Tool count per agent call kept <strong>under 10–20</strong> — more tools degrade LLM tool selection accuracy
+- <strong>Semantic Versioning</strong> (MAJOR.MINOR.PATCH) is standard; any breaking schema change = MAJOR bump; model upgrades = MAJOR bump</p>
+<h3 id="22-the-emerging-open-standard-mcp-model-context-protocol">2.2 The Emerging Open Standard: MCP (Model Context Protocol)<a class="headerlink" href="#22-the-emerging-open-standard-mcp-model-context-protocol" title="Permanent link">&para;</a></h3>
+<p>As of early 2026, <strong>MCP is the de facto open standard</strong> for agent tool registries:</p>
+<table>
+<thead>
+<tr>
+<th>Metric</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Monthly SDK downloads</td>
+<td>97M+ (November 2025)</td>
+</tr>
+<tr>
+<td>Governance</td>
+<td>Linux Foundation (AAIF) — co-founded by Anthropic, OpenAI, Block</td>
+</tr>
+<tr>
+<td>Framework support</td>
+<td>Anthropic Claude, OpenAI AgentKit, Semantic Kernel, Google ADK, LangChain, CrewAI</td>
+</tr>
+<tr>
+<td>Protocol base</td>
+<td>JSON-RPC 2.0 over stdio (local) or Streamable HTTP (remote)</td>
+</tr>
+<tr>
+<td>Tool discovery</td>
+<td><code>tools/list</code> RPC; <code>.well-known/mcp.json</code> passive discovery</td>
+</tr>
+<tr>
+<td>Registry entries</td>
+<td>~2,000 servers, 407% growth since September 2025 launch</td>
+</tr>
+</tbody>
+</table>
+<p>MCP defines tools as stateless callable functions with JSON Schema input contracts — exactly aligned with our architecture's definition of tools as <em>"deterministic connectors or adapters that perform actions or I/O without reasoning."</em></p>
+<h3 id="23-registry-option-evaluation">2.3 Registry Option Evaluation<a class="headerlink" href="#23-registry-option-evaluation" title="Permanent link">&para;</a></h3>
+<p>Three viable free/open-source approaches exist:</p>
+<p><strong>Option A: Build custom lightweight registry (FastAPI + Postgres catalog)</strong></p>
+<p>A minimal FastAPI service storing tool metadata (name, description, schema, version, endpoint) in Postgres, with a <code>/tools</code> discovery endpoint. Each tool server is a standalone MCP server or Python function.</p>
+<ul>
+<li>Pros: Full control, minimal dependencies, built in days</li>
+<li>Cons: Auth (OAuth/Entra), RBAC, audit logging, and multi-server aggregation all require custom builds; does not compose with the MCP ecosystem; ongoing maintenance burden</li>
+</ul>
+<p><strong>Option B: LangChain / LangGraph Tool Ecosystem</strong></p>
+<p>Tools implemented as LangChain <code>@tool</code> decorators registered into a LangGraph <code>ToolNode</code>. Large ecosystem of pre-built integrations (Postgres, MongoDB, Qdrant, Azure AI Search all have LangChain community tools).</p>
+<ul>
+<li>Pros: Large pre-built ecosystem; tight LLM integration</li>
+<li>Cons: Heavy LangChain dependency; not MCP-protocol-compatible; less aligned with our event-driven architecture; proprietary abstraction rather than an open standard</li>
+</ul>
+<p><strong>Option C: MCP-native stack with <code>mcp-gateway-registry</code></strong></p>
+<p>All tools exposed as MCP servers (using <code>fastmcp</code> or the <code>mcp</code> Python SDK). A single gateway (<code>agentic-community/mcp-gateway-registry</code>, Apache 2.0) handles auth, RBAC, audit, and multi-server aggregation behind one endpoint.</p>
+<ul>
+<li>Pros: Industry-standard protocol; universal framework compatibility; built-in auth/RBAC/audit; dynamic tool discovery; free; extensible; vendor-maintained community servers available for most target systems</li>
+<li>Cons: Gateway adds ~2 days of setup overhead vs a flat list of standalone servers</li>
+</ul>
+<h3 id="24-decision">2.4 Decision<a class="headerlink" href="#24-decision" title="Permanent link">&para;</a></h3>
+<p><strong>Option C is selected.</strong> The MCP-native stack with <code>mcp-gateway-registry</code> from day one. The reasoning:</p>
+<ul>
+<li>Auth (OAuth / Entra), RBAC, and audit logging are <strong>structural requirements</strong> that cannot be retrofitted without rewriting every tool server. Building them once at the gateway layer eliminates this risk entirely.</li>
+<li>We have 5+ target tool servers. A gateway that aggregates them behind a single endpoint is essential for the orchestration layer to remain stable as tools are added.</li>
+<li>Compliance requirements (EU AI Act high-risk logging, A4I audit trail) require a single enforcement point — the gateway is that point.</li>
+<li>The ~2 day setup overhead is trivially smaller than the cost of re-implementing auth and audit logging across each server individually.</li>
+</ul>
+<hr />
+<h2 id="3-gateway-mcp-gateway-registry-capability-comparison">3. Gateway: <code>mcp-gateway-registry</code> Capability Comparison<a class="headerlink" href="#3-gateway-mcp-gateway-registry-capability-comparison" title="Permanent link">&para;</a></h2>
+<p><strong>Option A: Simple self-hosted MCP servers, no gateway</strong></p>
+<table>
+<thead>
+<tr>
+<th>Capability</th>
+<th>Available</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Host individual MCP servers</td>
+<td>Yes</td>
+</tr>
+<tr>
+<td>Tool metadata catalog (name, version, schema)</td>
+<td>Yes (we build it)</td>
+</tr>
+<tr>
+<td>OAuth / Entra / Keycloak auth</td>
+<td>No — DIY per server</td>
+</tr>
+<tr>
+<td>RBAC (which agent can call which tool)</td>
+<td>No — DIY</td>
+</tr>
+<tr>
+<td>Audit log (who called what, when, with what args)</td>
+<td>No — DIY</td>
+</tr>
+<tr>
+<td>Multiple MCP servers behind one endpoint</td>
+<td>No — each server has its own address</td>
+</tr>
+<tr>
+<td>Dynamic tool discovery by autonomous agents</td>
+<td>No</td>
+</tr>
+<tr>
+<td>Agent2Agent (A2A) hub</td>
+<td>No</td>
+</tr>
+<tr>
+<td>Compliance-ready (EU AI Act high-risk logging)</td>
+<td>No</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Option B: <code>mcp-gateway-registry</code> (Apache 2.0, <code>agentic-community/mcp-gateway-registry</code>)</strong></p>
+<table>
+<thead>
+<tr>
+<th>Capability</th>
+<th>Available</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>All of the above</td>
+<td>Yes</td>
+</tr>
+<tr>
+<td>Multiple MCP servers behind one gateway endpoint</td>
+<td>Yes (virtual MCP aggregation)</td>
+</tr>
+<tr>
+<td>OAuth 2.0 (Cognito, Google, GitHub, Entra, Keycloak)</td>
+<td>Yes, built-in</td>
+</tr>
+<tr>
+<td>Fine-grained RBAC per tool per agent</td>
+<td>Yes</td>
+</tr>
+<tr>
+<td>Full audit log</td>
+<td>Yes</td>
+</tr>
+<tr>
+<td>Dynamic tool discovery by agents (natural language)</td>
+<td>Yes</td>
+</tr>
+<tr>
+<td>A2A Hub for agent-to-agent communication</td>
+<td>Yes</td>
+</tr>
+<tr>
+<td>SKILL.md registry</td>
+<td>Yes</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Setup overhead</strong>: The gateway runs a reverse proxy, a registry service, and (optionally) Keycloak. This adds ~2 days of initial setup effort but eliminates the need to implement auth, RBAC, and audit logging independently across each tool server.</p>
+<div class="highlight"><pre><span></span><code>Agent Orchestration Layer
+         │
+         ▼
+┌─────────────────────────────────────────────┐
+│         MCP Gateway Registry                │
+│  (mcp-gateway-registry, Apache 2.0)         │
+│  • OAuth / Entra authentication             │
+│  • RBAC per tool per agent                  │
+│  • Audit logging                            │
+│  • Tool discovery (natural language)        │
+│  • Unified MCP endpoint for all servers     │
+└──────────────┬──────────────────────────────┘
+               │  MCP / Streamable HTTP
+    ┌──────────┼──────────────────────┐
+    ▼          ▼                      ▼
+postgres-mcp  qdrant-mcp         azure-mcp
+(container)   (container)        (container)
+               │
+          lancedb-mcp        mongodb-mcp    queue-mcp
+          (container or      (container)    (container)
+           in-process)
+</code></pre></div>
+<hr />
+<h2 id="4-reusing-community-and-vendor-mcp-servers">4. Reusing Community and Vendor MCP Servers<a class="headerlink" href="#4-reusing-community-and-vendor-mcp-servers" title="Permanent link">&para;</a></h2>
+<p>A large portion of the tool surface area is <strong>already implemented</strong> by vendor-maintained or well-supported community MCP servers. We should reuse these rather than re-implement.</p>
+<h3 id="41-inventory-of-available-mcp-servers">4.1 Inventory of Available MCP Servers<a class="headerlink" href="#41-inventory-of-available-mcp-servers" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Storage System</th>
+<th>MCP Server</th>
+<th>Maintainer</th>
+<th>Status</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>PostgreSQL</strong></td>
+<td><code>@modelcontextprotocol/server-postgres</code></td>
+<td>Anthropic (archived)</td>
+<td>Reference only</td>
+<td>Read-only, no pgvector</td>
+</tr>
+<tr>
+<td><strong>PostgreSQL + pgvector</strong></td>
+<td><code>neverinfamous/postgres-mcp</code></td>
+<td>Community</td>
+<td>Active</td>
+<td>206 tools, pgvector extension, connection pooling, HTTP+OAuth</td>
+</tr>
+<tr>
+<td><strong>MongoDB</strong></td>
+<td><code>mongodb-js/mongodb-mcp-server</code></td>
+<td>MongoDB (official)</td>
+<td>Public Preview</td>
+<td>Atlas-required for vector search; stdio default</td>
+</tr>
+<tr>
+<td><strong>Azure (Blob, AI Search, Service Bus)</strong></td>
+<td><code>microsoft/mcp</code> (Azure MCP Server)</td>
+<td>Microsoft (official)</td>
+<td>GA</td>
+<td>40+ services, 208 tools; Blob read/write, AI Search query, Service Bus (mgmt only)</td>
+</tr>
+<tr>
+<td><strong>Qdrant</strong></td>
+<td><code>qdrant/mcp-server-qdrant</code></td>
+<td>Qdrant (official)</td>
+<td>Stable</td>
+<td>2 tools: <code>qdrant-store</code>, <code>qdrant-find</code>; semantic memory layer only</td>
+</tr>
+<tr>
+<td><strong>LanceDB</strong></td>
+<td><code>lancedb/lancedb-mcp-server</code></td>
+<td>LanceDB</td>
+<td>Reference only</td>
+<td>3 tools; educational, not production-grade</td>
+</tr>
+<tr>
+<td><strong>LanceDB (enhanced)</strong></td>
+<td><code>applied-ai-systems/aas-lancedb-mcp</code></td>
+<td>Community</td>
+<td>Active</td>
+<td>10 tools, BGE-M3 embeddings, dynamic schema evolution</td>
+</tr>
+<tr>
+<td><strong>Kafka</strong></td>
+<td><code>tuannvm/kafka-mcp-server</code> (Go)</td>
+<td>Community</td>
+<td>Active</td>
+<td>produce, consume, list-topics, describe</td>
+</tr>
+<tr>
+<td><strong>Kafka + RabbitMQ</strong></td>
+<td><code>LarsCowe/queue-pilot</code></td>
+<td>Community</td>
+<td>Active</td>
+<td>14+ tools, JSON Schema validation for messages, multi-broker</td>
+</tr>
+<tr>
+<td><strong>RabbitMQ</strong></td>
+<td><code>kenliao94/mcp-server-rabbitmq</code></td>
+<td>Community</td>
+<td>Active</td>
+<td>Basic publish/consume</td>
+</tr>
+<tr>
+<td><strong>Azure Queue / Service Bus (data-plane)</strong></td>
+<td>None</td>
+<td>—</td>
+<td>Gap</td>
+<td>Build required (see §8)</td>
+</tr>
+</tbody>
+</table>
+<h3 id="42-adoption-strategy">4.2 Adoption Strategy<a class="headerlink" href="#42-adoption-strategy" title="Permanent link">&para;</a></h3>
+<p><strong>Use directly (minimal wrapping needed):</strong>
+- <code>microsoft/mcp</code> (Azure MCP Server) — already covers Blob, AI Search, Service Bus management; just configure with Managed Identity
+- <code>mongodb-js/mongodb-mcp-server</code> — official, use for Atlas environments
+- <code>qdrant/mcp-server-qdrant</code> — official, adequate for semantic memory use case</p>
+<p><strong>Use with custom extension (add tools to existing server):</strong>
+- <code>neverinfamous/postgres-mcp</code> — deploy as-is; custom tools for business-specific queries can be added
+- <code>applied-ai-systems/aas-lancedb-mcp</code> — baseline works; may need tuning for our embedding models</p>
+<p><strong>Fork and extend:</strong>
+- <code>LarsCowe/queue-pilot</code> — extend to add Azure Queue Storage data-plane operations (it only covers Kafka/RabbitMQ natively)</p>
+<p><strong>Build from scratch (genuine gap):</strong>
+- Azure Queue Storage (message send/receive/peek/ack) — not in <code>microsoft/mcp</code>
+- Azure Service Bus data-plane (send/receive messages) — <code>microsoft/mcp</code> only exposes management (queue stats, message counts), not message content operations</p>
+<h3 id="43-benefit-of-reuse">4.3 Benefit of Reuse<a class="headerlink" href="#43-benefit-of-reuse" title="Permanent link">&para;</a></h3>
+<p>By adopting vendor-maintained servers, we automatically receive:
+- Security patches from MongoDB, Microsoft, Qdrant without our intervention
+- New tool additions as services evolve (e.g., when Microsoft adds Queue Storage data-plane to Azure MCP Server, we upgrade a container image)
+- Community-tested tool descriptions and schemas (poor descriptions are the #1 cause of wrong tool selection)
+- Compliance with each vendor's own auth patterns (Managed Identity for Azure, Atlas service account for MongoDB)</p>
+<hr />
+<h2 id="5-secret-management-isolating-credentials-from-the-llm">5. Secret Management: Isolating Credentials from the LLM<a class="headerlink" href="#5-secret-management-isolating-credentials-from-the-llm" title="Permanent link">&para;</a></h2>
+<h3 id="the-core-guarantee">The Core Guarantee<a class="headerlink" href="#the-core-guarantee" title="Permanent link">&para;</a></h3>
+<p><strong>The LLM only sees tool inputs and tool outputs — never the tool's internals.</strong> Secrets live in the MCP server process memory and never cross the boundary to the LLM context window.</p>
+<h3 id="pattern-1-environment-variables-bound-at-server-startup">Pattern 1: Environment Variables Bound at Server Startup<a class="headerlink" href="#pattern-1-environment-variables-bound-at-server-startup" title="Permanent link">&para;</a></h3>
+<p>When an orchestrator or gateway starts an MCP server (as a subprocess or container), it passes secrets via environment variables. The LLM never sees these values.</p>
+<p><strong>Example — PostgreSQL MCP Server:</strong></p>
+<div class="highlight"><pre><span></span><code><span class="c1">// mcp-gateway-registry server registration (stored in gateway config, never in LLM context)</span>
+<span class="p">{</span>
+<span class="w">  </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;postgres-tools&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;command&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;npx&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;args&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;-y&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;@my-org/postgres-mcp&quot;</span><span class="p">],</span>
+<span class="w">  </span><span class="nt">&quot;env&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;POSTGRES_DSN&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;postgresql://svc_agent:${SECRET_PG_PASSWORD}@db.internal:5432/a4i_prod&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;MAX_POOL_SIZE&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;10&quot;</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>Inside the MCP server Python process:</p>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">os</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">psycopg2</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">functools</span><span class="w"> </span><span class="kn">import</span> <span class="n">lru_cache</span>
+
+<span class="c1"># Bound once at startup — never passed to LLM as a parameter</span>
+<span class="n">DSN</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="p">[</span><span class="s2">&quot;POSTGRES_DSN&quot;</span><span class="p">]</span>
+
+<span class="nd">@lru_cache</span><span class="p">(</span><span class="n">maxsize</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">get_pool</span><span class="p">():</span>
+    <span class="k">return</span> <span class="n">psycopg2</span><span class="o">.</span><span class="n">pool</span><span class="o">.</span><span class="n">ThreadedConnectionPool</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="n">DSN</span><span class="p">)</span>
+
+<span class="c1"># The tool schema the LLM sees: only { &quot;sql&quot;: string, &quot;params&quot;: array }</span>
+<span class="c1"># The LLM has no way to discover POSTGRES_DSN or request it</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">query_tool</span><span class="p">(</span><span class="n">sql</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">params</span><span class="p">:</span> <span class="nb">list</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">dict</span><span class="p">:</span>
+    <span class="k">with</span> <span class="n">get_pool</span><span class="p">()</span><span class="o">.</span><span class="n">getconn</span><span class="p">()</span> <span class="k">as</span> <span class="n">conn</span><span class="p">:</span>
+        <span class="n">rows</span> <span class="o">=</span> <span class="n">conn</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="n">sql</span><span class="p">,</span> <span class="n">params</span><span class="p">)</span><span class="o">.</span><span class="n">fetchall</span><span class="p">()</span>
+    <span class="k">return</span> <span class="p">{</span><span class="s2">&quot;data&quot;</span><span class="p">:</span> <span class="n">rows</span><span class="p">,</span> <span class="s2">&quot;count&quot;</span><span class="p">:</span> <span class="nb">len</span><span class="p">(</span><span class="n">rows</span><span class="p">)}</span>
+</code></pre></div>
+<p><strong>What the LLM sees in the tool call:</strong>
+<div class="highlight"><pre><span></span><code><span class="p">{</span>
+<span class="w">  </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;postgres.query&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;arguments&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;sql&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;SELECT id, name FROM users WHERE active = $1&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;params&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="kc">true</span><span class="p">]</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></p>
+<p>The LLM has no mechanism to ask "what is POSTGRES_DSN?" — it is not a parameter, not in the tool description, and not in the response.</p>
+<h3 id="pattern-2-azure-key-vault-dynamic-ephemeral-credentials">Pattern 2: Azure Key Vault — Dynamic Ephemeral Credentials<a class="headerlink" href="#pattern-2-azure-key-vault-dynamic-ephemeral-credentials" title="Permanent link">&para;</a></h3>
+<p>For production environments, secrets should not live in environment variables at all. Instead, the MCP server fetches short-lived credentials from Azure Key Vault using <strong>Managed Identity</strong> (no secret needed to access Key Vault):</p>
+<div class="highlight"><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">azure.identity</span><span class="w"> </span><span class="kn">import</span> <span class="n">ManagedIdentityCredential</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">azure.keyvault.secrets</span><span class="w"> </span><span class="kn">import</span> <span class="n">SecretClient</span>
+
+<span class="c1"># No credentials in config — Managed Identity is used to authenticate to Key Vault</span>
+<span class="n">credential</span> <span class="o">=</span> <span class="n">ManagedIdentityCredential</span><span class="p">()</span>
+<span class="n">kv_client</span> <span class="o">=</span> <span class="n">SecretClient</span><span class="p">(</span><span class="s2">&quot;https://a4i-keyvault.vault.azure.net/&quot;</span><span class="p">,</span> <span class="n">credential</span><span class="p">)</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">get_db_connection</span><span class="p">():</span>
+    <span class="c1"># Fetch secret at call time — Key Vault caches internally, so this is ~2ms overhead</span>
+    <span class="n">pg_password</span> <span class="o">=</span> <span class="n">kv_client</span><span class="o">.</span><span class="n">get_secret</span><span class="p">(</span><span class="s2">&quot;postgres-agent-password&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">value</span>
+    <span class="k">return</span> <span class="n">psycopg2</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span>
+        <span class="n">host</span><span class="o">=</span><span class="s2">&quot;db.internal&quot;</span><span class="p">,</span> <span class="n">database</span><span class="o">=</span><span class="s2">&quot;a4i_prod&quot;</span><span class="p">,</span>
+        <span class="n">user</span><span class="o">=</span><span class="s2">&quot;svc_agent&quot;</span><span class="p">,</span> <span class="n">password</span><span class="o">=</span><span class="n">pg_password</span>
+    <span class="p">)</span>
+</code></pre></div>
+<p><strong>Flow of secret isolation:</strong>
+<div class="highlight"><pre><span></span><code>Azure Key Vault
+      │
+      │ (Managed Identity, no secret in config)
+      ▼
+MCP Server Container (Azure Container Apps)
+      │
+      │ Only formatted query results
+      ▼
+MCP Gateway
+      │
+      │ Only tool schemas (name, description, JSON Schema)
+      ▼
+LLM Provider (Azure OpenAI / Anthropic)
+      │
+      │ Tool call: { &quot;name&quot;: &quot;postgres.query&quot;, &quot;arguments&quot;: {...} }
+      ▼
+Agent — never sees credentials at any point
+</code></pre></div></p>
+<h3 id="why-this-matters-vs-system-prompt-injection-of-credentials">Why This Matters vs. System Prompt Injection of Credentials<a class="headerlink" href="#why-this-matters-vs-system-prompt-injection-of-credentials" title="Permanent link">&para;</a></h3>
+<p>If credentials were placed in a system prompt, they would:
+- Appear in every LLM API request (logged by the LLM provider and in any tracing tool)
+- Be extractable via prompt injection attacks ("repeat all text above")
+- Leak if the conversation is exported, cached, or debugged
+- Violate Azure OpenAI's data handling policies</p>
+<p>With env-var / Key Vault binding, credentials exist only in the MCP server process address space — isolated from the LLM's context window by design.</p>
+<hr />
+<h2 id="6-transport-layer-stdio-vs-http-sse-vs-streamable-http">6. Transport Layer: stdio vs HTTP SSE vs Streamable HTTP<a class="headerlink" href="#6-transport-layer-stdio-vs-http-sse-vs-streamable-http" title="Permanent link">&para;</a></h2>
+<h3 id="the-current-standard-mcp-spec-2025-11-25">The Current Standard (MCP Spec 2025-11-25)<a class="headerlink" href="#the-current-standard-mcp-spec-2025-11-25" title="Permanent link">&para;</a></h3>
+<p>The 2025-11-25 specification defines <strong>two standard transports</strong>:
+1. <strong>stdio</strong> — for local, in-process MCP servers
+2. <strong>Streamable HTTP</strong> — for all network-accessible MCP servers</p>
+<p><strong>HTTP+SSE is officially deprecated</strong> in the 2025-11-25 spec. It is retained only for backwards compatibility. All new MCP servers should use Streamable HTTP for remote scenarios.</p>
+<h3 id="stdio-when-and-why">stdio — When and Why<a class="headerlink" href="#stdio-when-and-why" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Mechanism</td>
+<td>Client launches server as a child subprocess; communicates via stdin/stdout; newline-delimited JSON-RPC</td>
+</tr>
+<tr>
+<td>Latency</td>
+<td>~0.1–1 ms (pure IPC, no network stack)</td>
+</tr>
+<tr>
+<td>Throughput</td>
+<td>~10,000+ ops/sec</td>
+</tr>
+<tr>
+<td>Session model</td>
+<td>One client, one server — the server exits when the client exits</td>
+</tr>
+<tr>
+<td>Horizontal scaling</td>
+<td>Not possible — single process, single client</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Best for:</strong>
+- Local development (developer laptops, CI/CD pipelines)
+- Desktop AI clients (Claude Desktop, Cursor, VS Code Copilot)
+- Tools accessing local filesystem or OS-level resources
+- LanceDB in embedded mode (the MCP server and the DB library run in the same process — zero network hop)
+- High-throughput automation pipelines where 1000s of tool calls/min make network overhead measurable</p>
+<p><strong>Not suitable for:</strong>
+- Any scenario where the MCP server needs to be accessed by more than one agent simultaneously
+- Cloud deployments behind a load balancer
+- Services that need to survive an agent restart (the server dies with the client)</p>
+<h3 id="httpsse-why-it-was-deprecated">HTTP+SSE — Why It Was Deprecated<a class="headerlink" href="#httpsse-why-it-was-deprecated" title="Permanent link">&para;</a></h3>
+<p>HTTP+SSE required <strong>two separate endpoints</strong>:
+1. A POST endpoint for client-to-server requests
+2. An SSE stream endpoint for server-to-client responses</p>
+<p>This caused:
+- Complex routing and CORS configuration
+- Persistent long-lived connections that don't survive load balancers or serverless platforms (each request had to hit the same server instance)
+- No stateless operation — horizontal scaling was fundamentally impossible
+- Proxy/firewall issues with long-lived SSE connections
+- Connection drops requiring full reconnection and context loss</p>
+<p>HTTP+SSE technically still works for backwards compatibility, but building new tools on it is inadvisable.</p>
+<h3 id="streamable-http-the-correct-choice-for-cloud-deployments">Streamable HTTP — The Correct Choice for Cloud Deployments<a class="headerlink" href="#streamable-http-the-correct-choice-for-cloud-deployments" title="Permanent link">&para;</a></h3>
+<p><strong>Mechanism</strong>: Single HTTP endpoint supporting both POST and GET. Client sends JSON-RPC via POST. Server responds with either:
+- <code>application/json</code> for synchronous responses
+- <code>text/event-stream</code> (SSE) for streaming/async responses (dynamically chosen per request)</p>
+<p><strong>Key improvements over HTTP+SSE:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Feature</th>
+<th>HTTP+SSE</th>
+<th>Streamable HTTP</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Endpoint count</td>
+<td>2 (POST + SSE stream)</td>
+<td>1</td>
+</tr>
+<tr>
+<td>Stateless operation</td>
+<td>No</td>
+<td>Yes (optional session via <code>MCP-Session-Id</code> header)</td>
+</tr>
+<tr>
+<td>Load balancer compatible</td>
+<td>No</td>
+<td>Yes</td>
+</tr>
+<tr>
+<td>Serverless compatible</td>
+<td>No</td>
+<td>Yes (Azure Functions, Container Apps scale-to-zero)</td>
+</tr>
+<tr>
+<td>Resumable streams</td>
+<td>No</td>
+<td>Yes (<code>Last-Event-ID</code> header)</td>
+</tr>
+<tr>
+<td>Security model</td>
+<td>Weak</td>
+<td>Origin header validation, protocol version enforcement</td>
+</tr>
+</tbody>
+</table>
+<p><strong>For our cloud deployments</strong>, Streamable HTTP is the right choice for all MCP servers deployed to Azure Container Apps, AKS, or Azure Functions.</p>
+<h3 id="decision-matrix">Decision Matrix<a class="headerlink" href="#decision-matrix" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Scenario</th>
+<th>Transport</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Developer local tooling, single user</td>
+<td>stdio</td>
+</tr>
+<tr>
+<td>LanceDB embedded (in-process DB)</td>
+<td>stdio</td>
+</tr>
+<tr>
+<td>Claude Desktop / Cursor integration</td>
+<td>stdio</td>
+</tr>
+<tr>
+<td>Azure Container Apps hosted MCP server</td>
+<td>Streamable HTTP</td>
+</tr>
+<tr>
+<td>AKS-deployed MCP server, multiple agents</td>
+<td>Streamable HTTP</td>
+</tr>
+<tr>
+<td>Azure Functions exposed as MCP tool</td>
+<td>Streamable HTTP</td>
+</tr>
+<tr>
+<td>Behind Azure API Management</td>
+<td>Streamable HTTP</td>
+</tr>
+<tr>
+<td>Talking to a legacy server (cannot update)</td>
+<td>HTTP+SSE (backwards compat only)</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="7-hosting-options-for-mcp-servers-and-the-gateway">7. Hosting Options for MCP Servers and the Gateway<a class="headerlink" href="#7-hosting-options-for-mcp-servers-and-the-gateway" title="Permanent link">&para;</a></h2>
+<h3 id="option-a-docker-compose-development-small-deployments">Option A: Docker Compose (Development / Small Deployments)<a class="headerlink" href="#option-a-docker-compose-development-small-deployments" title="Permanent link">&para;</a></h3>
+<p>All MCP servers and the gateway run as Docker containers on a single host. Most appropriate for:
+- Local development environment
+- Single-VM pilot deployments
+- Cost-sensitive scenarios (one VM, ~$20-50/month)</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># docker-compose.yml</span>
+<span class="nt">services</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">gateway</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">agentic-community/mcp-gateway-registry:latest</span>
+<span class="w">    </span><span class="nt">ports</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">&quot;8080:8080&quot;</span><span class="p p-Indicator">]</span>
+<span class="w">    </span><span class="nt">environment</span><span class="p">:</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">AUTH_PROVIDER=keycloak</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">KEYCLOAK_URL=http://keycloak:8080</span>
+<span class="w">    </span><span class="nt">depends_on</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="nv">keycloak</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">registry-db</span><span class="p p-Indicator">]</span>
+
+<span class="w">  </span><span class="nt">postgres-mcp</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">my-org/postgres-mcp:1.2.0</span>
+<span class="w">    </span><span class="nt">environment</span><span class="p">:</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">POSTGRES_DSN_FILE=/run/secrets/postgres_dsn</span>
+<span class="w">    </span><span class="nt">secrets</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="nv">postgres_dsn</span><span class="p p-Indicator">]</span>
+<span class="w">    </span><span class="c1"># No port exposure — only accessible to gateway via internal Docker network</span>
+
+<span class="w">  </span><span class="nt">qdrant-mcp</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">qdrant/mcp-server-qdrant:latest</span>
+<span class="w">    </span><span class="nt">environment</span><span class="p">:</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">QDRANT_URL=http://qdrant:6333</span>
+<span class="w">    </span><span class="nt">depends_on</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="nv">qdrant</span><span class="p p-Indicator">]</span>
+
+<span class="w">  </span><span class="nt">qdrant</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">qdrant/qdrant:latest</span>
+<span class="w">    </span><span class="nt">volumes</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">&quot;qdrant-data:/qdrant/storage&quot;</span><span class="p p-Indicator">]</span>
+
+<span class="w">  </span><span class="nt">azure-mcp</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">mcr.microsoft.com/azure/mcp:latest</span>
+<span class="w">    </span><span class="nt">environment</span><span class="p">:</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">AZURE_CLIENT_ID=${MI_CLIENT_ID}</span><span class="w">   </span><span class="c1"># Managed Identity</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">AZURE_TENANT_ID=${AZURE_TENANT_ID}</span>
+
+<span class="w">  </span><span class="nt">queue-mcp</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">my-org/queue-mcp:1.0.0</span><span class="w">        </span><span class="c1"># Custom-built (see §8)</span>
+<span class="w">    </span><span class="nt">environment</span><span class="p">:</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">KAFKA_BROKERS=kafka:9092</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">AZURE_SERVICEBUS_CONN_FILE=/run/secrets/sb_conn</span>
+
+<span class="w">  </span><span class="nt">keycloak</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">quay.io/keycloak/keycloak:latest</span>
+
+<span class="w">  </span><span class="nt">registry-db</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">postgres:16-alpine</span>
+<span class="w">    </span><span class="nt">volumes</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">&quot;registry-data:/var/lib/postgresql/data&quot;</span><span class="p p-Indicator">]</span>
+
+<span class="nt">secrets</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">postgres_dsn</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">external</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span><span class="w">       </span><span class="c1"># Managed outside Docker Compose (e.g., Azure Key Vault, .env)</span>
+<span class="w">  </span><span class="nt">sb_conn</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">external</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+</code></pre></div>
+<p><strong>Security note</strong>: MCP tool servers are not exposed on public ports. Only the gateway is externally accessible. Tool servers communicate with the gateway over the internal Docker network.</p>
+<h3 id="option-b-azure-container-apps-recommended-for-cloud">Option B: Azure Container Apps (Recommended for Cloud)<a class="headerlink" href="#option-b-azure-container-apps-recommended-for-cloud" title="Permanent link">&para;</a></h3>
+<p>Azure Container Apps (ACA) is Microsoft's officially recommended hosting for remote MCP servers. It provides:
+- Scale-to-zero (zero cost when idle)
+- Managed ingress with TLS
+- Managed Identity for Azure Key Vault and Azure services (no secrets in config)
+- Azure Virtual Network integration (tool servers in private subnet)</p>
+<div class="highlight"><pre><span></span><code>┌─────────────────────────────────────────────────────────────────────┐
+│                    Azure Container Apps Environment                  │
+│  ┌─────────────────────────────────────────────────────────────┐   │
+│  │ Internal VNet Subnet                                         │   │
+│  │                                                              │   │
+│  │  ┌─────────────┐  ┌───────────────┐  ┌──────────────────┐  │   │
+│  │  │ postgres-mcp│  │ qdrant-mcp    │  │   queue-mcp      │  │   │
+│  │  │ (internal)  │  │ (internal)    │  │   (internal)     │  │   │
+│  │  └─────────────┘  └───────────────┘  └──────────────────┘  │   │
+│  │                                                              │   │
+│  │  ┌────────────────────────────────────────────────────┐     │   │
+│  │  │   azure-mcp (microsoft/mcp) — internal             │     │   │
+│  │  └────────────────────────────────────────────────────┘     │   │
+│  │                                                              │   │
+│  │  ┌────────────────────────────────────────────────────┐     │   │
+│  │  │   MCP Gateway Registry — External Ingress (HTTPS)  │◄────┼───┼── Agents
+│  │  └────────────────────────────────────────────────────┘     │   │
+│  └─────────────────────────────────────────────────────────────┘   │
+│                                                                     │
+│   Azure Key Vault ◄── Managed Identity (no secret in container env) │
+└─────────────────────────────────────────────────────────────────────┘
+</code></pre></div>
+<p>Tool containers use <code>--ingress internal</code> so they are not accessible outside the ACA environment. The gateway alone has <code>--ingress external</code>.</p>
+<h3 id="option-c-aks-kubernetes-production-scale">Option C: AKS (Kubernetes) — Production Scale<a class="headerlink" href="#option-c-aks-kubernetes-production-scale" title="Permanent link">&para;</a></h3>
+<p>Two deployment patterns:</p>
+<p><strong>Sidecar pattern</strong> — MCP server runs in the same pod as the agent, connected via localhost. Zero network latency, suitable for stdio or localhost Streamable HTTP:</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># Agent pod with MCP server sidecar</span>
+<span class="nt">spec</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">containers</span><span class="p">:</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">agent-orchestrator</span>
+<span class="w">    </span><span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">my-org/orchestrator:latest</span>
+<span class="w">    </span><span class="nt">env</span><span class="p">:</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">MCP_POSTGRES_URL</span>
+<span class="w">      </span><span class="nt">value</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;http://localhost:8001/mcp&quot;</span><span class="w">  </span><span class="c1"># Sidecar, same pod</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">postgres-mcp-sidecar</span>
+<span class="w">    </span><span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">my-org/postgres-mcp:1.2.0</span>
+<span class="w">    </span><span class="nt">ports</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[{</span><span class="nt">containerPort</span><span class="p">:</span><span class="w"> </span><span class="nv">8001</span><span class="p p-Indicator">}]</span>
+<span class="w">    </span><span class="nt">env</span><span class="p">:</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">POSTGRES_DSN</span>
+<span class="w">      </span><span class="nt">valueFrom</span><span class="p">:</span>
+<span class="w">        </span><span class="nt">secretKeyRef</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">{</span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="nv">postgres-mcp-secrets</span><span class="p p-Indicator">,</span><span class="nt"> key</span><span class="p">:</span><span class="w"> </span><span class="nv">dsn</span><span class="p p-Indicator">}</span>
+</code></pre></div>
+<p><strong>Dedicated service pattern</strong> — MCP servers as independent Kubernetes services; gateway as a shared ingress:</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># Gateway deployment with Workload Identity (AKS best practice)</span>
+<span class="nt">spec</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">serviceAccountName</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">mcp-gateway-sa</span><span class="w">  </span><span class="c1"># Bound to Azure Managed Identity via annotation</span>
+<span class="w">  </span><span class="nt">containers</span><span class="p">:</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">gateway</span>
+<span class="w">    </span><span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">agentic-community/mcp-gateway-registry:latest</span>
+</code></pre></div>
+<p>AKS + Workload Identity is the recommended pattern for production — the pod gets a Managed Identity without any secrets in the deployment manifest.</p>
+<h3 id="option-d-azure-functions-serverless-tool-endpoints">Option D: Azure Functions (Serverless Tool Endpoints)<a class="headerlink" href="#option-d-azure-functions-serverless-tool-endpoints" title="Permanent link">&para;</a></h3>
+<p>Individual tools can be exposed as Azure Functions with the MCP binding, rather than as a standalone server. Best for:
+- Infrequent calls where scale-to-zero matters (cost: ~$0 at rest)
+- Tools that call other Azure services and want native SDK bindings
+- Simple tools that don't require a full container</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># Azure Function as an MCP tool (Python v2 programming model)</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">azure.functions</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">func</span>
+
+<span class="n">app</span> <span class="o">=</span> <span class="n">func</span><span class="o">.</span><span class="n">FunctionApp</span><span class="p">()</span>
+
+<span class="nd">@app</span><span class="o">.</span><span class="n">function_name</span><span class="p">(</span><span class="s2">&quot;blob_read&quot;</span><span class="p">)</span>
+<span class="nd">@app</span><span class="o">.</span><span class="n">mcp_tool</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">&quot;blob.read&quot;</span><span class="p">,</span> <span class="n">description</span><span class="o">=</span><span class="s2">&quot;Read text content of a blob&quot;</span><span class="p">)</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">blob_read_tool</span><span class="p">(</span><span class="n">tool_input</span><span class="p">:</span> <span class="nb">dict</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+    <span class="kn">from</span><span class="w"> </span><span class="nn">azure.storage.blob</span><span class="w"> </span><span class="kn">import</span> <span class="n">BlobServiceClient</span>
+    <span class="kn">from</span><span class="w"> </span><span class="nn">azure.identity</span><span class="w"> </span><span class="kn">import</span> <span class="n">ManagedIdentityCredential</span>
+    <span class="n">client</span> <span class="o">=</span> <span class="n">BlobServiceClient</span><span class="p">(</span>
+        <span class="sa">f</span><span class="s2">&quot;https://</span><span class="si">{</span><span class="n">STORAGE_ACCOUNT</span><span class="si">}</span><span class="s2">.blob.core.windows.net&quot;</span><span class="p">,</span>
+        <span class="n">credential</span><span class="o">=</span><span class="n">ManagedIdentityCredential</span><span class="p">()</span>
+    <span class="p">)</span>
+    <span class="k">return</span> <span class="n">client</span><span class="o">.</span><span class="n">get_blob_client</span><span class="p">(</span>
+        <span class="n">tool_input</span><span class="p">[</span><span class="s2">&quot;container&quot;</span><span class="p">],</span> <span class="n">tool_input</span><span class="p">[</span><span class="s2">&quot;name&quot;</span><span class="p">]</span>
+    <span class="p">)</span><span class="o">.</span><span class="n">download_blob</span><span class="p">()</span><span class="o">.</span><span class="n">readall</span><span class="p">()</span><span class="o">.</span><span class="n">decode</span><span class="p">()</span>
+</code></pre></div>
+<p><strong>Tradeoff</strong>: Cold starts add 200-800ms latency. Not appropriate for tools called many times per agent turn.</p>
+<h3 id="latency-reference">Latency Reference<a class="headerlink" href="#latency-reference" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Hosting Pattern</th>
+<th>Transport</th>
+<th>Typical Overhead</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Sidecar (same pod, localhost)</td>
+<td>Streamable HTTP</td>
+<td>~1–5 ms</td>
+</tr>
+<tr>
+<td>ACA internal subnet</td>
+<td>Streamable HTTP</td>
+<td>~2–10 ms</td>
+</tr>
+<tr>
+<td>AKS ClusterIP service</td>
+<td>Streamable HTTP</td>
+<td>~1–8 ms</td>
+</tr>
+<tr>
+<td>Cross-region</td>
+<td>Streamable HTTP</td>
+<td>~50–200 ms</td>
+</tr>
+<tr>
+<td>Azure Functions (warm)</td>
+<td>Streamable HTTP</td>
+<td>~50–150 ms</td>
+</tr>
+<tr>
+<td>Azure Functions (cold)</td>
+<td>Streamable HTTP</td>
+<td>~300–800 ms</td>
+</tr>
+</tbody>
+</table>
+<p>For interactive agent workflows, LLM inference time (1–30s) dominates. MCP transport overhead is negligible in all hosted scenarios except cross-region.</p>
+<hr />
+<h2 id="8-tool-abstractions-for-target-storage-systems">8. Tool Abstractions for Target Storage Systems<a class="headerlink" href="#8-tool-abstractions-for-target-storage-systems" title="Permanent link">&para;</a></h2>
+<h3 id="design-principles-common-to-all-tools">Design Principles (Common to All Tools)<a class="headerlink" href="#design-principles-common-to-all-tools" title="Permanent link">&para;</a></h3>
+<ol>
+<li><strong>Stateless</strong>: Connections injected at server startup via environment variables or Key Vault — never in tool parameters</li>
+<li><strong>Allowlisted operations</strong>: Named operations only — no raw query/command passthrough</li>
+<li><strong>Structured return envelope</strong>: <code>{ "data": [...], "count": N, "error": null, "_meta": { "tool": "...", "version": "..." } }</code></li>
+<li><strong>LLM-oriented descriptions</strong>: Description field written to guide model tool selection, including <em>when not to use</em> the tool</li>
+<li><strong>Namespace prefix</strong>: <code>postgres.</code>, <code>mongo.</code>, <code>blob.</code>, <code>qdrant.</code>, <code>azure_search.</code>, <code>lancedb.</code>, <code>queue.</code></li>
+</ol>
+<hr />
+<h3 id="81-postgresql-tools-neverinfamouspostgres-mcp-extended">8.1 PostgreSQL Tools (<code>neverinfamous/postgres-mcp</code> extended)<a class="headerlink" href="#81-postgresql-tools-neverinfamouspostgres-mcp-extended" title="Permanent link">&para;</a></h3>
+<p>Reuse <code>neverinfamous/postgres-mcp</code> as the base (206 tools, pgvector-aware, connection pooling). Add business-specific query tools as extensions.</p>
+<table>
+<thead>
+<tr>
+<th>Tool</th>
+<th>Description</th>
+<th>Key Parameters</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>postgres.query</code></td>
+<td>Read-only parameterized SELECT. Never use for writes.</td>
+<td><code>sql: str</code>, <code>params: list</code></td>
+</tr>
+<tr>
+<td><code>postgres.upsert</code></td>
+<td>Insert or update by conflict key. Returns saved record with ID.</td>
+<td><code>table: str</code>, <code>record: dict</code>, <code>conflict_col: str</code></td>
+</tr>
+<tr>
+<td><code>postgres.vector_search</code></td>
+<td>Cosine similarity search via pgvector. Returns top-k rows with distance score.</td>
+<td><code>table: str</code>, <code>embedding_col: str</code>, <code>query_vector: float[]</code>, <code>top_k: int</code></td>
+</tr>
+<tr>
+<td><code>postgres.hybrid_search</code></td>
+<td>Combined full-text (tsvector) + pgvector similarity. Ranked by RRF.</td>
+<td><code>table: str</code>, <code>text_query: str</code>, <code>query_vector: float[]</code>, <code>top_k: int</code></td>
+</tr>
+<tr>
+<td><code>postgres.list_tables</code></td>
+<td>List accessible tables. Use before querying to understand data model.</td>
+<td>none</td>
+</tr>
+<tr>
+<td><code>postgres.describe_table</code></td>
+<td>Return columns, types, constraints for a table.</td>
+<td><code>table: str</code></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Notes</strong>: Enforce <code>READ ONLY</code> transaction isolation for <code>postgres.query</code>. In Azure: use <code>azure_ai</code> extension for in-database embedding generation, eliminating a round-trip to the embedding service.</p>
+<hr />
+<h3 id="82-mongodb-tools-mongodb-jsmongodb-mcp-server-extensions">8.2 MongoDB Tools (<code>mongodb-js/mongodb-mcp-server</code> + extensions)<a class="headerlink" href="#82-mongodb-tools-mongodb-jsmongodb-mcp-server-extensions" title="Permanent link">&para;</a></h3>
+<p>Use the official MongoDB MCP server for Atlas environments. For self-hosted MongoDB, extend <code>neverinfamous/postgres-mcp</code> patterns using <code>pymongo</code>.</p>
+<table>
+<thead>
+<tr>
+<th>Tool</th>
+<th>Description</th>
+<th>Key Parameters</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>mongo.find</code></td>
+<td>Find documents matching a filter.</td>
+<td><code>collection: str</code>, <code>filter: dict</code>, <code>limit: int</code>, <code>projection: dict</code></td>
+</tr>
+<tr>
+<td><code>mongo.upsert</code></td>
+<td>Insert or update document matching filter. Returns the saved document.</td>
+<td><code>collection: str</code>, <code>filter: dict</code>, <code>update: dict</code></td>
+</tr>
+<tr>
+<td><code>mongo.aggregate</code></td>
+<td>Run aggregation pipeline. Use for grouping, counting, or multi-stage transforms.</td>
+<td><code>collection: str</code>, <code>pipeline: list</code></td>
+</tr>
+<tr>
+<td><code>mongo.vector_search</code></td>
+<td>Atlas Vector Search over embeddings. Requires Atlas, not self-hosted.</td>
+<td><code>collection: str</code>, <code>index: str</code>, <code>query_vector: float[]</code>, <code>top_k: int</code>, <code>filter: dict</code></td>
+</tr>
+<tr>
+<td><code>mongo.list_collections</code></td>
+<td>List all accessible collection names.</td>
+<td>none</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Constraint</strong>: Maintain server-side collection allowlist — reject calls to collections not in the allowlist.</p>
+<hr />
+<h3 id="83-azure-blob-storage-tools-microsoftmcp-custom-extensions">8.3 Azure Blob Storage Tools (<code>microsoft/mcp</code> + custom extensions)<a class="headerlink" href="#83-azure-blob-storage-tools-microsoftmcp-custom-extensions" title="Permanent link">&para;</a></h3>
+<p>Use the Microsoft Azure MCP Server (<code>microsoft/mcp</code>) for standard Blob operations. Extend with SAS URL generation for media/document access — this is a gap in the official server that we must fill.</p>
+<p>The architecture involves PDFs, images, and binary files. These cannot be returned as raw content in a tool response (size limits, encoding). Instead, agents receive a short-lived signed URL to retrieve or embed the file via a separate HTTP request.</p>
+<table>
+<thead>
+<tr>
+<th>Tool</th>
+<th>Description</th>
+<th>Key Parameters</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>blob.list</code></td>
+<td>List blob names in a container, filtered by prefix.</td>
+<td><code>container: str</code>, <code>prefix: str</code></td>
+</tr>
+<tr>
+<td><code>blob.read</code></td>
+<td>Read text content of a blob (UTF-8). Use for text files, JSON, Markdown. Do not use for binary files (PDFs, images) — use <code>blob.download_url</code> instead.</td>
+<td><code>container: str</code>, <code>name: str</code></td>
+</tr>
+<tr>
+<td><code>blob.write</code></td>
+<td>Write text or JSON content to a blob. Returns blob URL.</td>
+<td><code>container: str</code>, <code>name: str</code>, <code>content: str</code>, <code>content_type: str</code></td>
+</tr>
+<tr>
+<td><code>blob.delete</code></td>
+<td>Delete a blob. Requires <code>confirm: true</code> to prevent accidental deletion.</td>
+<td><code>container: str</code>, <code>name: str</code>, <code>confirm: bool</code></td>
+</tr>
+<tr>
+<td><code>blob.get_metadata</code></td>
+<td>Retrieve metadata tags and properties without reading content.</td>
+<td><code>container: str</code>, <code>name: str</code></td>
+</tr>
+<tr>
+<td><code>blob.download_url</code></td>
+<td>Generate a short-lived SAS URL (default: 15 min) for downloading a blob. Use for PDFs, images, audio, video, or any binary file.</td>
+<td><code>container: str</code>, <code>name: str</code>, <code>expiry_minutes: int</code></td>
+</tr>
+<tr>
+<td><code>blob.embedding_url</code></td>
+<td>Generate a SAS URL specifically authorized for Azure AI Services to fetch and embed. Returns a URL suitable for passing to an embedding API. Use when the blob is a document or image to be embedded.</td>
+<td><code>container: str</code>, <code>name: str</code></td>
+</tr>
+</tbody>
+</table>
+<p><strong><code>blob.download_url</code> and <code>blob.embedding_url</code> — how they work:</strong></p>
+<div class="highlight"><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">azure.storage.blob</span><span class="w"> </span><span class="kn">import</span> <span class="n">BlobServiceClient</span><span class="p">,</span> <span class="n">generate_blob_sas</span><span class="p">,</span> <span class="n">BlobSasPermissions</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">azure.identity</span><span class="w"> </span><span class="kn">import</span> <span class="n">ManagedIdentityCredential</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">datetime</span><span class="w"> </span><span class="kn">import</span> <span class="n">datetime</span><span class="p">,</span> <span class="n">timedelta</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">download_url</span><span class="p">(</span><span class="n">container</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">name</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">expiry_minutes</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">15</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">dict</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Generate a SAS URL for downloading a blob. The URL is time-limited.</span>
+<span class="sd">    The agent never sees the storage account key — it is fetched from Key Vault.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">sas_token</span> <span class="o">=</span> <span class="n">generate_blob_sas</span><span class="p">(</span>
+        <span class="n">account_name</span><span class="o">=</span><span class="n">STORAGE_ACCOUNT</span><span class="p">,</span>
+        <span class="n">container_name</span><span class="o">=</span><span class="n">container</span><span class="p">,</span>
+        <span class="n">blob_name</span><span class="o">=</span><span class="n">name</span><span class="p">,</span>
+        <span class="n">account_key</span><span class="o">=</span><span class="n">get_storage_key_from_keyvault</span><span class="p">(),</span>  <span class="c1"># Key Vault, not env var</span>
+        <span class="n">permission</span><span class="o">=</span><span class="n">BlobSasPermissions</span><span class="p">(</span><span class="n">read</span><span class="o">=</span><span class="kc">True</span><span class="p">),</span>
+        <span class="n">expiry</span><span class="o">=</span><span class="n">datetime</span><span class="o">.</span><span class="n">utcnow</span><span class="p">()</span> <span class="o">+</span> <span class="n">timedelta</span><span class="p">(</span><span class="n">minutes</span><span class="o">=</span><span class="n">expiry_minutes</span><span class="p">)</span>
+    <span class="p">)</span>
+    <span class="k">return</span> <span class="p">{</span>
+        <span class="s2">&quot;url&quot;</span><span class="p">:</span> <span class="sa">f</span><span class="s2">&quot;https://</span><span class="si">{</span><span class="n">STORAGE_ACCOUNT</span><span class="si">}</span><span class="s2">.blob.core.windows.net/</span><span class="si">{</span><span class="n">container</span><span class="si">}</span><span class="s2">/</span><span class="si">{</span><span class="n">name</span><span class="si">}</span><span class="s2">?</span><span class="si">{</span><span class="n">sas_token</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;expires_at&quot;</span><span class="p">:</span> <span class="p">(</span><span class="n">datetime</span><span class="o">.</span><span class="n">utcnow</span><span class="p">()</span> <span class="o">+</span> <span class="n">timedelta</span><span class="p">(</span><span class="n">minutes</span><span class="o">=</span><span class="n">expiry_minutes</span><span class="p">))</span><span class="o">.</span><span class="n">isoformat</span><span class="p">(),</span>
+        <span class="s2">&quot;blob_name&quot;</span><span class="p">:</span> <span class="n">name</span>
+    <span class="p">}</span>
+</code></pre></div>
+<p>The agent receives a URL it can pass to Azure Document Intelligence, Azure OpenAI Vision, or an embedding API — it never has direct storage access. The SAS token is signed server-side and expires automatically.</p>
+<p><strong><code>blob.embedding_url</code></strong> generates a SAS URL with the <code>read</code> permission scoped to a short window (5 minutes default), specifically for passing to embedding/vision APIs. It also enriches the response with content type and blob size metadata to help the agent decide which embedding model to use:</p>
+<div class="highlight"><pre><span></span><code><span class="p">{</span>
+<span class="w">  </span><span class="nt">&quot;url&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://storage.blob.core.windows.net/documents/report.pdf?sv=...&amp;se=...&amp;sig=...&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;content_type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;application/pdf&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;size_bytes&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">2097152</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;expires_at&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;2026-03-20T14:35:00Z&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;recommended_model&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;azure-document-intelligence&quot;</span>
+<span class="p">}</span>
+</code></pre></div>
+<hr />
+<h3 id="84-vector-store-qdrant-vs-lancedb">8.4 Vector Store: Qdrant vs LanceDB<a class="headerlink" href="#84-vector-store-qdrant-vs-lancedb" title="Permanent link">&para;</a></h3>
+<p>These serve different deployment contexts and are not mutually exclusive.</p>
+<table>
+<thead>
+<tr>
+<th>Dimension</th>
+<th>Qdrant</th>
+<th>LanceDB</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Deployment model</td>
+<td>Separate server process (Docker)</td>
+<td>Embedded library (in-process)</td>
+</tr>
+<tr>
+<td>Memory footprint</td>
+<td>~400 MB constant</td>
+<td>~4 MB idle</td>
+</tr>
+<tr>
+<td>Query recall</td>
+<td>~95%</td>
+<td>~88%</td>
+</tr>
+<tr>
+<td>Query latency (p50)</td>
+<td>~20–30 ms</td>
+<td>~40–60 ms</td>
+</tr>
+<tr>
+<td>Storage model</td>
+<td>In-memory + disk persistence</td>
+<td>Disk-first columnar (Lance format)</td>
+</tr>
+<tr>
+<td>Cost at scale</td>
+<td>Proportional to memory</td>
+<td>Up to 100x cheaper (cold datasets)</td>
+</tr>
+<tr>
+<td>Multi-modal (images, video)</td>
+<td>Via custom embeddings</td>
+<td>Native (text, image, video, audio)</td>
+</tr>
+<tr>
+<td>Filtering</td>
+<td>Excellent (payload filtering)</td>
+<td>Good</td>
+</tr>
+<tr>
+<td>Time-travel queries</td>
+<td>No</td>
+<td>Yes (versioned format)</td>
+</tr>
+<tr>
+<td>MCP server (official)</td>
+<td>Yes (<code>qdrant/mcp-server-qdrant</code>)</td>
+<td>Reference only (<code>lancedb/lancedb-mcp-server</code>)</td>
+</tr>
+<tr>
+<td>Community MCP</td>
+<td>Good ecosystem</td>
+<td><code>applied-ai-systems/aas-lancedb-mcp</code></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Recommendation</strong>: Use both:
+- <strong>Qdrant</strong> for the primary knowledge base (high-recall production RAG, shared by multiple agents, server-mode)
+- <strong>LanceDB</strong> for agent-local memory, edge deployments, large cold datasets, or anywhere a standalone server is not viable (developer laptop, CI pipeline)</p>
+<h4 id="qdrant-tools-qdrantmcp-server-qdrant">Qdrant Tools (<code>qdrant/mcp-server-qdrant</code>)<a class="headerlink" href="#qdrant-tools-qdrantmcp-server-qdrant" title="Permanent link">&para;</a></h4>
+<p>The official Qdrant MCP server provides 2 tools (semantic memory layer). For our use case, we need additional tools — extend by building on the <code>qdrant-client</code> library:</p>
+<table>
+<thead>
+<tr>
+<th>Tool</th>
+<th>Description</th>
+<th>Key Parameters</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>qdrant.search</code></td>
+<td>Semantic similarity search by natural language query. Returns top-k with score and payload.</td>
+<td><code>collection: str</code>, <code>query: str</code>, <code>top_k: int</code>, <code>filter: dict</code></td>
+</tr>
+<tr>
+<td><code>qdrant.upsert</code></td>
+<td>Store text item with auto-embedding and optional metadata into a collection.</td>
+<td><code>collection: str</code>, <code>id: str</code>, <code>text: str</code>, <code>metadata: dict</code></td>
+</tr>
+<tr>
+<td><code>qdrant.delete</code></td>
+<td>Remove a vector by ID.</td>
+<td><code>collection: str</code>, <code>id: str</code></td>
+</tr>
+<tr>
+<td><code>qdrant.list_collections</code></td>
+<td>Return all collection names and vector dimensions.</td>
+<td>none</td>
+</tr>
+<tr>
+<td><code>qdrant.count</code></td>
+<td>Count points in a collection, optionally filtered.</td>
+<td><code>collection: str</code>, <code>filter: dict</code></td>
+</tr>
+</tbody>
+</table>
+<h4 id="lancedb-tools-applied-ai-systemsaas-lancedb-mcp-extensions">LanceDB Tools (<code>applied-ai-systems/aas-lancedb-mcp</code> + extensions)<a class="headerlink" href="#lancedb-tools-applied-ai-systemsaas-lancedb-mcp-extensions" title="Permanent link">&para;</a></h4>
+<table>
+<thead>
+<tr>
+<th>Tool</th>
+<th>Description</th>
+<th>Key Parameters</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>lancedb.search</code></td>
+<td>Semantic similarity search in a local LanceDB table.</td>
+<td><code>table: str</code>, <code>query: str</code>, <code>top_k: int</code></td>
+</tr>
+<tr>
+<td><code>lancedb.upsert</code></td>
+<td>Insert or update records in a LanceDB table.</td>
+<td><code>table: str</code>, <code>records: list[dict]</code></td>
+</tr>
+<tr>
+<td><code>lancedb.list_tables</code></td>
+<td>List all tables in the LanceDB database.</td>
+<td>none</td>
+</tr>
+<tr>
+<td><code>lancedb.get_table_info</code></td>
+<td>Return schema and row count for a table.</td>
+<td><code>table: str</code></td>
+</tr>
+<tr>
+<td><code>lancedb.delete</code></td>
+<td>Remove records matching a filter expression.</td>
+<td><code>table: str</code>, <code>filter: str</code></td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h3 id="85-azure-ai-search-tools-microsoftmcp-farzad528mcp-server-azure-ai-agents">8.5 Azure AI Search Tools (<code>microsoft/mcp</code> + <code>farzad528/mcp-server-azure-ai-agents</code>)<a class="headerlink" href="#85-azure-ai-search-tools-microsoftmcp-farzad528mcp-server-azure-ai-agents" title="Permanent link">&para;</a></h3>
+<p>Use the Microsoft Azure MCP Server for index management. Extend with <code>farzad528/mcp-server-azure-ai-agents</code> for richer hybrid search capabilities.</p>
+<table>
+<thead>
+<tr>
+<th>Tool</th>
+<th>Description</th>
+<th>Key Parameters</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>azure_search.search</code></td>
+<td>Hybrid search (semantic + vector + keyword) over an Azure AI Search index.</td>
+<td><code>index: str</code>, <code>query: str</code>, <code>query_type: str</code> ("semantic"/"vector"/"hybrid"), <code>top: int</code>, <code>filter: str</code></td>
+</tr>
+<tr>
+<td><code>azure_search.lookup</code></td>
+<td>Retrieve a document by its key. Use when you know the exact document ID.</td>
+<td><code>index: str</code>, <code>key: str</code></td>
+</tr>
+<tr>
+<td><code>azure_search.list_indexes</code></td>
+<td>List all indexes with their field schemas.</td>
+<td>none</td>
+</tr>
+<tr>
+<td><code>azure_search.suggest</code></td>
+<td>Get autocomplete suggestions from an index.</td>
+<td><code>index: str</code>, <code>query: str</code>, <code>suggester: str</code>, <code>top: int</code></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Note</strong>: For full Azure AI Foundry + Agentic Retrieval environments, the <code>azure_search.search</code> tool can be configured to trigger multi-step query decomposition on the Azure side — this is transparent to the agent.</p>
+<hr />
+<h3 id="86-queue-and-messaging-tools-build-required">8.6 Queue and Messaging Tools (Build Required)<a class="headerlink" href="#86-queue-and-messaging-tools-build-required" title="Permanent link">&para;</a></h3>
+<p>The Azure MCP Server exposes <strong>management-plane only</strong> for Service Bus (queue stats, not message content). Azure Queue Storage data-plane operations are entirely absent. We must build a custom <code>queue-mcp</code> server.</p>
+<p>For Kafka and RabbitMQ, reuse <code>LarsCowe/queue-pilot</code> (supports both, 14+ tools, JSON Schema validation).</p>
+<h4 id="tools-needed-common-interface-across-all-brokers">Tools Needed (Common Interface Across All Brokers)<a class="headerlink" href="#tools-needed-common-interface-across-all-brokers" title="Permanent link">&para;</a></h4>
+<table>
+<thead>
+<tr>
+<th>Tool</th>
+<th>Description</th>
+<th>Key Parameters</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>queue.publish</code></td>
+<td>Publish a message to a queue or topic. Returns message ID.</td>
+<td><code>queue: str</code>, <code>message: dict</code>, <code>headers: dict</code></td>
+<td>Data-plane send</td>
+</tr>
+<tr>
+<td><code>queue.peek</code></td>
+<td>Preview N messages without consuming them. Non-destructive inspection.</td>
+<td><code>queue: str</code>, <code>max_count: int</code></td>
+<td>Safe for observability</td>
+</tr>
+<tr>
+<td><code>queue.receive</code></td>
+<td>Dequeue one or more messages. Returns message ID for acknowledgement.</td>
+<td><code>queue: str</code>, <code>max_count: int</code>, <code>lock_duration_secs: int</code></td>
+<td>Destructive (must ack)</td>
+</tr>
+<tr>
+<td><code>queue.acknowledge</code></td>
+<td>Confirm a message was processed. Prevents redelivery.</td>
+<td><code>queue: str</code>, <code>receipt_handle: str</code></td>
+<td>At-least-once delivery</td>
+</tr>
+<tr>
+<td><code>queue.dead_letter_peek</code></td>
+<td>Inspect dead-letter queue contents.</td>
+<td><code>queue: str</code>, <code>max_count: int</code></td>
+<td>Debugging</td>
+</tr>
+<tr>
+<td><code>queue.list</code></td>
+<td>List all available queues/topics with stats.</td>
+<td>none</td>
+<td>Discovery</td>
+</tr>
+<tr>
+<td><code>queue.stats</code></td>
+<td>Get message count, DLQ count, and oldest message age for a queue.</td>
+<td><code>queue: str</code></td>
+<td>Observability</td>
+</tr>
+<tr>
+<td><code>queue.purge</code></td>
+<td>Delete all messages from a queue. Requires <code>confirm: true</code>.</td>
+<td><code>queue: str</code>, <code>confirm: bool</code></td>
+<td>Destructive</td>
+</tr>
+</tbody>
+</table>
+<h4 id="broker-coverage-matrix">Broker Coverage Matrix<a class="headerlink" href="#broker-coverage-matrix" title="Permanent link">&para;</a></h4>
+<table>
+<thead>
+<tr>
+<th>Tool</th>
+<th>Azure Queue Storage</th>
+<th>Azure Service Bus</th>
+<th>Kafka</th>
+<th>RabbitMQ</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>queue.publish</code></td>
+<td>Build</td>
+<td>Build</td>
+<td><code>queue-pilot</code></td>
+<td><code>queue-pilot</code></td>
+</tr>
+<tr>
+<td><code>queue.peek</code></td>
+<td>Build</td>
+<td>Build</td>
+<td><code>queue-pilot</code></td>
+<td><code>queue-pilot</code></td>
+</tr>
+<tr>
+<td><code>queue.receive</code></td>
+<td>Build</td>
+<td>Build</td>
+<td><code>queue-pilot</code></td>
+<td><code>queue-pilot</code></td>
+</tr>
+<tr>
+<td><code>queue.acknowledge</code></td>
+<td>Build</td>
+<td>Build</td>
+<td><code>queue-pilot</code></td>
+<td><code>queue-pilot</code></td>
+</tr>
+<tr>
+<td><code>queue.dead_letter_peek</code></td>
+<td>Build</td>
+<td>Build</td>
+<td>N/A</td>
+<td><code>queue-pilot</code></td>
+</tr>
+<tr>
+<td><code>queue.stats</code></td>
+<td><code>microsoft/mcp</code> (mgmt)</td>
+<td><code>microsoft/mcp</code> (mgmt)</td>
+<td><code>queue-pilot</code></td>
+<td><code>queue-pilot</code></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Build plan for Azure data-plane gap</strong>:</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># Azure Queue Storage MCP tool (data-plane — not in microsoft/mcp)</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">azure.storage.queue</span><span class="w"> </span><span class="kn">import</span> <span class="n">QueueServiceClient</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">azure.identity</span><span class="w"> </span><span class="kn">import</span> <span class="n">ManagedIdentityCredential</span>
+
+<span class="n">credential</span> <span class="o">=</span> <span class="n">ManagedIdentityCredential</span><span class="p">()</span>
+<span class="n">queue_service</span> <span class="o">=</span> <span class="n">QueueServiceClient</span><span class="p">(</span>
+    <span class="sa">f</span><span class="s2">&quot;https://</span><span class="si">{</span><span class="n">STORAGE_ACCOUNT</span><span class="si">}</span><span class="s2">.queue.core.windows.net&quot;</span><span class="p">,</span>
+    <span class="n">credential</span><span class="o">=</span><span class="n">credential</span>
+<span class="p">)</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">receive_messages</span><span class="p">(</span><span class="n">queue</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">max_count</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">5</span><span class="p">,</span> <span class="n">lock_duration_secs</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">30</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">dict</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Dequeue messages from Azure Queue Storage. Messages are locked (invisible)</span>
+<span class="sd">    for lock_duration_secs. Call queue.acknowledge with receipt_handle to confirm</span>
+<span class="sd">    processing. If not acknowledged within the lock duration, message reappears.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">client</span> <span class="o">=</span> <span class="n">queue_service</span><span class="o">.</span><span class="n">get_queue_client</span><span class="p">(</span><span class="n">queue</span><span class="p">)</span>
+    <span class="n">messages</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">receive_messages</span><span class="p">(</span><span class="n">max_messages</span><span class="o">=</span><span class="n">max_count</span><span class="p">,</span> <span class="n">visibility_timeout</span><span class="o">=</span><span class="n">lock_duration_secs</span><span class="p">)</span>
+    <span class="k">return</span> <span class="p">{</span>
+        <span class="s2">&quot;messages&quot;</span><span class="p">:</span> <span class="p">[</span>
+            <span class="p">{</span><span class="s2">&quot;id&quot;</span><span class="p">:</span> <span class="n">m</span><span class="o">.</span><span class="n">id</span><span class="p">,</span> <span class="s2">&quot;content&quot;</span><span class="p">:</span> <span class="n">m</span><span class="o">.</span><span class="n">content</span><span class="p">,</span> <span class="s2">&quot;receipt_handle&quot;</span><span class="p">:</span> <span class="n">m</span><span class="o">.</span><span class="n">pop_receipt</span><span class="p">,</span>
+             <span class="s2">&quot;dequeue_count&quot;</span><span class="p">:</span> <span class="n">m</span><span class="o">.</span><span class="n">dequeue_count</span><span class="p">}</span>
+            <span class="k">for</span> <span class="n">m</span> <span class="ow">in</span> <span class="n">messages</span>
+        <span class="p">]</span>
+    <span class="p">}</span>
+</code></pre></div>
+<hr />
+<h2 id="9-vectorstore-abstraction-interface">9. VectorStore Abstraction Interface<a class="headerlink" href="#9-vectorstore-abstraction-interface" title="Permanent link">&para;</a></h2>
+<p>Tools for Qdrant, LanceDB, and Azure AI Search share a common interface to ensure swap-ability:</p>
+<div class="highlight"><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">abc</span><span class="w"> </span><span class="kn">import</span> <span class="n">ABC</span><span class="p">,</span> <span class="n">abstractmethod</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">dataclasses</span><span class="w"> </span><span class="kn">import</span> <span class="n">dataclass</span>
+
+<span class="nd">@dataclass</span>
+<span class="k">class</span><span class="w"> </span><span class="nc">SearchResult</span><span class="p">:</span>
+    <span class="nb">id</span><span class="p">:</span> <span class="nb">str</span>
+    <span class="n">text</span><span class="p">:</span> <span class="nb">str</span>
+    <span class="n">score</span><span class="p">:</span> <span class="nb">float</span>
+    <span class="n">metadata</span><span class="p">:</span> <span class="nb">dict</span>
+
+<span class="k">class</span><span class="w"> </span><span class="nc">VectorStoreAdapter</span><span class="p">(</span><span class="n">ABC</span><span class="p">):</span>
+    <span class="nd">@abstractmethod</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">search</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">collection</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">query</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">top_k</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">5</span><span class="p">,</span>
+               <span class="nb">filter</span><span class="p">:</span> <span class="nb">dict</span> <span class="o">=</span> <span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">[</span><span class="n">SearchResult</span><span class="p">]:</span> <span class="o">...</span>
+
+    <span class="nd">@abstractmethod</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">upsert</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">collection</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="nb">id</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">text</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+               <span class="n">metadata</span><span class="p">:</span> <span class="nb">dict</span> <span class="o">=</span> <span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span> <span class="o">...</span>
+
+    <span class="nd">@abstractmethod</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">delete</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">collection</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="nb">id</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span> <span class="o">...</span>
+
+    <span class="nd">@abstractmethod</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">list_collections</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">]:</span> <span class="o">...</span>
+
+<span class="c1"># Concrete implementations registered at server startup</span>
+<span class="k">class</span><span class="w"> </span><span class="nc">QdrantAdapter</span><span class="p">(</span><span class="n">VectorStoreAdapter</span><span class="p">):</span> <span class="o">...</span>
+<span class="k">class</span><span class="w"> </span><span class="nc">LanceDBAdapter</span><span class="p">(</span><span class="n">VectorStoreAdapter</span><span class="p">):</span> <span class="o">...</span>        <span class="c1"># Embedded, zero network overhead</span>
+<span class="k">class</span><span class="w"> </span><span class="nc">AzureAISearchAdapter</span><span class="p">(</span><span class="n">VectorStoreAdapter</span><span class="p">):</span> <span class="o">...</span>
+
+<span class="c1"># MCP tools receive the adapter via DI — same tool schema regardless of backend</span>
+<span class="k">class</span><span class="w"> </span><span class="nc">VectorSearchTools</span><span class="p">:</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">adapter</span><span class="p">:</span> <span class="n">VectorStoreAdapter</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_store</span> <span class="o">=</span> <span class="n">adapter</span>
+
+    <span class="nd">@mcp_tool</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">&quot;vector.search&quot;</span><span class="p">)</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">search</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">collection</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">query</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">top_k</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">5</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">[</span><span class="nb">dict</span><span class="p">]:</span>
+        <span class="k">return</span> <span class="p">[</span><span class="n">r</span><span class="o">.</span><span class="vm">__dict__</span> <span class="k">for</span> <span class="n">r</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_store</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="n">collection</span><span class="p">,</span> <span class="n">query</span><span class="p">,</span> <span class="n">top_k</span><span class="p">)]</span>
+</code></pre></div>
+<hr />
+<h2 id="10-tool-versioning-and-lifecycle">10. Tool Versioning and Lifecycle<a class="headerlink" href="#10-tool-versioning-and-lifecycle" title="Permanent link">&para;</a></h2>
+<h3 id="semantic-versioning-rules">Semantic Versioning Rules<a class="headerlink" href="#semantic-versioning-rules" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Change</th>
+<th>Bump</th>
+<th>Rationale</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Rename or remove a required parameter</td>
+<td>MAJOR</td>
+<td>Breaks all existing agent configs</td>
+</tr>
+<tr>
+<td>Change parameter type</td>
+<td>MAJOR</td>
+<td>Breaks existing tool calls</td>
+</tr>
+<tr>
+<td>New optional parameter</td>
+<td>MINOR</td>
+<td>Backward-compatible addition</td>
+</tr>
+<tr>
+<td>Bug fix, no schema change</td>
+<td>PATCH</td>
+<td>No agent behavior change</td>
+</tr>
+<tr>
+<td>Underlying model/embedding upgrade</td>
+<td>MAJOR</td>
+<td>Probabilistic output changes even with same schema</td>
+</tr>
+</tbody>
+</table>
+<h3 id="lifecycle-stages">Lifecycle Stages<a class="headerlink" href="#lifecycle-stages" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code>Draft → Preview → Stable/GA → Deprecated → Sunset
+</code></pre></div>
+<p>Deprecated tools emit <code>_meta.deprecation_warning</code> in the response envelope. Sunset date is published 3 months minimum in advance. Agent configurations pin versions (<code>"tool": "postgres.query:1.2.0"</code>) so upgrades are always opt-in.</p>
+<hr />
+<h2 id="11-decision-summary">11. Decision Summary<a class="headerlink" href="#11-decision-summary" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>Decision</th>
+<th>Choice</th>
+<th>Rationale</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Tool protocol</td>
+<td>MCP (JSON-RPC 2.0)</td>
+<td>Linux Foundation standard, universal framework support, zero cost</td>
+</tr>
+<tr>
+<td>Gateway</td>
+<td><code>mcp-gateway-registry</code> from day one</td>
+<td>Auth, RBAC, audit, and A2A are structural needs — retrofitting creates more debt than the setup overhead</td>
+</tr>
+<tr>
+<td>Community servers to reuse</td>
+<td><code>microsoft/mcp</code>, <code>mongodb-js/mongodb-mcp-server</code>, <code>qdrant/mcp-server-qdrant</code>, <code>neverinfamous/postgres-mcp</code>, <code>LarsCowe/queue-pilot</code></td>
+<td>Vendor-maintained; free community upgrades</td>
+</tr>
+<tr>
+<td>Custom builds required</td>
+<td>Azure Queue Storage data-plane, Azure Service Bus data-plane, <code>blob.download_url</code> + <code>blob.embedding_url</code></td>
+<td>Genuine gaps in existing servers</td>
+</tr>
+<tr>
+<td>Cloud transport</td>
+<td>Streamable HTTP</td>
+<td>HTTP+SSE deprecated in 2025-11-25 spec; Streamable HTTP is load-balancer compatible</td>
+</tr>
+<tr>
+<td>Local/dev transport</td>
+<td>stdio</td>
+<td>Zero overhead, no network stack</td>
+</tr>
+<tr>
+<td>Cloud hosting</td>
+<td>Azure Container Apps (primary), AKS sidecar (for agent-colocated tools)</td>
+<td>ACA: scale-to-zero + Managed Identity; AKS: low latency for high-frequency tools</td>
+</tr>
+<tr>
+<td>Secret isolation</td>
+<td>Env var at startup → Key Vault (production)</td>
+<td>Credentials never enter LLM context window</td>
+</tr>
+<tr>
+<td>Vector store</td>
+<td>Qdrant (server) + LanceDB (embedded)</td>
+<td>Qdrant for production RAG; LanceDB for edge/local/large cold datasets</td>
+</tr>
+<tr>
+<td>Swap-ability</td>
+<td><code>VectorStoreAdapter</code> ABC</td>
+<td>One tool schema; swap backend via DI</td>
+</tr>
+<tr>
+<td>Queue abstraction</td>
+<td><code>queue.*</code> namespace, multi-broker (Azure Queue, Service Bus, Kafka, RabbitMQ)</td>
+<td>Unified tool interface across all brokers</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="12-references">12. References<a class="headerlink" href="#12-references" title="Permanent link">&para;</a></h2>
+<ul>
+<li><a href="https://modelcontextprotocol.io/specification/2025-11-25">MCP Specification 2025-11-25</a></li>
+<li><a href="https://github.com/agentic-community/mcp-gateway-registry">mcp-gateway-registry (Apache 2.0)</a></li>
+<li><a href="https://learn.microsoft.com/en-us/azure/developer/azure-mcp-server/tools/">Azure MCP Server — Official (microsoft/mcp)</a></li>
+<li><a href="https://www.mongodb.com/docs/mcp-server/">MongoDB Official MCP Server</a></li>
+<li><a href="https://github.com/qdrant/mcp-server-qdrant">Qdrant Official MCP Server</a></li>
+<li><a href="https://github.com/neverinfamous/postgres-mcp">neverinfamous/postgres-mcp (pgvector-aware)</a></li>
+<li><a href="https://github.com/lancedb/lancedb-mcp-server">LanceDB MCP Server Reference</a></li>
+<li><a href="https://github.com/applied-ai-systems/aas-lancedb-mcp">applied-ai-systems/aas-lancedb-mcp</a></li>
+<li><a href="https://github.com/LarsCowe/queue-pilot">LarsCowe/queue-pilot (Kafka + RabbitMQ)</a></li>
+<li><a href="https://techcommunity.microsoft.com/blog/appsonazureblog/host-remote-mcp-servers-in-azure-container-apps/4403550">Host MCP Servers in Azure Container Apps</a></li>
+<li><a href="https://blog.aks.azure.com/2025/10/22/deploy-mcp-server-aks-workload-identity">Deploy MCP on AKS with Workload Identity</a></li>
+<li><a href="https://blog.fka.dev/blog/2025-06-06-why-mcp-deprecated-sse-and-went-with-streamable-http/">Why MCP Deprecated SSE</a></li>
+<li><a href="https://infisical.com/blog/managing-secrets-mcp-servers">Managing Secrets in MCP Servers — Infisical</a></li>
+<li><a href="docs/architecture/Inclusive-Architecture.md">Inclusive Architecture Whitepaper</a></li>
+<li><a href="https://github.com/A4i-tech/github/issues/173">GitHub Issue #173 — Tooling Research, PoC &amp; Integration</a></li>
+</ul>
+<hr />
+<p><em>© 2026 A4I. Internal Draft v2.</em></p>
+
+
+
+
+
+
+
+  
+  
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "..", "features": ["navigation.expand", "navigation.sections", "toc.integrate"], "search": "../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+    
+  </body>
+</html>
